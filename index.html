@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="it" class="dark">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>Transport Manage</title>
-  <link rel="manifest" href="./manifest.json"/>
-  <meta name="theme-color" content="#0c1322"/>
-  
-  <!-- Tailwind CSS & Lucide Icons -->
-  <script type='text/javascript' nonce='+8hckfYZAz8nNiT/u1clIA==' src='https://contribution.usercontent.google.com/ZqsIVAa6U8bLcu7Nd-h3cwCDJrverRaZnE2-xx0RFJAKaMmdenNSKINJY2zfXNICZNLQtIMrn_SXjvgU-rYYhuYWyf0EzPBRmLb9IwTHN01-TV5_rcyXths0leQmIXQcs2Ya45khJtgykWSpa0AQBIwqPud-z3WwCP1KynDcNF8Dz6E0naVG5XwVnOQOjK_lVYnS-YfB9GwE7vxNR7qYWlE8gmDehvXsxD0SwPQjxaiK6hjQuTCwtrIUk6aIFseqd43Xau80sTmAGWSkuVA0-zthdpIqS7ioRdxBvRbT9Wti1-cQ_3Oz8LVP0tQ5V46tcIGv5nlseUQ60ZzC3l68kwWNZR5hiBza7y04SUbOZ_NsiSl0sr7EEMQ-sgH73dKFd9xPzxzl1udC7OogEKikbbOhmrX-3pfeZ0KSqFFtqgTNLEaGIKyozrUIJnAq4Gu5KfqpY4RiOBirW9sq6Hm-wLqSiY7EZ03Tqq3C-bq2xqOxLS0J9kDLY4aSat8KGm0H587nngYmKVZoILGmJ8jflLvB0dvgxBX7oLIA9YVzMeB5NMOkAvmxeXChZYReXm9PNJE1inACa-V5YRk_QRe1LvQbmKXF8JsRkZ4Y01L2H8xCjgZ0Do-t3UkRxaPDc6sPcFkdca_dPYB9rRn5VFrVXFON6nQWC5hbg6OhNgVeoHwiHfRZ9-Wdm9c11Yl7oUZoeAcI4YsuStiQwPFVoQa4W9AQueNjHzBqFp9PiX3cG5zTAOC57QXDSJmXNPUii3oLv6kn7KO2Dit8kh8vlmjrsLxB1Zmug0H9hh_G8Z2-'></script><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <style>
+
+<html class="dark" lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Transport Manage</title>
+<link href="./manifest.json" rel="manifest"/>
+<meta content="#0c1322" name="theme-color"/>
+<!-- Tailwind CSS & Lucide Icons -->
+<script type='text/javascript' nonce='T2sDKocNcUmB2w4InSFfpg==' src='https://contribution.usercontent.google.com/AqVUdmES5N8wCkIi-aqNJafRIKPWfzu3ZdDSBlEbQbIRe3o9EfuShP7OJmwUiq_4sHyFiA90Ck7aJ0xBaNlJZcvo3lny72uZOAA7dqJYwbbf26qYKfP-vEC8xTzibjWpgZzYf8r4IlUN6r2YRs244Wd23Kd5IULuQxhaayiOJlq9mf46tXXjqciifbQJq-HO8QHQSZAhZw1R1eug4GPwOiFS3G_zpnHf_zNP78ZyrktM3AbP75Kv0amhdusGMxsGK_nWghCiyyjv-psbiBCKFaq3qMy2WVISjrzf56epnlrRuq0z1sNDkRzjCeHCfRHPxTot-J2xMShMP0GzC8VD-ii0zZ4gkowUoMXUBZ6t7yzmaSw08i5ns7gk9ulAKPbltu-f0MZz1rpwtAYeG23xJHCfs7XxeMpAxTocyG2R58MWGmjRDVhM2qhWAyz7Ebccpms3YBjH3Dcww72AnBZsMHrzutL6vsEj0k3kOUPc0Oxrxfx2kMWCaTZm_Hl1V6F4YmBC_3JPK6twwN_d1iDSdru7cFX9TH-4XqK4MoOgNEaRtC1pISDMQbh8R2vtaOh7OwxHiFE5sx9haE-qxY0VzBBTb36YLeL8GxJkd5MFDCBaBEb5ybOoG0TcvtJ0NSfpx5eCyD1kx8mGUHT_4tvf4jvEFDTkvDJoizzWPk6pPzJjECD1bDYof6ntxoyzRnHVrmC2DxKMfVyDg3ybK-IGO_2QVi_5JD9EVsuBjBX20IuNU4wyxays-ivXcKbPFoxK3FQ4h5LpRi1JYbc1x8U9NuJ2aa2Eyw3VZUTev0Ry'></script><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- External variables script with fallback safety -->
+<script src="./variables.js"></script>
+<style>
     body {
       background-color: #070e1d;
       color: #f1f5f9;
@@ -21,7 +22,7 @@
       background: #141b2b;
       color: #f1f5f9;
     }
-    /* Assicura che l'input date overlay invisibile prenda il click ovunque */
+    /* Permette all'input date trasparente di occupare al 100% l'intero contenitore */
     .date-picker-trigger input[type="date"] {
       position: absolute;
       inset: 0;
@@ -29,309 +30,287 @@
       height: 100%;
       opacity: 0;
       cursor: pointer;
-      z-index: 10;
+      z-index: 20;
     }
   </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-start pb-20 antialiased font-sans">
-
-  <!-- TOP APP BAR -->
-  <header class="w-full max-w-md bg-[#0c1322]/90 backdrop-blur-md sticky top-0 z-50 border-b border-[#1f293d] px-4 py-3 flex items-center justify-between">
-    <div class="flex items-center gap-2.5">
-      <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-md">
-        <i data-lucide="bus" class="w-4 h-4"></i>
-      </div>
-      <div>
-        <h1 class="text-sm font-bold text-white leading-tight">Transport Manage</h1>
-        <div class="flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-          <span id="headerPageTitle" class="text-[11px] text-slate-400 font-medium">Prenotazione</span>
-        </div>
-      </div>
-    </div>
-    
-    <div class="flex items-center gap-1.5">
-      <button onclick="loadVariablesAndSync()" type="button" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition" title="Ricarica Dati">
-        <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
-      </button>
-      <div class="px-2 py-1 rounded-full bg-slate-900 border border-[#1f293d] flex items-center gap-1.5 shadow-inner">
-        <span class="w-1.5 h-1.5 rounded-full bg-blue-400" id="syncStatusDot"></span>
-        <span id="syncStatusBadge" class="text-[10px] tracking-wide font-mono uppercase text-blue-400">Attivo</span>
-      </div>
-    </div>
-  </header>
-
-  <!-- CONTENUTO PRINCIPALE -->
-  <main class="w-full max-w-md px-4 pt-4 flex-1 flex flex-col gap-4">
-
-    <!-- ==================== SCHERMATA 1: PRENOTAZIONE ==================== -->
-    <section id="page-prenotazione" class="space-y-4">
-      
-      <!-- SELETTORE DATA CORSA (SOLO DOMANI E CALENDARIO A TUTTA AREA) -->
-      <div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-3.5 shadow-lg space-y-2.5">
-        <div class="flex items-center justify-between text-xs">
-          <span class="font-bold uppercase tracking-wider text-slate-400 text-[10px] flex items-center gap-1">
-            <i data-lucide="calendar" class="w-3 h-3 text-blue-400"></i> Data Selezionata
+<!-- TOP APP BAR -->
+<header class="w-full max-w-md bg-[#0c1322]/90 backdrop-blur-md sticky top-0 z-50 border-b border-[#1f293d] px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-md">
+<i class="w-4 h-4" data-lucide="bus"></i>
+</div>
+<div>
+<h1 class="text-sm font-bold text-white leading-tight">Transport Manage</h1>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+<span class="text-[11px] text-slate-400 font-medium" id="headerPageTitle">Prenotazione</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer" onclick="loadVariablesAndSync()" title="Ricarica Dati e Sincronizza" type="button">
+<i class="w-3.5 h-3.5" data-lucide="refresh-cw"></i>
+</button>
+<div class="px-2.5 py-1 rounded-full bg-slate-900 border border-[#1f293d] flex items-center gap-1.5 shadow-inner">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400" id="syncStatusDot"></span>
+<span class="text-[10px] tracking-wide font-mono uppercase text-blue-400" id="syncStatusBadge">Attivo Locale</span>
+</div>
+</div>
+</header>
+<!-- CONTENUTO PRINCIPALE -->
+<main class="w-full max-w-md px-4 pt-4 flex-1 flex flex-col gap-4">
+<!-- ==================== SCHERMATA 1: PRENOTAZIONE ==================== -->
+<section class="space-y-4" id="page-prenotazione">
+<!-- SELETTORE DATA CORSA (SOLO 2 TASTI: DOMANI E CALENDARIO TOTALMENTE CLICCABILE) -->
+<div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-3.5 shadow-lg space-y-2.5">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold uppercase tracking-wider text-slate-400 text-[10px] flex items-center gap-1">
+<i class="w-3.5 h-3.5 text-blue-400" data-lucide="calendar"></i> Data Selezionata
           </span>
-          <span id="displaySelectedDate" class="font-mono font-bold text-blue-400 bg-blue-950/60 px-2 py-0.5 rounded border border-blue-800/50">--/--/----</span>
-        </div>
-        
-        <div class="grid grid-cols-2 gap-2">
-          <!-- 1. TASTO DOMANI -->
-          <button id="btnDateDomani" onclick="selectDateShortcut(&#39;domani&#39;)" type="button" class="py-2.5 px-2 text-center rounded-xl border text-xs font-semibold transition bg-blue-600 text-white border-blue-500 shadow-sm cursor-pointer flex items-center justify-center gap-1.5">
-            <i data-lucide="calendar-check" class="w-4 h-4"></i>
-            <span>Domani</span>
-          </button>
-          
-          <!-- 2. TASTO CALENDARIO (TOTALMENTE CLICCABILE IN OGNI PUNTO) -->
-          <div id="btnDateCalendarContainer" class="relative date-picker-trigger py-2.5 px-2 flex items-center justify-center gap-1.5 rounded-xl border text-xs font-semibold transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 cursor-pointer overflow-hidden">
-            <i data-lucide="calendar-days" class="w-4 h-4 text-blue-400"></i>
-            <span id="labelCalendarBooking">Calendario</span>
-            <input type="date" id="inputCustomDate" onchange="onCustomDateChange(this.value)"/>
-          </div>
-        </div>
-      </div>
-
-      <!-- FORM PRENOTAZIONE -->
-      <form id="formPrenotazione" onsubmit="handleBookingSubmit(event)" class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-4 shadow-lg space-y-4">
-        
-        <!-- 1. PERSONALE -->
-        <div class="space-y-1.5">
-          <div class="flex justify-between items-center text-xs">
-            <label for="selectPersonale" class="font-semibold text-slate-200 flex items-center gap-1.5">
-              <i data-lucide="user" class="w-3.5 h-3.5 text-blue-400"></i> 1. Operatore / Autista
+<span class="font-mono font-bold text-blue-400 bg-blue-950/60 px-2.5 py-0.5 rounded border border-blue-800/50" id="displaySelectedDate">--/--/----</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<!-- 1. TASTO DOMANI -->
+<button class="py-2.5 px-2 text-center rounded-xl border text-xs font-semibold transition bg-blue-600 text-white border-blue-500 shadow-sm cursor-pointer flex items-center justify-center gap-1.5" id="btnDateDomani" onclick="selectDateShortcut(&#39;domani&#39;)" type="button">
+<i class="w-4 h-4" data-lucide="calendar-check"></i>
+<span>Domani</span>
+</button>
+<!-- 2. TASTO CALENDARIO INTERAMENTE CLICCABILE -->
+<div class="relative date-picker-trigger py-2.5 px-2 flex items-center justify-center gap-1.5 rounded-xl border text-xs font-semibold transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 cursor-pointer overflow-hidden" id="btnDateCalendarContainer">
+<i class="w-4 h-4 text-blue-400" data-lucide="calendar-days"></i>
+<span id="labelCalendarBooking">Calendario</span>
+<input id="inputCustomDate" onchange="onCustomDateChange(this.value)" type="date"/>
+</div>
+</div>
+</div>
+<!-- FORM PRENOTAZIONE -->
+<form class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-4 shadow-lg space-y-4" id="formPrenotazione" onsubmit="handleBookingSubmit(event)">
+<!-- 1. PERSONALE -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-center text-xs">
+<label class="font-semibold text-slate-200 flex items-center gap-1.5" for="selectPersonale">
+<i class="w-3.5 h-3.5 text-blue-400" data-lucide="user"></i> 1. Operatore / Autista
             </label>
-            <span class="text-[10px] text-blue-400 font-mono uppercase">Obbligatorio</span>
-          </div>
-          <select id="selectPersonale" required="" class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500 transition">
-            <option value="">Seleziona operatore...</option>
-          </select>
-        </div>
-
-        <!-- 2. MEZZO -->
-        <div class="space-y-1.5">
-          <div class="flex justify-between items-center text-xs">
-            <label for="selectMezzo" class="font-semibold text-slate-200 flex items-center gap-1.5">
-              <i data-lucide="truck" class="w-3.5 h-3.5 text-blue-400"></i> 2. Mezzo di Trasporto
+<span class="text-[10px] text-blue-400 font-mono uppercase">Obbligatorio</span>
+</div>
+<select class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500 transition" id="selectPersonale" required="">
+<option value="">Seleziona operatore...</option>
+</select>
+</div>
+<!-- 2. MEZZO -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-center text-xs">
+<label class="font-semibold text-slate-200 flex items-center gap-1.5" for="selectMezzo">
+<i class="w-3.5 h-3.5 text-blue-400" data-lucide="truck"></i> 2. Mezzo di Trasporto
             </label>
-            <span class="text-[10px] text-slate-400 font-mono uppercase">Flotta</span>
-          </div>
-          <select id="selectMezzo" required="" class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500 transition">
-            <option value="">Seleziona mezzo...</option>
-          </select>
-        </div>
-
-        <!-- 3. FASCIA ORARIA -->
-        <div class="space-y-1.5">
-          <div class="flex justify-between items-center text-xs">
-            <label for="selectOrario" class="font-semibold text-slate-200 flex items-center gap-1.5">
-              <i data-lucide="clock" class="w-3.5 h-3.5 text-blue-400"></i> 3. Fascia Oraria
+<span class="text-[10px] text-slate-400 font-mono uppercase">Flotta</span>
+</div>
+<select class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500 transition" id="selectMezzo" required="">
+<option value="">Seleziona mezzo...</option>
+</select>
+</div>
+<!-- 3. FASCIA ORARIA -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-center text-xs">
+<label class="font-semibold text-slate-200 flex items-center gap-1.5" for="selectOrario">
+<i class="w-3.5 h-3.5 text-blue-400" data-lucide="clock"></i> 3. Fascia Oraria
             </label>
-            <span class="text-[10px] text-slate-400 font-mono uppercase">Orario</span>
-          </div>
-          <select id="selectOrario" required="" class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3.5 py-2.5 text-xs text-slate-100 font-mono focus:outline-none focus:border-blue-500 transition">
-            <option value="">Seleziona orario...</option>
-          </select>
-        </div>
-
-        <!-- 4. TIPOLOGIA CORSA -->
-        <div class="space-y-1.5">
-          <label class="text-xs font-semibold text-slate-200 flex items-center gap-1.5">
-            <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-blue-400"></i> 4. Tipologia Corsa
+<span class="text-[10px] text-slate-400 font-mono uppercase">Orario</span>
+</div>
+<select class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3.5 py-2.5 text-xs text-slate-100 font-mono focus:outline-none focus:border-blue-500 transition" id="selectOrario" required="">
+<option value="">Seleziona orario...</option>
+</select>
+</div>
+<!-- 4. TIPOLOGIA CORSA -->
+<div class="space-y-1.5">
+<label class="text-xs font-semibold text-slate-200 flex items-center gap-1.5">
+<i class="w-3.5 h-3.5 text-blue-400" data-lucide="arrow-left-right"></i> 4. Tipologia Corsa
           </label>
-          <div class="grid grid-cols-2 gap-2">
-            <button id="btnTypeAndata" type="button" onclick="setBookingType(&#39;ANDATA&#39;)" class="py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm cursor-pointer">
-              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i> ANDATA
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm cursor-pointer" id="btnTypeAndata" onclick="setBookingType(&#39;ANDATA&#39;)" type="button">
+<i class="w-3.5 h-3.5" data-lucide="arrow-up-right"></i> ANDATA
             </button>
-            <button id="btnTypeRitorno" type="button" onclick="setBookingType(&#39;RITORNO&#39;)" class="py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600 cursor-pointer">
-              <i data-lucide="arrow-down-left" class="w-3.5 h-3.5"></i> RITORNO
+<button class="py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600 cursor-pointer" id="btnTypeRitorno" onclick="setBookingType(&#39;RITORNO&#39;)" type="button">
+<i class="w-3.5 h-3.5" data-lucide="arrow-down-left"></i> RITORNO
             </button>
-          </div>
-        </div>
-
-        <!-- SUBMIT -->
-        <button id="btnSubmitBooking" type="submit" class="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition active:scale-[0.98] cursor-pointer">
-          <i data-lucide="send" class="w-4 h-4"></i> Salva e Invia Corsa
+</div>
+</div>
+<!-- SUBMIT -->
+<button class="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition active:scale-[0.98] cursor-pointer" id="btnSubmitBooking" type="submit">
+<i class="w-4 h-4" data-lucide="send"></i> Salva e Invia Corsa
         </button>
-      </form>
-
-      <!-- ULTIME REGISTRATE -->
-      <div class="space-y-2">
-        <div class="flex items-center justify-between text-xs px-1">
-          <span class="font-bold uppercase tracking-wider text-slate-400 text-[10px]">Ultime Registrate</span>
-          <span class="text-[10px] text-emerald-400 font-mono">Live</span>
-        </div>
-        <div id="quickRecentBookings" class="space-y-2">
-          <div class="p-3 text-center text-xs text-slate-500 bg-slate-900/60 rounded-xl border border-[#1f293d]">Nessuna corsa registrata</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SCHERMATA 2: REPORT ==================== -->
-    <section id="page-report" class="hidden space-y-4">
-      
-      <!-- SELETTORE DATA REPORT (STESSO IDENTICO DESIGN E FUNZIONE DI PRENOTAZIONE) -->
-      <div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-3.5 shadow-lg space-y-2.5">
-        <div class="flex items-center justify-between text-xs">
-          <span class="font-bold uppercase tracking-wider text-slate-400 text-[10px] flex items-center gap-1">
-            <i data-lucide="calendar" class="w-3 h-3 text-blue-400"></i> Filtro Data Report
+</form>
+<!-- ULTIME REGISTRATE -->
+<div class="space-y-2">
+<div class="flex items-center justify-between text-xs px-1">
+<span class="font-bold uppercase tracking-wider text-slate-400 text-[10px]">Ultime Registrate</span>
+<span class="text-[10px] text-emerald-400 font-mono font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Live
           </span>
-          <span id="reportCurrentDateFormatted" class="font-mono font-bold text-blue-400 bg-blue-950/60 px-2 py-0.5 rounded border border-blue-800/50">--/--/----</span>
-        </div>
-        
-        <div class="grid grid-cols-2 gap-2">
-          <!-- 1. TASTO DOMANI -->
-          <button id="btnReportDateDomani" onclick="selectReportDateShortcut(&#39;domani&#39;)" type="button" class="py-2.5 px-2 text-center rounded-xl border text-xs font-semibold transition bg-blue-600 text-white border-blue-500 shadow-sm cursor-pointer flex items-center justify-center gap-1.5">
-            <i data-lucide="calendar-check" class="w-4 h-4"></i>
-            <span>Domani</span>
-          </button>
-          
-          <!-- 2. TASTO CALENDARIO REPORT (CLICCABILE A TUTTO CAMPO) -->
-          <div id="btnReportDateCalendarContainer" class="relative date-picker-trigger py-2.5 px-2 flex items-center justify-center gap-1.5 rounded-xl border text-xs font-semibold transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 cursor-pointer overflow-hidden">
-            <i data-lucide="calendar-days" class="w-4 h-4 text-blue-400"></i>
-            <span id="labelCalendarReport">Calendario</span>
-            <input type="date" id="inputReportCustomDate" onchange="onCustomReportDateChange(this.value)"/>
-          </div>
-        </div>
-      </div>
-
-      <!-- BARRA RIEPILOGO ED EXPORT CSV -->
-      <div class="flex items-center justify-between px-1">
-        <span id="reportTotalBadge" class="text-xs font-semibold text-slate-300 font-mono">0 corse registrate</span>
-        <button onclick="exportReportToCsv()" type="button" class="py-1.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow transition cursor-pointer">
-          <i data-lucide="download" class="w-3.5 h-3.5 text-blue-400"></i> Esporta CSV
+</div>
+<div class="space-y-2" id="quickRecentBookings">
+<div class="p-3 text-center text-xs text-slate-500 bg-slate-900/60 rounded-xl border border-[#1f293d]">Nessuna corsa registrata</div>
+</div>
+</div>
+</section>
+<!-- ==================== SCHERMATA 2: REPORT ==================== -->
+<section class="hidden space-y-4" id="page-report">
+<!-- SELETTORE DATA REPORT -->
+<div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-3.5 shadow-lg space-y-2.5">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold uppercase tracking-wider text-slate-400 text-[10px] flex items-center gap-1">
+<i class="w-3.5 h-3.5 text-blue-400" data-lucide="calendar"></i> Filtro Data Report
+          </span>
+<span class="font-mono font-bold text-blue-400 bg-blue-950/60 px-2.5 py-0.5 rounded border border-blue-800/50" id="reportCurrentDateFormatted">--/--/----</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<!-- 1. TASTO DOMANI REPORT -->
+<button class="py-2.5 px-2 text-center rounded-xl border text-xs font-semibold transition bg-blue-600 text-white border-blue-500 shadow-sm cursor-pointer flex items-center justify-center gap-1.5" id="btnReportDateDomani" onclick="selectReportDateShortcut(&#39;domani&#39;)" type="button">
+<i class="w-4 h-4" data-lucide="calendar-check"></i>
+<span>Domani</span>
+</button>
+<!-- 2. TASTO CALENDARIO REPORT A TUTTA AREA -->
+<div class="relative date-picker-trigger py-2.5 px-2 flex items-center justify-center gap-1.5 rounded-xl border text-xs font-semibold transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 cursor-pointer overflow-hidden" id="btnReportDateCalendarContainer">
+<i class="w-4 h-4 text-blue-400" data-lucide="calendar-days"></i>
+<span id="labelCalendarReport">Calendario</span>
+<input id="inputReportCustomDate" onchange="onCustomReportDateChange(this.value)" type="date"/>
+</div>
+</div>
+</div>
+<!-- BARRA RIEPILOGO ED EXPORT CSV -->
+<div class="flex items-center justify-between px-1">
+<span class="text-xs font-semibold text-slate-300 font-mono" id="reportTotalBadge">0 corse registrate</span>
+<button class="py-1.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow transition cursor-pointer" onclick="exportReportToCsv()" type="button">
+<i class="w-3.5 h-3.5 text-blue-400" data-lucide="download"></i> Esporta CSV
         </button>
-      </div>
-
-      <!-- TABELLA CORSE -->
-      <div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl overflow-hidden shadow-lg">
-        <div class="grid grid-cols-12 px-3 py-2.5 bg-slate-900/80 border-b border-[#1f293d] text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-          <div class="col-span-4">Autista</div>
-          <div class="col-span-3 text-center">Orario</div>
-          <div class="col-span-2 text-center">Tipo</div>
-          <div class="col-span-3 text-right">Mezzo</div>
-        </div>
-        <div id="reportListRows" class="divide-y divide-[#1f293d]/50 max-h-[55vh] overflow-y-auto">
-          <div class="py-8 text-center text-xs text-slate-500">Nessuna corsa registrata</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SCHERMATA 3: MANAGE (ADMIN) ==================== -->
-    <section id="page-manage" class="hidden space-y-4">
-      <div id="manageAuthGate" class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-6 shadow-xl text-center space-y-4">
-        <div class="w-12 h-12 mx-auto rounded-2xl bg-blue-950/60 border border-blue-800/50 flex items-center justify-center text-blue-400">
-          <i data-lucide="lock" class="w-6 h-6"></i>
-        </div>
-        <div class="space-y-1">
-          <h2 class="text-base font-bold text-white">Area Riservata Amministratore</h2>
-          <p class="text-xs text-slate-400">Password predefinita: <strong class="text-white font-mono">strongroom</strong></p>
-        </div>
-        <form onsubmit="handleManageAuth(event)" class="space-y-3">
-          <input type="password" id="managePasswordInput" placeholder="Password (strongroom)" required="" class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3.5 py-2.5 text-xs text-center text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-blue-500 transition"/>
-          <button type="submit" class="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition shadow-md cursor-pointer">
+</div>
+<!-- TABELLA CORSE CON RAGGRUPPAMENTO VISIVO -->
+<div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl overflow-hidden shadow-lg">
+<div class="grid grid-cols-12 px-3 py-2.5 bg-slate-900/80 border-b border-[#1f293d] text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+<div class="col-span-4">Autista</div>
+<div class="col-span-3 text-center">Orario</div>
+<div class="col-span-2 text-center">Tipo</div>
+<div class="col-span-3 text-right">Mezzo</div>
+</div>
+<div class="divide-y divide-[#1f293d]/50 max-h-[55vh] overflow-y-auto" id="reportListRows">
+<div class="py-8 text-center text-xs text-slate-500">Nessuna corsa registrata</div>
+</div>
+</div>
+</section>
+<!-- ==================== SCHERMATA 3: MANAGE (ADMIN) ==================== -->
+<section class="hidden space-y-4" id="page-manage">
+<!-- BLOCCO AUTENTICAZIONE GATED -->
+<div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-6 shadow-xl text-center space-y-4" id="manageAuthGate">
+<div class="w-12 h-12 mx-auto rounded-2xl bg-blue-950/60 border border-blue-800/50 flex items-center justify-center text-blue-400">
+<i class="w-6 h-6" data-lucide="lock"></i>
+</div>
+<div class="space-y-1">
+<h2 class="text-base font-bold text-white">Area Riservata Amministratore</h2>
+<p class="text-xs text-slate-400">Password predefinita: <strong class="text-white font-mono bg-slate-900 px-1.5 py-0.5 rounded border border-slate-700">strongroom</strong></p>
+</div>
+<form class="space-y-3" onsubmit="handleManageAuth(event)">
+<input class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3.5 py-2.5 text-xs text-center text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-blue-500 transition" id="managePasswordInput" placeholder="Password di accesso" required="" type="password"/>
+<button class="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition shadow-md cursor-pointer" type="submit">
             Sblocca Pannello
           </button>
-        </form>
-      </div>
-
-      <div id="manageDashboard" class="hidden space-y-4">
-        <div class="flex items-center justify-between bg-[#141b2b] border border-[#1f293d] rounded-2xl px-4 py-3">
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-            <span class="text-xs font-bold text-white">Amministrazione Attiva</span>
-          </div>
-          <button onclick="lockManageArea()" type="button" class="text-xs text-slate-400 hover:text-rose-400 transition cursor-pointer flex items-center gap-1">
-            <i data-lucide="log-out" class="w-3.5 h-3.5"></i> Blocca
+</form>
+</div>
+<!-- PANNELLO ATTIVO -->
+<div class="hidden space-y-4" id="manageDashboard">
+<div class="flex items-center justify-between bg-[#141b2b] border border-[#1f293d] rounded-2xl px-4 py-3">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+<span class="text-xs font-bold text-white">Amministrazione Attiva</span>
+</div>
+<button class="text-xs text-slate-400 hover:text-rose-400 transition cursor-pointer flex items-center gap-1" onclick="lockManageArea()" type="button">
+<i class="w-3.5 h-3.5" data-lucide="log-out"></i> Blocca
           </button>
-        </div>
-
-        <!-- CONFIG GITHUB -->
-        <div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-4 shadow-lg space-y-3">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-200 flex items-center gap-1.5">
-            <i data-lucide="github" class="w-4 h-4 text-blue-400"></i> Sincronizzazione GitHub
+</div>
+<!-- CONFIG GITHUB -->
+<div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-4 shadow-lg space-y-3">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-200 flex items-center gap-1.5">
+<i class="w-4 h-4 text-blue-400" data-lucide="github"></i> Sincronizzazione GitHub
           </h3>
-          <form onsubmit="saveAdminGitHubConfig(event)" class="space-y-2.5">
-            <div class="grid grid-cols-2 gap-2">
-              <div class="space-y-1">
-                <label class="text-[10px] uppercase font-mono text-slate-400">Owner</label>
-                <input type="text" id="adminGhOwner" placeholder="Username GitHub" required="" class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500"/>
-              </div>
-              <div class="space-y-1">
-                <label class="text-[10px] uppercase font-mono text-slate-400">Repo</label>
-                <input type="text" id="adminGhRepo" value="transportmanage" required="" class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500"/>
-              </div>
-            </div>
-            <div class="space-y-1">
-              <label class="text-[10px] uppercase font-mono text-slate-400">Token PAT (permesso 'repo')</label>
-              <input type="password" id="adminGhToken" placeholder="ghp_..." required="" class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-blue-500"/>
-            </div>
-            <input type="hidden" id="adminGhBranch" value="main"/>
-            <div class="grid grid-cols-2 gap-2 pt-1">
-              <button type="button" onclick="testWorkerConnection()" class="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer">
-                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-blue-400"></i> Test Connessione
+<form class="space-y-2.5" onsubmit="saveAdminGitHubConfig(event)">
+<div class="grid grid-cols-2 gap-2">
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-mono text-slate-400">Owner</label>
+<input class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500 font-mono" id="adminGhOwner" placeholder="Username GitHub" required="" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-mono text-slate-400">Repo</label>
+<input class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500 font-mono" id="adminGhRepo" required="" type="text" value="transportmanage"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-mono text-slate-400">Token PAT (permesso 'repo')</label>
+<input class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-blue-500" id="adminGhToken" placeholder="ghp_..." required="" type="password"/>
+</div>
+<input id="adminGhBranch" type="hidden" value="main"/>
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer" onclick="testWorkerConnection()" type="button">
+<i class="w-3.5 h-3.5 text-blue-400" data-lucide="check-circle-2"></i> Test Connessione
               </button>
-              <button id="btnSaveAdminConfig" type="submit" class="py-2.5 px-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow transition cursor-pointer">
-                <i data-lucide="save" class="w-3.5 h-3.5"></i> Salva e Condividi
+<button class="py-2.5 px-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow transition cursor-pointer" id="btnSaveAdminConfig" type="submit">
+<i class="w-3.5 h-3.5" data-lucide="save"></i> Salva e Condividi
               </button>
-            </div>
-          </form>
-        </div>
-
-        <!-- GESTIONE VARIABILI -->
-        <div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-4 shadow-lg space-y-3">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-200 flex items-center gap-1.5">
-            <i data-lucide="sliders" class="w-4 h-4 text-blue-400"></i> Autisti, Mezzi e Orari
+</div>
+</form>
+</div>
+<!-- GESTIONE VARIABILI: AUTISTI, MEZZI, ORARI -->
+<div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-4 shadow-lg space-y-3">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-200 flex items-center gap-1.5">
+<i class="w-4 h-4 text-blue-400" data-lucide="sliders"></i> Autisti, Mezzi e Orari
           </h3>
-          <div class="grid grid-cols-3 gap-1 bg-slate-900 p-1 rounded-xl border border-[#1f293d]">
-            <button id="tabVarPersonale" onclick="switchVariableTab(&#39;personale&#39;)" type="button" class="py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition shadow-sm cursor-pointer">Autisti</button>
-            <button id="tabVarMezzi" onclick="switchVariableTab(&#39;mezzi&#39;)" type="button" class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition cursor-pointer">Mezzi</button>
-            <button id="tabVarFasce" onclick="switchVariableTab(&#39;fasce&#39;)" type="button" class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition cursor-pointer">Orari</button>
-          </div>
-          <form onsubmit="handleVariableSave(event)" class="space-y-2 pt-1">
-            <div class="flex justify-between items-center text-xs">
-              <span id="variableFormTitle" class="font-semibold text-slate-200">Nuovo Autista</span>
-              <span id="variableFormHint" class="text-[10px] text-slate-500">Variabile 1</span>
-            </div>
-            <input type="hidden" id="variableEditIndex" value="-1"/>
-            <div class="flex gap-2">
-              <input type="text" id="variableTextInput" placeholder="Nome..." required="" class="flex-1 bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500 transition"/>
-              <button type="submit" class="py-2 px-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 cursor-pointer">
-                <i data-lucide="plus" class="w-3.5 h-3.5"></i> Salva
+<div class="grid grid-cols-3 gap-1 bg-slate-900 p-1 rounded-xl border border-[#1f293d]">
+<button class="py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition shadow-sm cursor-pointer" id="tabVarPersonale" onclick="switchVariableTab(&#39;personale&#39;)" type="button">Autisti</button>
+<button class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition cursor-pointer" id="tabVarMezzi" onclick="switchVariableTab(&#39;mezzi&#39;)" type="button">Mezzi</button>
+<button class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition cursor-pointer" id="tabVarFasce" onclick="switchVariableTab(&#39;fasce&#39;)" type="button">Orari</button>
+</div>
+<form class="space-y-2 pt-1" onsubmit="handleVariableSave(event)">
+<div class="flex justify-between items-center text-xs">
+<span class="font-semibold text-slate-200" id="variableFormTitle">Nuovo Autista</span>
+<span class="text-[10px] text-slate-400 font-mono" id="variableFormHint">Variabile 1</span>
+</div>
+<input id="variableEditIndex" type="hidden" value="-1"/>
+<div class="flex gap-2">
+<input class="flex-1 bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500 transition" id="variableTextInput" placeholder="Nome autista..." required="" type="text"/>
+<button class="py-2 px-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 cursor-pointer" type="submit">
+<i class="w-3.5 h-3.5" data-lucide="plus"></i> Salva
               </button>
-            </div>
-          </form>
-          <div class="space-y-2 pt-2">
-            <div id="variableListLabel" class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Elenco Attuale</div>
-            <div id="variableItemsList" class="space-y-1.5 max-h-52 overflow-y-auto"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- BOTTOM BAR PERSISTENTE -->
-  <nav class="fixed bottom-0 left-0 right-0 w-full bg-[#0c1322]/95 backdrop-blur-md border-t border-[#1f293d] z-50 flex justify-center">
-    <div class="w-full max-w-md grid grid-cols-3 py-1 px-4">
-      <button id="navBtnPrenotazione" onclick="navigateToPage(&#39;prenotazione&#39;)" type="button" class="py-1.5 flex flex-col items-center gap-1 text-blue-400 transition cursor-pointer">
-        <i data-lucide="calendar-plus" class="w-5 h-5"></i>
-        <span class="text-[10px] font-semibold">Prenotazione</span>
-      </button>
-      <button id="navBtnReport" onclick="navigateToPage(&#39;report&#39;)" type="button" class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer">
-        <i data-lucide="clipboard-list" class="w-5 h-5"></i>
-        <span class="text-[10px] font-semibold">Report</span>
-      </button>
-      <button id="navBtnManage" onclick="navigateToPage(&#39;manage&#39;)" type="button" class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer">
-        <i data-lucide="settings" class="w-5 h-5"></i>
-        <span class="text-[10px] font-semibold">Manage</span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- LOGICA JAVASCRIPT INTEGRATA -->
-  <script>
-    const INITIAL_DATA = {
+</div>
+</form>
+<div class="space-y-2 pt-2">
+<div class="text-[10px] font-mono text-slate-400 uppercase tracking-wider" id="variableListLabel">Elenco Attuale</div>
+<div class="space-y-1.5 max-h-52 overflow-y-auto" id="variableItemsList"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BOTTOM BAR PERSISTENTE -->
+<nav class="fixed bottom-0 left-0 right-0 w-full bg-[#0c1322]/95 backdrop-blur-md border-t border-[#1f293d] z-50 flex justify-center">
+<div class="w-full max-w-md grid grid-cols-3 py-1 px-4">
+<button class="py-1.5 flex flex-col items-center gap-1 text-blue-400 transition cursor-pointer" id="navBtnPrenotazione" onclick="navigateToPage(&#39;prenotazione&#39;)" type="button">
+<i class="w-5 h-5" data-lucide="calendar-plus"></i>
+<span class="text-[10px] font-semibold">Prenotazione</span>
+</button>
+<button class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer" id="navBtnReport" onclick="navigateToPage(&#39;report&#39;)" type="button">
+<i class="w-5 h-5" data-lucide="clipboard-list"></i>
+<span class="text-[10px] font-semibold">Report</span>
+</button>
+<button class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer" id="navBtnManage" onclick="navigateToPage(&#39;manage&#39;)" type="button">
+<i class="w-5 h-5" data-lucide="settings"></i>
+<span class="text-[10px] font-semibold">Manage</span>
+</button>
+</div>
+</nav>
+<!-- LOGICA JAVASCRIPT CON PIENA INTEGRAZIONE VARIABLES.JS & GITHUB -->
+<script>
+    // Fallback sicuro se variables.js non è presente o non definisce TRANSPORT_VARIABLES
+    const DEFAULT_DATA = {
       personale: ["Marco Rossi", "Luca Bianchi", "Alessandro Verdi", "Giulia Neri", "Roberto Ferrari"],
       mezzi: ["Navetta Van 01 (Cap. 8p)", "Minibus B2 (Cap. 16p)", "Auto 04 (Cap. 4p)", "Bus GT (Cap. 50p)", "Van Cargo 02"],
       fasce_orarie: ["06:30", "08:00", "14:00", "17:30", "19:15", "21:00"],
@@ -341,7 +320,23 @@
     function getTomorrowDateString() {
       const d = new Date();
       d.setDate(d.getDate() + 1);
-      return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${y}-${m}-${day}`;
+    }
+
+    // Unifica dati da window.TRANSPORT_VARIABLES o fallback
+    function resolveInitialVariables() {
+      if (window.TRANSPORT_VARIABLES && typeof window.TRANSPORT_VARIABLES === 'object') {
+        return {
+          personale: Array.isArray(window.TRANSPORT_VARIABLES.personale) ? [...window.TRANSPORT_VARIABLES.personale] : [...DEFAULT_DATA.personale],
+          mezzi: Array.isArray(window.TRANSPORT_VARIABLES.mezzi) ? [...window.TRANSPORT_VARIABLES.mezzi] : [...DEFAULT_DATA.mezzi],
+          fasce_orarie: Array.isArray(window.TRANSPORT_VARIABLES.fasce_orarie) ? [...window.TRANSPORT_VARIABLES.fasce_orarie] : [...DEFAULT_DATA.fasce_orarie],
+          github_config: window.TRANSPORT_VARIABLES.github_config || { ...DEFAULT_DATA.github_config }
+        };
+      }
+      return JSON.parse(JSON.stringify(DEFAULT_DATA));
     }
 
     window.state = {
@@ -349,7 +344,7 @@
       selectedDate: getTomorrowDateString(),
       reportFilterDate: getTomorrowDateString(),
       bookingType: 'ANDATA',
-      variables: JSON.parse(JSON.stringify(INITIAL_DATA)),
+      variables: resolveInitialVariables(),
       bookings: [],
       isManageAuthenticated: false,
       activeVariableTab: 'personale'
@@ -380,7 +375,7 @@
         badge.className = `text-[10px] tracking-wide font-mono uppercase ${colorClass}`;
       }
       if (dot) {
-        dot.className = colorClass.includes('emerald') ? 'w-1.5 h-1.5 rounded-full bg-emerald-400' : 'w-1.5 h-1.5 rounded-full bg-blue-400';
+        dot.className = colorClass.includes('emerald') ? 'w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse' : 'w-1.5 h-1.5 rounded-full bg-blue-400';
       }
     }
 
@@ -397,23 +392,23 @@
         const cur = selP.value;
         selP.innerHTML = '<option value="">Seleziona operatore...</option>' +
           pList.map(p => `<option value="${escapeHtml(p)}">${escapeHtml(p)}</option>`).join("");
-        if (cur) selP.value = cur;
+        if (cur && pList.includes(cur)) selP.value = cur;
       }
       if (selM) {
         const cur = selM.value;
         selM.innerHTML = '<option value="">Seleziona mezzo...</option>' +
           mList.map(m => `<option value="${escapeHtml(m)}">${escapeHtml(m)}</option>`).join("");
-        if (cur) selM.value = cur;
+        if (cur && mList.includes(cur)) selM.value = cur;
       }
       if (selO) {
         const cur = selO.value;
         selO.innerHTML = '<option value="">Seleziona orario...</option>' +
           oList.map(o => `<option value="${escapeHtml(o)}">${escapeHtml(o)}</option>`).join("");
-        if (cur) selO.value = cur;
+        if (cur && oList.includes(cur)) selO.value = cur;
       }
     }
 
-    // ==================== SELEZIONE DATA PRENOTAZIONE ====================
+    // ==================== GESTIONE DATE PRENOTAZIONE ====================
     function selectDateShortcut(type) {
       if (type === 'domani') {
         window.state.selectedDate = getTomorrowDateString();
@@ -453,7 +448,7 @@
       triggerLucideIcons();
     }
 
-    // ==================== SELEZIONE DATA REPORT ====================
+    // ==================== GESTIONE DATE REPORT ====================
     function selectReportDateShortcut(type) {
       if (type === 'domani') {
         window.state.reportFilterDate = getTomorrowDateString();
@@ -537,7 +532,7 @@
       triggerLucideIcons();
     }
 
-    // ==================== GESTIONE PRENOTAZIONE ====================
+    // ==================== SALVATAGGIO CORSA ====================
     async function handleBookingSubmit(e) {
       if (e && e.preventDefault) e.preventDefault();
       const p = document.getElementById("selectPersonale")?.value.trim();
@@ -560,17 +555,24 @@
       };
 
       window.state.bookings.unshift(booking);
-      document.getElementById("selectPersonale").value = "";
+      localStorage.setItem("TM_LOCAL_BOOKINGS", JSON.stringify(window.state.bookings));
 
+      // Reset selezione operatore
+      const selP = document.getElementById("selectPersonale");
+      if (selP) selP.value = "";
+
+      // Feedback visivo pulsante
       const btn = document.getElementById("btnSubmitBooking");
       if (btn) {
-        const orig = btn.innerHTML;
+        const origHtml = btn.innerHTML;
         btn.innerHTML = `<i data-lucide="check" class="w-4 h-4 inline-block mr-1"></i> CORSA REGISTRATA!`;
         btn.classList.replace("bg-blue-600", "bg-emerald-600");
+        btn.classList.replace("hover:bg-blue-500", "hover:bg-emerald-500");
         triggerLucideIcons();
         setTimeout(() => {
-          btn.innerHTML = orig;
+          btn.innerHTML = origHtml;
           btn.classList.replace("bg-emerald-600", "bg-blue-600");
+          btn.classList.replace("hover:bg-emerald-500", "hover:bg-blue-500");
           triggerLucideIcons();
         }, 1500);
       }
@@ -592,14 +594,16 @@
         <div class="p-3 rounded-xl bg-slate-900/70 border border-[#1f293d] flex items-center justify-between shadow-sm">
           <div>
             <div class="flex items-center gap-2">
-              <span class="px-1.5 py-0.5 rounded text-[9px] font-bold font-mono ${b.type === 'ANDATA' ? 'bg-blue-900/60 text-blue-300' : 'bg-indigo-900/60 text-indigo-300'}">${b.type}</span>
+              <span class="px-1.5 py-0.5 rounded text-[9px] font-bold font-mono ${b.type === 'ANDATA' ? 'bg-blue-900/70 text-blue-300 border border-blue-700/50' : 'bg-emerald-950 text-emerald-300 border border-emerald-800/50'}">${b.type}</span>
               <span class="text-xs font-semibold text-slate-100">${escapeHtml(b.personale)}</span>
             </div>
-            <div class="text-[11px] text-slate-400 mt-1">${escapeHtml(b.mezzo)}</div>
+            <div class="text-[11px] text-slate-400 mt-1 flex items-center gap-1">
+              <i data-lucide="truck" class="w-3 h-3 text-slate-500"></i> ${escapeHtml(b.mezzo)}
+            </div>
           </div>
           <div class="text-right">
-            <span class="text-xs font-mono font-bold text-white">${b.orario}</span>
-            <div class="text-[10px] text-emerald-400 font-mono">${formatDateDisplay(b.date)}</div>
+            <span class="text-xs font-mono font-bold text-white bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700">${b.orario}</span>
+            <div class="text-[10px] text-emerald-400 font-mono mt-1">${formatDateDisplay(b.date)}</div>
           </div>
         </div>
       `).join("");
@@ -612,19 +616,20 @@
       if (!c) return;
       const filtered = window.state.bookings.filter(b => b.date === window.state.reportFilterDate);
       filtered.sort((a, b) => (a.orario || '').localeCompare(b.orario || ''));
+
       const t = document.getElementById("reportTotalBadge");
-      if (t) t.innerText = `${filtered.length} corse registrate`;
+      if (t) t.innerText = `${filtered.length} ${filtered.length === 1 ? 'corsa registrata' : 'corse registrate'}`;
 
       if (filtered.length === 0) {
         c.innerHTML = `<div class="py-8 text-center text-xs text-slate-500">Nessuna corsa per il ${formatDateDisplay(window.state.reportFilterDate)}</div>`;
         return;
       }
       c.innerHTML = filtered.map(b => `
-        <div class="grid grid-cols-12 items-center px-3 py-3 text-xs border-l-4 border-l-blue-500 hover:bg-slate-800/40 transition">
+        <div class="grid grid-cols-12 items-center px-3 py-3 text-xs ${b.type === 'ANDATA' ? 'border-l-4 border-l-blue-500' : 'border-l-4 border-l-emerald-500'} hover:bg-slate-800/40 transition">
           <div class="col-span-4 font-semibold text-slate-100 truncate pr-1">${escapeHtml(b.personale)}</div>
           <div class="col-span-3 text-center font-mono font-bold text-slate-200">${b.orario}</div>
           <div class="col-span-2 text-center">
-            <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-mono font-bold ${b.type === 'ANDATA' ? 'bg-blue-900/60 text-blue-300' : 'bg-indigo-900/60 text-indigo-300'}">${b.type}</span>
+            <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-mono font-bold ${b.type === 'ANDATA' ? 'bg-blue-900/60 text-blue-300 border border-blue-700/40' : 'bg-emerald-950 text-emerald-300 border border-emerald-800/40'}">${b.type}</span>
           </div>
           <div class="col-span-3 text-right font-medium text-[11px] truncate text-slate-300">${escapeHtml(b.mezzo)}</div>
         </div>
@@ -633,7 +638,7 @@
 
     function exportReportToCsv() {
       const filtered = window.state.bookings.filter(b => b.date === window.state.reportFilterDate);
-      if (filtered.length === 0) { alert("Nessuna corsa da esportare."); return; }
+      if (filtered.length === 0) { alert("Nessuna corsa da esportare per la data selezionata."); return; }
       let csv = "DATA,PERSONALE,ORARIO,TIPO,MEZZO\n";
       filtered.forEach(b => {
         csv += `"${b.date}","${(b.personale||'').replace(/"/g, '""')}","${b.orario}","${b.type}","${(b.mezzo||'').replace(/"/g, '""')}"\n`;
@@ -648,7 +653,7 @@
       document.body.removeChild(a);
     }
 
-    // ==================== AUTENTICAZIONE ADMIN (strongroom) ====================
+    // ==================== GESTIONE AUTH ADMIN ====================
     function handleManageAuth(e) {
       if (e && e.preventDefault) e.preventDefault();
       const pwd = document.getElementById("managePasswordInput")?.value;
@@ -657,7 +662,7 @@
         sessionStorage.setItem("manage_auth", "true");
         checkManageAuthState();
       } else {
-        alert("Password errata. (Default: strongroom)");
+        alert("Password errata. (Suggerimento: strongroom)");
       }
     }
 
@@ -668,7 +673,9 @@
     }
 
     function checkManageAuthState() {
-      if (sessionStorage.getItem("manage_auth") === "true") window.state.isManageAuthenticated = true;
+      if (sessionStorage.getItem("manage_auth") === "true") {
+        window.state.isManageAuthenticated = true;
+      }
       const gate = document.getElementById("manageAuthGate");
       const dash = document.getElementById("manageDashboard");
       if (gate && dash) {
@@ -700,7 +707,9 @@
       window.state.activeVariableTab = tab;
       ['personale', 'mezzi', 'fasce'].forEach(t => {
         const btn = document.getElementById(`tabVar${t.charAt(0).toUpperCase() + t.slice(1)}`);
-        if (btn) btn.className = (t === tab) ? "py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white shadow-sm cursor-pointer" : "py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white cursor-pointer";
+        if (btn) btn.className = (t === tab)
+          ? "py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition shadow-sm cursor-pointer"
+          : "py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition cursor-pointer";
       });
 
       const title = document.getElementById("variableFormTitle");
@@ -714,7 +723,7 @@
         if (tab === 'personale') {
           title.innerText = "Nuovo Autista";
           hint.innerText = "Variabile 1";
-          input.placeholder = "Nome e cognome...";
+          input.placeholder = "Nome e cognome autista...";
           input.type = "text";
         } else if (tab === 'mezzi') {
           title.innerText = "Nuovo Mezzo di Trasporto";
@@ -741,12 +750,18 @@
           : window.state.variables.fasce_orarie;
 
       if (window.state.activeVariableTab === 'fasce') list.sort((a,b)=>a.localeCompare(b));
+      
+      if (list.length === 0) {
+        c.innerHTML = `<div class="p-3 text-center text-xs text-slate-500 bg-slate-900/60 rounded-xl border border-[#1f293d]">Nessun elemento</div>`;
+        return;
+      }
+
       c.innerHTML = list.map((it, idx) => `
-        <div class="p-3 rounded-xl bg-slate-900/70 border border-[#1f293d] flex items-center justify-between">
+        <div class="p-2.5 rounded-xl bg-slate-900/70 border border-[#1f293d] flex items-center justify-between">
           <span class="text-xs text-slate-100 font-semibold">${escapeHtml(it)}</span>
           <div class="flex items-center gap-1">
-            <button onclick="editVariableItem(${idx})" class="text-blue-400 p-1 text-xs cursor-pointer">Modifica</button>
-            <button onclick="deleteVariableItem(${idx})" class="text-rose-400 p-1 text-xs cursor-pointer">Elimina</button>
+            <button onclick="editVariableItem(${idx})" class="text-blue-400 hover:text-blue-300 p-1 text-xs cursor-pointer">Modifica</button>
+            <button onclick="deleteVariableItem(${idx})" class="text-rose-400 hover:text-rose-300 p-1 text-xs cursor-pointer">Elimina</button>
           </div>
         </div>
       `).join("");
@@ -796,6 +811,11 @@
         list.sort((a,b)=>a.localeCompare(b));
       }
 
+      // Sincronizza anche globale variables.js se caricato
+      if (window.TRANSPORT_VARIABLES) {
+        window.TRANSPORT_VARIABLES[window.state.activeVariableTab === 'fasce' ? 'fasce_orarie' : window.state.activeVariableTab] = list;
+      }
+
       if (input) input.value = "";
       if (editIdx) editIdx.value = "-1";
       const title = document.getElementById("variableFormTitle");
@@ -805,19 +825,26 @@
 
       renderVariableManagement();
       populateDropdowns();
+      localStorage.setItem("TM_LOCAL_VARIABLES", JSON.stringify(window.state.variables));
       pushVariablesToGitHub();
     }
 
     function deleteVariableItem(idx) {
-      if (!confirm("Eliminare?")) return;
+      if (!confirm("Eliminare questa voce?")) return;
       const list = window.state.activeVariableTab === 'personale'
         ? window.state.variables.personale
         : window.state.activeVariableTab === 'mezzi'
           ? window.state.variables.mezzi
           : window.state.variables.fasce_orarie;
       list.splice(idx, 1);
+      
+      if (window.TRANSPORT_VARIABLES) {
+        window.TRANSPORT_VARIABLES[window.state.activeVariableTab === 'fasce' ? 'fasce_orarie' : window.state.activeVariableTab] = list;
+      }
+
       renderVariableManagement();
       populateDropdowns();
+      localStorage.setItem("TM_LOCAL_VARIABLES", JSON.stringify(window.state.variables));
       pushVariablesToGitHub();
     }
 
@@ -830,14 +857,27 @@
       owner = owner.replace(/^https?:\/\/github\.com\//i, '').replace(/\/$/, '').split('/')[0];
       repo = repo.replace(/^https?:\/\/github\.com\/[^/]+\//i, '').replace(/\/$/, '');
 
-      if (!owner || !token) { alert("Inserisci Username e Token PAT."); return; }
+      if (!owner || !token) { 
+        alert("Inserisci Owner e Token PAT per eseguire il test."); 
+        return; 
+      }
       try {
         const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
-          headers: { "Authorization": `Bearer ${token}`, "Accept": "application/vnd.github.v3+json" }
+          headers: { 
+            "Authorization": `Bearer ${token}`, 
+            "Accept": "application/vnd.github.v3+json" 
+          }
         });
-        if (res.ok) alert("✅ Connessione Riuscita!");
-        else alert(`❌ Errore HTTP ${res.status}: controlla permessi 'repo' o nome utente/repository.`);
-      } catch (err) { alert("Errore rete: " + err.message); }
+        if (res.ok) {
+          alert("✅ Connessione GitHub Riuscita!\nRepository accessibile con permessi validi.");
+          updateSyncBadge("Sync GitHub Attivo", "text-emerald-400");
+        } else {
+          const errData = await res.json().catch(()=>({}));
+          alert(`❌ Errore HTTP ${res.status}: ${errData.message || 'Verifica token PAT (deve avere scope repo) o repository.'}`);
+        }
+      } catch (err) { 
+        alert("Errore di rete: " + err.message); 
+      }
     }
 
     async function saveAdminGitHubConfig(e) {
@@ -849,7 +889,10 @@
       owner = owner.replace(/^https?:\/\/github\.com\//i, '').replace(/\/$/, '').split('/')[0];
       repo = repo.replace(/^https?:\/\/github\.com\/[^/]+\//i, '').replace(/\/$/, '');
 
-      if (!owner || !token) { alert("Inserisci Username e Token."); return; }
+      if (!owner || !token) { 
+        alert("Inserisci Username GitHub e Token PAT."); 
+        return; 
+      }
 
       if (!window.state.variables.github_config) window.state.variables.github_config = {};
       window.state.variables.github_config.owner = owner;
@@ -860,12 +903,13 @@
       localStorage.setItem("TM_GH_OWNER", owner);
       localStorage.setItem("TM_GH_REPO", repo);
       localStorage.setItem("TM_GH_TOKEN", token);
+      localStorage.setItem("TM_LOCAL_VARIABLES", JSON.stringify(window.state.variables));
 
       try {
         await pushVariablesToGitHub();
-        alert("🎉 Salvato e Sincronizzato su GitHub!");
+        alert("🎉 Configurazione salvata e sincronizzata su GitHub!");
       } catch (err) {
-        alert("Salvato in locale (errore remoto: " + err.message + ")");
+        alert("Configurazione salvata localmente (Sincronizzazione remota fallita: " + err.message + ")");
       }
       loadVariablesAndSync();
     }
@@ -879,19 +923,27 @@
           headers: { "Authorization": `Bearer ${cfg.token}`, "Accept": "application/vnd.github.v3+json" }
         }).catch(()=>null);
         let sha = null;
-        if (shaRes && shaRes.ok) { const d = await shaRes.json(); sha = d.sha; }
+        if (shaRes && shaRes.ok) { 
+          const d = await shaRes.json(); 
+          sha = d.sha; 
+        }
 
-        await fetch(url, {
+        const res = await fetch(url, {
           method: "PUT",
           headers: { "Authorization": `Bearer ${cfg.token}`, "Content-Type": "application/json" },
           body: JSON.stringify({
-            message: `Update corse ${window.state.selectedDate}`,
+            message: `Update corse (${window.state.selectedDate})`,
             content: window.btoa(unescape(encodeURIComponent(JSON.stringify(window.state.bookings, null, 2)))),
             branch: cfg.branch || "main",
             ...(sha ? { sha } : {})
           })
         });
-      } catch (e) { console.warn("Push corse:", e); }
+        if (res.ok) {
+          updateSyncBadge("Sync GitHub Attivo", "text-emerald-400");
+        }
+      } catch (e) { 
+        console.warn("Push corse fallito:", e); 
+      }
     }
 
     async function pushVariablesToGitHub() {
@@ -903,26 +955,31 @@
           headers: { "Authorization": `Bearer ${cfg.token}`, "Accept": "application/vnd.github.v3+json" }
         }).catch(()=>null);
         let sha = null;
-        if (shaRes && shaRes.ok) { const d = await shaRes.json(); sha = d.sha; }
+        if (shaRes && shaRes.ok) { 
+          const d = await shaRes.json(); 
+          sha = d.sha; 
+        }
 
-        await fetch(url, {
+        const res = await fetch(url, {
           method: "PUT",
           headers: { "Authorization": `Bearer ${cfg.token}`, "Content-Type": "application/json" },
           body: JSON.stringify({
-            message: "Update variables.json",
+            message: "Update variables.json da Transport Manage",
             content: window.btoa(unescape(encodeURIComponent(JSON.stringify(window.state.variables, null, 2)))),
             branch: cfg.branch || "main",
             ...(sha ? { sha } : {})
           })
         });
-      } catch (e) { console.warn("Push variabili:", e); }
+        if (res.ok) {
+          updateSyncBadge("Sync GitHub Attivo", "text-emerald-400");
+        }
+      } catch (e) { 
+        console.warn("Push variabili fallito:", e); 
+      }
     }
 
     async function loadVariablesAndSync() {
-      populateDropdowns();
-      renderQuickRecent();
-      renderReportList();
-
+      // 1. Recupero parametri memorizzati in localStorage
       const storedOwner = localStorage.getItem("TM_GH_OWNER");
       const storedRepo = localStorage.getItem("TM_GH_REPO") || "transportmanage";
       const storedToken = localStorage.getItem("TM_GH_TOKEN");
@@ -935,18 +992,36 @@
         window.state.variables.github_config.branch = "main";
       }
 
-      try {
-        const res = await fetch(`./variables.json?_t=${Date.now()}`, { cache: 'no-store' });
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.personale) {
-            window.state.variables = data;
-            populateDropdowns();
-            renderVariableManagement();
-          }
-        }
-      } catch(e){}
+      // 2. Recupero prenotazioni salvate localmente
+      const localBookings = localStorage.getItem("TM_LOCAL_BOOKINGS");
+      if (localBookings) {
+        try { window.state.bookings = JSON.parse(localBookings); } catch(e){}
+      }
 
+      // 3. Verifica integrazione variables.js o file variables.json locale
+      if (window.TRANSPORT_VARIABLES && typeof window.TRANSPORT_VARIABLES === 'object') {
+        if (window.TRANSPORT_VARIABLES.personale) window.state.variables.personale = [...window.TRANSPORT_VARIABLES.personale];
+        if (window.TRANSPORT_VARIABLES.mezzi) window.state.variables.mezzi = [...window.TRANSPORT_VARIABLES.mezzi];
+        if (window.TRANSPORT_VARIABLES.fasce_orarie) window.state.variables.fasce_orarie = [...window.TRANSPORT_VARIABLES.fasce_orarie];
+      } else {
+        try {
+          const res = await fetch(`./variables.json?_t=${Date.now()}`, { cache: 'no-store' });
+          if (res.ok) {
+            const data = await res.json();
+            if (data && data.personale) {
+              window.state.variables.personale = data.personale;
+              window.state.variables.mezzi = data.mezzi;
+              window.state.variables.fasce_orarie = data.fasce_orarie;
+            }
+          }
+        } catch(e){}
+      }
+
+      populateDropdowns();
+      renderQuickRecent();
+      renderReportList();
+
+      // 4. Sincronizzazione remota se configurato GitHub
       const cfg = window.state.variables.github_config;
       if (cfg && cfg.token && cfg.owner) {
         try {
@@ -955,9 +1030,13 @@
           });
           if (res.ok) {
             const file = await res.json();
-            window.state.bookings = JSON.parse(decodeURIComponent(escape(window.atob(file.content.replace(/\n/g, '')))));
-            renderQuickRecent();
-            renderReportList();
+            const remoteBookings = JSON.parse(decodeURIComponent(escape(window.atob(file.content.replace(/\n/g, '')))));
+            if (Array.isArray(remoteBookings)) {
+              window.state.bookings = remoteBookings;
+              localStorage.setItem("TM_LOCAL_BOOKINGS", JSON.stringify(remoteBookings));
+              renderQuickRecent();
+              renderReportList();
+            }
             updateSyncBadge("Sync GitHub Attivo", "text-emerald-400");
             return;
           }
@@ -967,8 +1046,16 @@
     }
 
     function init() {
-      document.getElementById("displaySelectedDate").innerText = formatDateDisplay(window.state.selectedDate);
-      document.getElementById("reportCurrentDateFormatted").innerText = formatDateDisplay(window.state.reportFilterDate);
+      // Inizializza data Domani
+      const tomorrow = getTomorrowDateString();
+      window.state.selectedDate = tomorrow;
+      window.state.reportFilterDate = tomorrow;
+
+      const dispBook = document.getElementById("displaySelectedDate");
+      if (dispBook) dispBook.innerText = formatDateDisplay(tomorrow);
+      const dispRep = document.getElementById("reportCurrentDateFormatted");
+      if (dispRep) dispRep.innerText = formatDateDisplay(tomorrow);
+
       selectDateShortcut('domani');
       selectReportDateShortcut('domani');
       setBookingType('ANDATA');
@@ -976,8 +1063,10 @@
       triggerLucideIcons();
     }
 
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-    else init();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
   </script>
-</body>
-</html>
+</body></html>
