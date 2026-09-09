@@ -12,7 +12,8 @@
     "CONTI"
   ],
   "mezzi": [
-    "NAVETTA"
+    "NAVETTA",
+    "AUTO     5200"
   ],
   "fasce_orarie": [
     "06:30",
