@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>Transport Manage - Gestione Corse</title>
-  <meta name="theme-color" content="#0b1329"/>
-  <link rel="manifest" href="manifest.json"/>
 
-  <!-- Tailwind CSS CDN con plugin forms -->
-  <script type='text/javascript' nonce='NMQYbVruUTPFbIdzUcJfOg==' src='https://contribution.usercontent.google.com/4OiHrOQiPRuQug8GvPduCzQw2n-d81j8UK1fzNkmfJUj1rX9MbOG0R89nTp6G62BJmh3jAmmcnBx7dPNaKl5SMcxPzFLhHBcl6XvyR_zPsHPpaj4bk-frIQ6HGRDF8S7uctMfFdvAH6Ue6QunL6LKOxTeoTGKd7lBvnwvQNVao3lkZa_ZDZNf4JpAI25zB1yYENt2cYN9Ln3iacUHNunVmTb43vt8qNH2cBETPyTsSBQHc8Ygnk6Hejjz0LHvlephFryCuuaXnqxskPZuJRHT9yB_O_EoiW9eJqu9TMJW-R_kPcRQRfmzO9coJSlo7xPAbKsECyqQazMBI4_dvzY1fRPbZ1CLAGXofp7bP6mnr0Xq-IfUSPYUzjZJOAAxzJ5CjRTHYr5Ovyd-9ICqsAg8kIXXxfl3R_uKACQyUiCpu0WZv6LJvwKzsrt_eeVPUV86I4otgW_hMT2sDsaxZymNjPqiOhAQOpZQ2ApgZzzrX5_NtSPgLJH5G5AqmyJCt9ZMaasKrAVfYYNLefGE-omqAnidK3qaYcMa7YRAACqzFcnbFzWMwkiwtow9zQ52h0uV0_2DG6oZbNTGRq74B8icHGFVlxd8d9sLLvDp_mEeV73KJHLlkwIPA2IDGipZoBj1BY0m8M0LjwzI5BpU8PukFt7q9N9Nk3EzWqiRS6Ly9worIFHQi2-T-adbi_SBs10RUlp3E9fwcV4l1PZenJcx70acyI5RivxIaVK1aM_UNhMn45cQ8lUW12-FUDb5_U9YLnFGNmzbM4EzlTEsN7vjoMXMX86XW8Qnisv2ScP'></script><script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-  <script>
+<html lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Transport Manage - Gestione Corse</title>
+<meta content="#0b1329" name="theme-color"/>
+<link href="manifest.json" rel="manifest"/>
+<!-- Tailwind CSS CDN con plugin forms -->
+<script type='text/javascript' nonce='9CFcdHEDrWVHgX2xgDzsTw==' src='https://contribution.usercontent.google.com/BWRXkmOwoFjTQhrjDK1ugcunjFmv-crJUM-mvR0zA8Q3X6OviaJioJDJyE0iSYlt_-4tgUwxOa2Yxef2kLaaqfme8lqlruqlEuNCzsh5htTY8MAitEvGPDwH0AiX3XKzPs-KQsrYHh6JOF0ycW6OWxsmGo2JFoXXZ4qvh84kWT8MjilalbXdr2hPrMp9AkNb1i3frmbPVzw5mLAsdofhF9TA7xlVExf6D3nuCpK-dyTy90fhsvbifjwijFU1vnt3UzO9w_Zw854Zybbgk_u5U3c4hEVrLJ9MH7YSkPF8_fZJESvNnRFxnvXFI3VGfvpYUotUb9UBM1vbpEP2u086WP7NHgnPI2qo0l4hSydmrQ2y0D6n8dIiPx6ruUf5y8lpxxUZwRLf3SzqTAcoUXm-Uz_fXI56mcYZjuyz1jOjnJxh2SHhQNJziWUR6lXwdzVYE3puLxA5SHUpBkD1eMnuTYBlQR9dohLKPv6kI3DDLYRTqgJIDZKdKbbF-xfQ2T-QR9Ty5-qQwNlvU1vg67UXzU1-6822FWWeyBjVxerGHDbN2enLxargJmc3USucy3llVytjaAuiWhmbWtqxm2UtaiqktIukCRlg20bv6MZmjf11q4-xFRr1Sy1pusbPp-r0HuVzK2rnRrV3gjEV4I-rCo3hotaxWtfLDsp8RxnYvf_eZu-qZN9N-BSYBYzLN4wEqQ-uNU2S0eSD6Ibsjyv6_cc2iJNRsq6Ad6vLsI7S4wp3TJ9Y9eYGrgmdddrMAAJI5jEvl89JNmAxJHEOPOaaLPYr9vbMk--xDZLJYsQJ'></script><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
     tailwind.config = {
+      darkMode: "class",
       theme: {
         extend: {
           colors: {
@@ -25,11 +25,9 @@
       }
     };
   </script>
-
-  <!-- Lucide Icons CDN -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <style>
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
     /* Reset e visualizzazione garantita */
     * { box-sizing: border-box; }
     html, body {
@@ -53,343 +51,383 @@
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 flex flex-col min-h-screen">
-
-  <!-- ==================== HEADER PRINCIPALE ==================== -->
-  <header class="sticky top-0 z-30 bg-slate-900/90 backdrop-blur border-b border-slate-800 px-4 py-3">
-    <div class="max-w-md mx-auto flex items-center justify-between">
-      <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20">
-          <i data-lucide="bus" class="w-4 h-4"></i>
-        </div>
-        <div>
-          <h1 class="text-sm font-bold tracking-tight text-white leading-tight">Transport Manage</h1>
-          <div class="text-[10px] text-blue-400 font-medium" id="headerPageTitle">Prenotazione</div>
-        </div>
-      </div>
-
-      <!-- Badge Stato Sincronizzazione / Cliccabile per configurare API -->
-      <button onclick="openApiModal()" class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-800/80 border border-slate-700 hover:border-slate-600 transition text-left cursor-pointer" title="Configura Sincronizzazione">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span id="syncStatusBadge" class="text-[10px] tracking-wide font-mono uppercase text-emerald-400">Sync Attivo</span>
-      </button>
-    </div>
-  </header>
-
-  <!-- ==================== CONTENUTO PRINCIPALE ==================== -->
-  <main class="flex-1 max-w-md w-full mx-auto p-4 pb-24 space-y-4">
-
-    <!-- ------------------------------------------------------------ -->
-    <!-- TAB 1: PRENOTAZIONE CORSE                                    -->
-    <!-- ------------------------------------------------------------ -->
-    <section id="page-prenotazione" class="space-y-4">
-
-      <!-- Box Selezione Rapida Data -->
-      <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-3.5 shadow-sm space-y-2.5">
-        <div class="flex items-center justify-between text-xs text-slate-400">
-          <span class="font-medium tracking-wide uppercase text-[10px] text-slate-400">Data Corsa Selezionata</span>
-          <span id="displaySelectedDate" class="font-mono font-bold text-blue-400 text-sm">--/--/----</span>
-        </div>
-
-        <div class="grid grid-cols-3 gap-2">
-          <button type="button" id="btnDateOggi" onclick="selectDateShortcut(&#39;oggi&#39;)" class="py-2 px-1 text-center rounded-xl border text-xs font-semibold transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-500/20">
+<!-- ==================== HEADER PRINCIPALE ==================== -->
+<header class="sticky top-0 z-30 bg-slate-900/90 backdrop-blur border-b border-slate-800 px-4 py-3">
+<div class="max-w-md mx-auto flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20">
+<i class="w-4 h-4" data-lucide="bus"></i>
+</div>
+<div>
+<h1 class="text-sm font-bold tracking-tight text-white leading-tight">Transport Manage</h1>
+<div class="text-[10px] text-blue-400 font-medium" id="headerPageTitle">Prenotazione</div>
+</div>
+</div>
+<!-- Badge Stato Sincronizzazione / Cliccabile per configurare API -->
+<button class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-800/80 border border-slate-700 hover:border-slate-600 transition text-left cursor-pointer" onclick="openApiModal()" title="Configura Sincronizzazione">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="text-[10px] tracking-wide font-mono uppercase text-emerald-400" id="syncStatusBadge">Sync Attivo</span>
+</button>
+</div>
+</header>
+<!-- ==================== CONTENUTO PRINCIPALE ==================== -->
+<main class="flex-1 max-w-md w-full mx-auto p-4 pb-24 space-y-4">
+<!-- ------------------------------------------------------------ -->
+<!-- TAB 1: PRENOTAZIONE CORSE                                    -->
+<!-- ------------------------------------------------------------ -->
+<section class="space-y-4" id="page-prenotazione">
+<!-- Box Selezione Rapida Data -->
+<div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-3.5 shadow-sm space-y-2.5">
+<div class="flex items-center justify-between text-xs text-slate-400">
+<span class="font-medium tracking-wide uppercase text-[10px] text-slate-400">Data Corsa Selezionata</span>
+<span class="font-mono font-bold text-blue-400 text-sm" id="displaySelectedDate">--/--/----</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 px-1 text-center rounded-xl border text-xs font-semibold transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-500/20" id="btnDateOggi" onclick="selectDateShortcut(&#39;oggi&#39;)" type="button">
             OGGI
           </button>
-          <button type="button" id="btnDateDomani" onclick="selectDateShortcut(&#39;domani&#39;)" class="py-2 px-1 text-center rounded-xl border text-xs font-medium transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700">
+<button class="py-2 px-1 text-center rounded-xl border text-xs font-medium transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700" id="btnDateDomani" onclick="selectDateShortcut(&#39;domani&#39;)" type="button">
             DOMANI
           </button>
-          <div class="relative">
-            <button type="button" id="btnDateCalendar" class="w-full py-2 px-1 flex items-center justify-center gap-1 rounded-xl border text-xs font-medium transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700">
-              <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
-              <span>Altra Data</span>
-            </button>
-            <input type="date" id="customDateInput" onchange="onCustomDateChange(this.value)" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full"/>
-          </div>
-        </div>
-      </div>
-
-      <!-- Form Nuova Corsa -->
-      <form id="bookingForm" onsubmit="handleBookingSubmit(event)" class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 shadow-sm space-y-3.5">
-
-        <!-- 1. Personale Conducente -->
-        <div class="space-y-1.5">
-          <label class="block text-[11px] font-semibold tracking-wider text-slate-300 uppercase flex items-center justify-between">
-            <span>1. Personale di Guida</span>
-            <span class="text-[9px] text-blue-400 font-mono">OBBLIGATORIO</span>
-          </label>
-          <div class="relative">
-            <select id="selectPersonale" required="" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-slate-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none pr-8">
-              <option value="">Caricamento autisti...</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-400">
-              <i data-lucide="chevron-down" class="w-4 h-4"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2. Mezzo Flotta -->
-        <div class="space-y-1.5">
-          <label class="block text-[11px] font-semibold tracking-wider text-slate-300 uppercase flex items-center justify-between">
-            <span>2. Mezzo di Trasporto</span>
-            <span class="text-[9px] text-emerald-400 font-mono">FLOTTA</span>
-          </label>
-          <div class="relative">
-            <select id="selectMezzo" required="" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-slate-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none pr-8">
-              <option value="">Caricamento mezzi...</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-400">
-              <i data-lucide="chevron-down" class="w-4 h-4"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. Fascia Oraria (Ordinata) -->
-        <div class="space-y-1.5">
-          <label class="block text-[11px] font-semibold tracking-wider text-slate-300 uppercase flex items-center justify-between">
-            <span>3. Fascia Oraria</span>
-            <span class="text-[9px] text-slate-400 font-mono">CRONOLOGICO</span>
-          </label>
-          <div class="relative">
-            <select id="selectOrario" required="" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-xs font-mono text-slate-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none pr-8">
-              <option value="">Caricamento orari...</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-400">
-              <i data-lucide="chevron-down" class="w-4 h-4"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4. Tipo Corsa (Andata / Ritorno) -->
-        <div class="space-y-1.5 pt-1">
-          <label class="block text-[11px] font-semibold tracking-wider text-slate-300 uppercase">
+<div class="relative">
+<button class="w-full py-2 px-1 flex items-center justify-center gap-1 rounded-xl border text-xs font-medium transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700" id="btnDateCalendar" type="button">
+<i class="w-3.5 h-3.5" data-lucide="calendar"></i>
+<span>Altra Data</span>
+</button>
+<input class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" id="customDateInput" onchange="onCustomDateChange(this.value)" type="date"/>
+</div>
+</div>
+</div>
+<!-- Form Nuova Corsa -->
+<form class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 shadow-sm space-y-3.5" id="bookingForm" onsubmit="handleBookingSubmit(event)">
+<!-- 1. Personale Conducente -->
+<div class="space-y-1.5">
+<label class="block text-[11px] font-semibold tracking-wider text-slate-300 uppercase flex items-center justify-between">
+<span>1. Personale di Guida</span>
+<span class="text-[9px] text-blue-400 font-mono">OBBLIGATORIO</span>
+</label>
+<div class="relative">
+<select class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-slate-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none pr-8" id="selectPersonale" required="">
+<option value="">Caricamento autisti...</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-400">
+<i class="w-4 h-4" data-lucide="chevron-down"></i>
+</div>
+</div>
+</div>
+<!-- 2. Mezzo Flotta -->
+<div class="space-y-1.5">
+<label class="block text-[11px] font-semibold tracking-wider text-slate-300 uppercase flex items-center justify-between">
+<span>2. Mezzo di Trasporto</span>
+<span class="text-[9px] text-emerald-400 font-mono">FLOTTA</span>
+</label>
+<div class="relative">
+<select class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-slate-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none pr-8" id="selectMezzo" required="">
+<option value="">Caricamento mezzi...</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-400">
+<i class="w-4 h-4" data-lucide="chevron-down"></i>
+</div>
+</div>
+</div>
+<!-- 3. Fascia Oraria (Ordinata) -->
+<div class="space-y-1.5">
+<label class="block text-[11px] font-semibold tracking-wider text-slate-300 uppercase flex items-center justify-between">
+<span>3. Fascia Oraria</span>
+<span class="text-[9px] text-slate-400 font-mono">CRONOLOGICO</span>
+</label>
+<div class="relative">
+<select class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-xs font-mono text-slate-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none pr-8" id="selectOrario" required="">
+<option value="">Caricamento orari...</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-400">
+<i class="w-4 h-4" data-lucide="chevron-down"></i>
+</div>
+</div>
+</div>
+<!-- 4. Tipo Corsa (Andata / Ritorno) -->
+<div class="space-y-1.5 pt-1">
+<label class="block text-[11px] font-semibold tracking-wider text-slate-300 uppercase">
             4. Tipologia Corsa
           </label>
-          <div class="grid grid-cols-2 gap-2">
-            <button type="button" id="btnTypeAndata" onclick="setBookingType(&#39;ANDATA&#39;)" class="py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-500/20">
-              <i data-lucide="arrow-right-circle" class="w-4 h-4"></i>
-              <span>ANDATA</span>
-            </button>
-            <button type="button" id="btnTypeRitorno" onclick="setBookingType(&#39;RITORNO&#39;)" class="py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600">
-              <i data-lucide="arrow-left-circle" class="w-4 h-4"></i>
-              <span>RITORNO</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Tasto Invio / Salvataggio -->
-        <div class="pt-2">
-          <button type="submit" id="btnSubmitBooking" class="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-blue-600/30 transition flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98]">
-            <i data-lucide="send" class="w-4 h-4"></i>
-            <span>Salva e Invia Corsa</span>
-          </button>
-        </div>
-      </form>
-
-      <!-- Ultime Corse Inserite -->
-      <div class="space-y-2">
-        <div class="flex items-center justify-between px-1">
-          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400">Ultime Registrate</h2>
-          <span class="text-[10px] text-emerald-400 font-mono">Aggiornate Live</span>
-        </div>
-        <div id="quickRecentBookings" class="space-y-2">
-          <div class="p-3 text-center text-xs text-slate-500 bg-slate-900/60 rounded-xl border border-slate-800">
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-500/20" id="btnTypeAndata" onclick="setBookingType(&#39;ANDATA&#39;)" type="button">
+<i class="w-4 h-4" data-lucide="arrow-right-circle"></i>
+<span>ANDATA</span>
+</button>
+<button class="py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600" id="btnTypeRitorno" onclick="setBookingType(&#39;RITORNO&#39;)" type="button">
+<i class="w-4 h-4" data-lucide="arrow-left-circle"></i>
+<span>RITORNO</span>
+</button>
+</div>
+</div>
+<!-- Tasto Invio / Salvataggio -->
+<div class="pt-2">
+<button class="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-blue-600/30 transition flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98]" id="btnSubmitBooking" type="submit">
+<i class="w-4 h-4" data-lucide="send"></i>
+<span>Salva e Invia Corsa</span>
+</button>
+</div>
+</form>
+<!-- Ultime Corse Inserite -->
+<div class="space-y-2">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-xs font-bold uppercase tracking-wider text-slate-400">Ultime Registrate</h2>
+<span class="text-[10px] text-emerald-400 font-mono">Aggiornate Live</span>
+</div>
+<div class="space-y-2" id="quickRecentBookings">
+<div class="p-3 text-center text-xs text-slate-500 bg-slate-900/60 rounded-xl border border-slate-800">
             Nessuna corsa registrata
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ------------------------------------------------------------ -->
-    <!-- TAB 2: REPORT CORSE                                          -->
-    <!-- ------------------------------------------------------------ -->
-    <section id="page-report" class="space-y-4 hidden">
-      <!-- Barra Navigazione Data del Report -->
-      <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-3 shadow-sm flex items-center justify-between">
-        <button onclick="shiftReportDate(-1)" class="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition" title="Giorno precedente">
-          <i data-lucide="chevron-left" class="w-4 h-4"></i>
-        </button>
-        <div class="text-center relative">
-          <div id="reportCurrentDateFormatted" class="font-mono font-bold text-sm text-white">--/--/----</div>
-          <span class="text-[10px] text-blue-400 block cursor-pointer hover:underline">Tocca per cambiare data</span>
-          <input type="date" onchange="setReportFilterDate(this.value)" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full"/>
-        </div>
-        <button onclick="shiftReportDate(1)" class="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition" title="Giorno successivo">
-          <i data-lucide="chevron-right" class="w-4 h-4"></i>
-        </button>
-      </div>
-
-      <!-- Azioni e Conteggio -->
-      <div class="flex items-center justify-between px-1">
-        <span id="reportTotalBadge" class="text-xs font-mono font-semibold text-slate-300 bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-700">
+</div>
+</div>
+</section>
+<!-- ------------------------------------------------------------ -->
+<!-- TAB 2: REPORT CORSE                                          -->
+<!-- ------------------------------------------------------------ -->
+<section class="space-y-4 hidden" id="page-report">
+<!-- Barra Navigazione Data del Report -->
+<div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-3 shadow-sm flex items-center justify-between">
+<button class="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition" onclick="shiftReportDate(-1)" title="Giorno precedente">
+<i class="w-4 h-4" data-lucide="chevron-left"></i>
+</button>
+<div class="text-center relative">
+<div class="font-mono font-bold text-sm text-white" id="reportCurrentDateFormatted">--/--/----</div>
+<span class="text-[10px] text-blue-400 block cursor-pointer hover:underline">Tocca per cambiare data</span>
+<input class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" onchange="setReportFilterDate(this.value)" type="date"/>
+</div>
+<button class="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition" onclick="shiftReportDate(1)" title="Giorno successivo">
+<i class="w-4 h-4" data-lucide="chevron-right"></i>
+</button>
+</div>
+<!-- Azioni e Conteggio -->
+<div class="flex items-center justify-between px-1">
+<span class="text-xs font-mono font-semibold text-slate-300 bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-700" id="reportTotalBadge">
           0 corse registrate
         </span>
-        <button onclick="exportReportToCsv()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-medium transition shadow-sm cursor-pointer">
-          <i data-lucide="download" class="w-3.5 h-3.5"></i>
-          <span>Esporta CSV</span>
-        </button>
-      </div>
-
-      <!-- Tabella / Lista Raggruppata -->
-      <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden shadow-sm">
-        <div class="grid grid-cols-12 px-3 py-2 bg-slate-800/60 border-b border-slate-800 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-          <div class="col-span-4">Personale</div>
-          <div class="col-span-3 text-center">Orario</div>
-          <div class="col-span-2 text-center">Tipo</div>
-          <div class="col-span-3 text-right">Mezzo</div>
-        </div>
-        <div id="reportListRows" class="divide-y divide-slate-800/60">
-          <div class="py-8 text-center text-xs text-slate-500">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-medium transition shadow-sm cursor-pointer" onclick="exportReportToCsv()">
+<i class="w-3.5 h-3.5" data-lucide="download"></i>
+<span>Esporta CSV</span>
+</button>
+</div>
+<!-- Tabella / Lista Raggruppata -->
+<div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden shadow-sm">
+<div class="grid grid-cols-12 px-3 py-2 bg-slate-800/60 border-b border-slate-800 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+<div class="col-span-4">Personale</div>
+<div class="col-span-3 text-center">Orario</div>
+<div class="col-span-2 text-center">Tipo</div>
+<div class="col-span-3 text-right">Mezzo</div>
+</div>
+<div class="divide-y divide-slate-800/60" id="reportListRows">
+<div class="py-8 text-center text-xs text-slate-500">
             Nessuna corsa registrata per questa data
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ------------------------------------------------------------ -->
-    <!-- TAB 3: MANAGE (Password "strongroom")                         -->
-    <!-- ------------------------------------------------------------ -->
-    <section id="page-manage" class="space-y-4 hidden">
-      <!-- Blocco Password / Login -->
-      <div id="manageAuthGate" class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 text-center space-y-4">
-        <div class="w-12 h-12 rounded-2xl bg-blue-600/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mx-auto">
-          <i data-lucide="lock" class="w-6 h-6"></i>
-        </div>
-        <div class="space-y-1">
-          <h2 class="text-base font-bold text-white">Area Riservata Gestione</h2>
-          <p class="text-xs text-slate-400 max-w-xs mx-auto">Inserisci la password amministrativa per modificare autisti, veicoli e fasce orarie.</p>
-        </div>
-        <form onsubmit="handleManageAuth(event)" class="space-y-3 max-w-xs mx-auto">
-          <input type="password" id="managePasswordInput" placeholder="Password (default: strongroom)" required="" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-center text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"/>
-          <button type="submit" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider shadow transition">
+</div>
+</div>
+</section>
+<!-- ------------------------------------------------------------ -->
+<!-- TAB 3: MANAGE (Password "strongroom")                         -->
+<!-- ------------------------------------------------------------ -->
+<section class="space-y-4 hidden" id="page-manage">
+<!-- Blocco Password / Login -->
+<div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 text-center space-y-4" id="manageAuthGate">
+<div class="w-12 h-12 rounded-2xl bg-blue-600/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mx-auto">
+<i class="w-6 h-6" data-lucide="lock"></i>
+</div>
+<div class="space-y-1">
+<h2 class="text-base font-bold text-white">Area Riservata Gestione</h2>
+<p class="text-xs text-slate-400 max-w-xs mx-auto">Inserisci la password amministrativa per accedere alla configurazione GitHub centralizzata e ai parametri di flotta.</p>
+</div>
+<form class="space-y-3 max-w-xs mx-auto" onsubmit="handleManageAuth(event)">
+<input class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-center text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="managePasswordInput" placeholder="Password (default: strongroom)" required="" type="password"/>
+<button class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider shadow transition" type="submit">
             Accedi a Manage
           </button>
-        </form>
-      </div>
-
-      <!-- Dashboard Gestione Variabili (Visibile dopo autenticazione) -->
-      <div id="manageDashboard" class="space-y-4 hidden">
-        <div class="flex items-center justify-between px-1">
-          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-300">Pannello Variabili Flotta</h2>
-          <button onclick="lockManageArea()" class="text-[11px] text-rose-400 hover:text-rose-300 flex items-center gap-1">
-            <i data-lucide="log-out" class="w-3.5 h-3.5"></i> Blocca
+</form>
+</div>
+<!-- Dashboard Gestione Variabili (Visibile dopo autenticazione) -->
+<div class="space-y-4 hidden" id="manageDashboard">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-xs font-bold uppercase tracking-wider text-slate-300">Pannello Amministrazione &amp; Sync</h2>
+<button class="text-[11px] text-rose-400 hover:text-rose-300 flex items-center gap-1" onclick="lockManageArea()">
+<i class="w-3.5 h-3.5" data-lucide="log-out"></i> Blocca
           </button>
-        </div>
-
-        <!-- Selettore Tab Variabile -->
-        <div class="grid grid-cols-3 gap-1.5 p-1 bg-slate-900 border border-slate-800 rounded-xl">
-          <button id="tabVarPersonale" onclick="switchVariableTab(&#39;personale&#39;)" class="py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition shadow-sm">
-            Autisti
-          </button>
-          <button id="tabVarMezzi" onclick="switchVariableTab(&#39;mezzi&#39;)" class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition">
-            Mezzi
-          </button>
-          <button id="tabVarFasce" onclick="switchVariableTab(&#39;fasce&#39;)" class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition">
-            Orari
-          </button>
-        </div>
-
-        <!-- Modulo Aggiunta / Modifica Variabile -->
-        <form onsubmit="handleVariableSave(event)" class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 space-y-3">
-          <input type="hidden" id="variableEditIndex" value="-1"/>
-          <div class="space-y-1">
-            <div class="flex items-center justify-between text-xs">
-              <span id="variableFormTitle" class="font-semibold text-slate-200">Nuovo Autista/Operatore</span>
-              <span id="variableFormHint" class="text-[10px] text-slate-400">Variabile 1</span>
-            </div>
-            <div class="flex gap-2">
-              <input type="text" id="variableTextInput" required="" placeholder="Nome e Cognome..." class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:ring-2 focus:ring-blue-500"/>
-              <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs rounded-xl shadow transition whitespace-nowrap">
+</div>
+<!-- ================= GITHUB CENTRALIZED CONFIG PANEL ================= -->
+<div class="bg-gradient-to-br from-slate-900 via-slate-900 to-blue-950/40 border border-blue-500/30 rounded-2xl p-4 shadow-lg space-y-3.5">
+<div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center">
+<i class="w-4 h-4" data-lucide="git-branch"></i>
+</div>
+<div>
+<h3 class="text-xs font-bold text-white leading-tight">Configurazione Centralizzata GitHub</h3>
+<span class="text-[10px] text-emerald-400 font-mono">Sync Globale per Tutti i Dispositivi</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-semibold bg-blue-500/10 text-blue-300 border border-blue-400/30">
+              variables.json
+            </span>
+</div>
+<p class="text-[11px] text-slate-300 leading-relaxed">
+            Inserisci qui il Token GitHub PAT una sola volta. Il sistema lo salverà centralmente in <code class="font-mono text-blue-300 bg-slate-950 px-1 py-0.5 rounded text-[10px]">variables.json</code> sul repository: <strong>qualsiasi smartphone o PC che aprirà il link si sincronizzerà all'istante in automatico</strong>, senza dover riconfigurare nulla!
+          </p>
+<form class="space-y-2.5 pt-1" id="manageCentralGhForm" onsubmit="handleCentralGhConfigSave(event)">
+<div class="grid grid-cols-2 gap-2">
+<div class="space-y-1">
+<label class="text-[10px] font-semibold text-slate-300 uppercase tracking-wide">Owner / Username</label>
+<input class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-2 text-xs text-white placeholder-slate-600 focus:ring-1 focus:ring-blue-500 font-mono" id="centralGhOwnerInput" placeholder="es. MarioRossi" required="" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-semibold text-slate-300 uppercase tracking-wide">Repo Name</label>
+<input class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-2 text-xs text-white placeholder-slate-600 focus:ring-1 focus:ring-blue-500 font-mono" id="centralGhRepoInput" placeholder="transportmanage" required="" type="text" value="transportmanage"/>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex items-center justify-between">
+<label class="text-[10px] font-semibold text-slate-300 uppercase tracking-wide">Personal Access Token (PAT)</label>
+<span class="text-[9px] text-amber-400 font-mono">Permesso repo / workflow</span>
+</div>
+<div class="relative">
+<input class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 pr-16 text-xs text-white placeholder-slate-600 focus:ring-1 focus:ring-blue-500 font-mono" id="centralGhTokenInput" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxx" required="" type="password"/>
+<button class="absolute inset-y-0 right-0 px-2.5 flex items-center text-[10px] text-slate-400 hover:text-white" onclick="toggleTokenVisibility(&#39;centralGhTokenInput&#39;)" type="button">
+                  Mostra
+                </button>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-semibold text-slate-300 uppercase tracking-wide">Branch Principale</label>
+<input class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-2 text-xs text-white placeholder-slate-600 focus:ring-1 focus:ring-blue-500 font-mono" id="centralGhBranchInput" required="" type="text" value="main"/>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="py-2.5 px-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer" onclick="testCentralGhConnection()" type="button">
+<i class="w-3.5 h-3.5 text-blue-400" data-lucide="radio"></i>
+<span>Test Connessione</span>
+</button>
+<button class="py-2.5 px-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md shadow-emerald-600/30 transition flex items-center justify-center gap-1.5 cursor-pointer" type="submit">
+<i class="w-3.5 h-3.5" data-lucide="share-2"></i>
+<span>Salva e Condividi con Tutti i Dispositivi</span>
+</button>
+</div>
+<div class="text-[11px] text-center font-mono py-1 hidden" id="centralGhStatusMessage"></div>
+</form>
+</div>
+<!-- Selettore Tab Variabile Flotta -->
+<div class="pt-2">
+<div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-1 pb-1.5">
+            Gestione Flotta &amp; Parametri
+          </div>
+<div class="grid grid-cols-3 gap-1.5 p-1 bg-slate-900 border border-slate-800 rounded-xl">
+<button class="py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition shadow-sm" id="tabVarPersonale" onclick="switchVariableTab(&#39;personale&#39;)">
+              Autisti
+            </button>
+<button class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition" id="tabVarMezzi" onclick="switchVariableTab(&#39;mezzi&#39;)">
+              Mezzi
+            </button>
+<button class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition" id="tabVarFasce" onclick="switchVariableTab(&#39;fasce&#39;)">
+              Orari
+            </button>
+</div>
+</div>
+<!-- Modulo Aggiunta / Modifica Variabile -->
+<form class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 space-y-3" onsubmit="handleVariableSave(event)">
+<input id="variableEditIndex" type="hidden" value="-1"/>
+<div class="space-y-1">
+<div class="flex items-center justify-between text-xs">
+<span class="font-semibold text-slate-200" id="variableFormTitle">Nuovo Autista/Operatore</span>
+<span class="text-[10px] text-slate-400" id="variableFormHint">Variabile 1</span>
+</div>
+<div class="flex gap-2">
+<input class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:ring-2 focus:ring-blue-500" id="variableTextInput" placeholder="Nome e Cognome..." required="" type="text"/>
+<button class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs rounded-xl shadow transition whitespace-nowrap" type="submit">
                 Salva
               </button>
-            </div>
-          </div>
-        </form>
-
-        <!-- Elenco Elementi Configurati -->
-        <div class="space-y-2">
-          <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-1" id="variableListLabel">
+</div>
+</div>
+</form>
+<!-- Elenco Elementi Configurati -->
+<div class="space-y-2">
+<div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-1" id="variableListLabel">
             Elenco Configurato
           </div>
-          <div id="variableItemsList" class="space-y-2">
-            <!-- Popolato dinamicamente da app.js -->
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ==================== BARRA NAVIGAZIONE INFERIORE ==================== -->
-  <nav class="fixed bottom-0 inset-x-0 z-30 bg-slate-900/95 backdrop-blur border-t border-slate-800">
-    <div class="max-w-md mx-auto grid grid-cols-3 py-1">
-      <button id="navBtnPrenotazione" onclick="navigateToPage(&#39;prenotazione&#39;)" class="py-1.5 flex flex-col items-center gap-1 text-blue-400 transition cursor-pointer">
-        <i data-lucide="plus-circle" class="w-5 h-5"></i>
-        <span class="text-[10px] font-semibold">Prenotazione</span>
-      </button>
-
-      <button id="navBtnReport" onclick="navigateToPage(&#39;report&#39;)" class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer">
-        <i data-lucide="clipboard-list" class="w-5 h-5"></i>
-        <span class="text-[10px] font-semibold">Report</span>
-      </button>
-
-      <button id="navBtnManage" onclick="navigateToPage(&#39;manage&#39;)" class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer">
-        <i data-lucide="settings" class="w-5 h-5"></i>
-        <span class="text-[10px] font-semibold">Manage</span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ==================== MODALE CONFIGURAZIONE GITHUB SYNC ==================== -->
-  <div id="apiConfigModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-sm p-5 space-y-4 shadow-2xl text-left">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-2 text-white font-bold text-sm">
-          <i data-lucide="github" class="w-4 h-4 text-blue-400"></i>
-          <span>Configurazione GitHub Sync</span>
-        </div>
-        <button onclick="closeApiModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
-          <i data-lucide="x" class="w-4 h-4"></i>
-        </button>
-      </div>
-
-      <p class="text-xs text-slate-400 leading-relaxed">
-        Configura le credenziali GitHub per sincronizzare corse e flotta direttamente con il repository senza intermediari cloud.
+<div class="space-y-2" id="variableItemsList">
+<!-- Popolato dinamicamente da app.js -->
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- ==================== BARRA NAVIGAZIONE INFERIORE ==================== -->
+<nav class="fixed bottom-0 inset-x-0 z-30 bg-slate-900/95 backdrop-blur border-t border-slate-800">
+<div class="max-w-md mx-auto grid grid-cols-3 py-1">
+<button class="py-1.5 flex flex-col items-center gap-1 text-blue-400 transition cursor-pointer" id="navBtnPrenotazione" onclick="navigateToPage(&#39;prenotazione&#39;)">
+<i class="w-5 h-5" data-lucide="plus-circle"></i>
+<span class="text-[10px] font-semibold">Prenotazione</span>
+</button>
+<button class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer" id="navBtnReport" onclick="navigateToPage(&#39;report&#39;)">
+<i class="w-5 h-5" data-lucide="clipboard-list"></i>
+<span class="text-[10px] font-semibold">Report</span>
+</button>
+<button class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer" id="navBtnManage" onclick="navigateToPage(&#39;manage&#39;)">
+<i class="w-5 h-5" data-lucide="settings"></i>
+<span class="text-[10px] font-semibold">Manage</span>
+</button>
+</div>
+</nav>
+<!-- ==================== MODALE CONFIGURAZIONE GITHUB SYNC (ACCESSORIO RAPIDO) ==================== -->
+<div class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 hidden" id="apiConfigModal">
+<div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-sm p-5 space-y-4 shadow-2xl text-left">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-white font-bold text-sm">
+<i class="w-4 h-4 text-blue-400" data-lucide="github"></i>
+<span>Configurazione GitHub Sync</span>
+</div>
+<button class="text-slate-400 hover:text-white p-1 rounded-lg" onclick="closeApiModal()">
+<i class="w-4 h-4" data-lucide="x"></i>
+</button>
+</div>
+<p class="text-xs text-slate-400 leading-relaxed">
+        Configura o verifica le credenziali GitHub per sincronizzare corse e flotta. La configurazione completa e centralizzata per tutti i dispositivi è disponibile anche nella scheda <strong>Manage</strong>.
       </p>
-
-      <div class="space-y-3">
-        <div class="space-y-1">
-          <label class="text-[11px] font-medium text-slate-300">GitHub Username (Owner)</label>
-          <input type="text" id="ghOwnerInput" placeholder="es. MarioRossi" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white"/>
-        </div>
-
-        <div class="space-y-1">
-          <label class="text-[11px] font-medium text-slate-300">Repository Name</label>
-          <input type="text" id="ghRepoInput" value="transportmanage" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white"/>
-        </div>
-
-        <div class="space-y-1">
-          <label class="text-[11px] font-medium text-slate-300">Personal Access Token (PAT)</label>
-          <input type="password" id="ghTokenInput" placeholder="ghp_xxxxxxxxxxxx" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white font-mono"/>
-        </div>
-
-        <div class="space-y-1">
-          <label class="text-[11px] font-medium text-slate-300">Branch</label>
-          <input type="text" id="ghBranchInput" value="main" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white"/>
-        </div>
-      </div>
-
-      <div class="flex gap-2 pt-2">
-        <button onclick="testWorkerConnection()" type="button" class="flex-1 py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition">
+<div class="space-y-3">
+<div class="space-y-1">
+<label class="text-[11px] font-medium text-slate-300">GitHub Username (Owner)</label>
+<input class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white" id="ghOwnerInput" placeholder="es. MarioRossi" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[11px] font-medium text-slate-300">Repository Name</label>
+<input class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white" id="ghRepoInput" type="text" value="transportmanage"/>
+</div>
+<div class="space-y-1">
+<label class="text-[11px] font-medium text-slate-300">Personal Access Token (PAT)</label>
+<input class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white font-mono" id="ghTokenInput" placeholder="ghp_xxxxxxxxxxxx" type="password"/>
+</div>
+<div class="space-y-1">
+<label class="text-[11px] font-medium text-slate-300">Branch</label>
+<input class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white" id="ghBranchInput" type="text" value="main"/>
+</div>
+</div>
+<div class="flex gap-2 pt-2">
+<button class="flex-1 py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition" onclick="testWorkerConnection()" type="button">
           Test Connessione
         </button>
-        <button onclick="saveApiUrl()" type="button" class="flex-1 py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition">
+<button class="flex-1 py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition" onclick="saveApiUrl()" type="button">
           Salva Credenziali
         </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- REGISTRAZIONE SERVICE WORKER -->
-  <script>
+</div>
+</div>
+</div>
+<!-- HELPER SCRIPT PER INTERAZIONE TOKEN MANAGE -->
+<script>
+    function toggleTokenVisibility(inputId) {
+      const input = document.getElementById(inputId);
+      if (input) {
+        input.type = input.type === 'password' ? 'text' : 'password';
+      }
+    }
+  </script>
+<!-- REGISTRAZIONE SERVICE WORKER -->
+<script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')
@@ -398,8 +436,6 @@
       });
     }
   </script>
-
-  <!-- CARICAMENTO DELLO SCRIPT APPLICATIVO -->
-  <script src="./app.js"></script>
-</body>
-</html>
+<!-- CARICAMENTO DELLO SCRIPT APPLICATIVO -->
+<script src="./app.js"></script>
+</body></html>
