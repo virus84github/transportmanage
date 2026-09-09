@@ -4,7 +4,7 @@
  */
 window.DEFAULT_VARIABLES = {
   personale: [
- "TADDEO",
+    "TADDEO",
     "DI STANO",
     "RAIANO",
     "REINA",
@@ -16,13 +16,12 @@ window.DEFAULT_VARIABLES = {
     "CONTI"
   ],
   mezzi: [
-     "NAVETTA",
-    "AUTO     5200",
-    "AUTO     5293"
+    "NAVETTA",
+    "Auto 5200",
+    "Auto 5293"
   ],
   fasce_orarie: [
-    "FINE ATTIVITA",
-    "08:00",
+    "08:80",
     "08:30",
     "10:00",
     "13:30",
@@ -36,7 +35,8 @@ window.DEFAULT_VARIABLES = {
     "19:00",
     "20:00",
     "21:00",
-    "22:00"
+    "22:00",
+    "FINE ATTIVITA'"
   ],
   github_config: {
     owner: "",
