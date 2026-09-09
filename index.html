@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="it" class="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Transport Manage</title>
+  
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#0c1322"/>
+  <meta name="description" content="Gestione e prenotazione corse con sync cloud in tempo reale"/>
+  <link rel="manifest" href="manifest.json"/>
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="Transport"/>
+
+  <!-- Tailwind CSS CDN & Lucide Icons -->
+  <script type='text/javascript' nonce='h1JsvvCbpgqfafeYtapD/g==' src='https://contribution.usercontent.google.com/NzbGr2aqlI1Dp3w8VN2ClH06lY0MU7vge8cZQVf2t85Md4kYY31h0M0AMIcmX3e6fX_F_oaaUvtjC8PXZhlKK_ExCZq23G8wLxo0cMu-kEUbYvBI2UipI58XWpMiDboPVxw5fMOuMS6eq2EnjSRuSlITkd4svSUeajoHMuU2YwCTAOUdAo0WiyGaPFN7HstrWxS5f4JZMsoF3uBRd5UV-VHCZqkcsLzE9lyd5xcdot1IC-1-teGAcfpEvi8hhiODfrHI3eASPkrxICrFtYH6SrPyQqrBufXULiZKBvNPpK0YcPO7XVi_4Nt_Mg39ogpKBGvMY7yiTy_jHpc0UIeBURITzdilK1Ie4FPA6CdyPM6HgfNIfQyc1tlFojbXOf0C5h96rvY081ARvQXvGCuUtALm07ObDYJO7jqx_E0xjr6d-T-gbDSKW-9VzCY6oQmhC1wLc5F6Elrz6xkEt6U1oN5lEi3TmKffngrgWIVlKuhVhs-Xzji7EWqNESCgWOdbc-sB-6xhd6kOyZxQLhlYmqKNPj1ykyWUNxWiwzYqdDZQHWbGRQryNbfUNDOQx1JMVwmt0Ga8VPkBz3f7V6f8cC2zp4YSi46UXyMEeUsbDYyBo5Pn_OXC1S9gHeVWC49jmGqMOtXyoHf56rEr0u8msBObNKUzfCQF5OBhMkeUaj3f73K0taTGBrCOz_snMcZJW-Hf5g3LeJ08N8N7p5kW5ZPYpFon8J_QzNBVVnbYJPh05SaQRtk_buGkhlp-GvYno9t3z2_f5Xb43IWPmgJdnE73zMJPxDNa0MpNhmp5'></script><script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            surface: '#0c1322',
+            'surface-bright': '#1e2638',
+            'surface-card': '#141b2b',
+            'surface-card-subtle': '#182135',
+            'surface-border': '#222d42',
+            brand: '#3b82f6',
+            'brand-hover': '#2563eb'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0c1322;
+      color: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    input, select, button { user-select: auto; }
+    /* Scrollbar personalizzata per liste veloci */
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-track { background: #0c1322; }
+    ::-webkit-scrollbar-thumb { background: #222d42; border-radius: 4px; }
+    .fade-in { animation: fadeIn 0.2s ease-in-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-surface text-slate-100 min-h-screen flex flex-col justify-between antialiased selection:bg-blue-600">
+
+  <!-- ==================== HEADER PERSISTENTE ==================== -->
+  <header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md border-b border-surface-border px-4 py-3">
+    <div class="max-w-md mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
+          <i data-lucide="truck" class="w-4 h-4"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5 leading-none">
+            <h1 class="text-sm font-bold tracking-tight text-white">Transport Manage</h1>
+            <span class="text-xs text-slate-500 font-normal">/</span>
+            <span id="headerPageTitle" class="text-xs font-semibold text-blue-400">Prenotazione</span>
+          </div>
+          <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-[10px] text-slate-400 tracking-wide font-mono uppercase" id="syncStatusBadge">Live Sync • Cloud Active</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Pulsante Impostazioni API Cloudflare -->
+      <button onclick="openApiModal()" title="Configura Cloudflare Endpoint" class="p-2 rounded-lg bg-surface-bright border border-surface-border text-slate-300 hover:text-white transition">
+        <i data-lucide="server" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== CONTENUTO SCHERMATE ==================== -->
+  <main class="flex-1 max-w-md w-full mx-auto px-4 py-4 pb-24 overflow-y-auto">
+
+    <!-- ========== 1. PAGINA PRENOTAZIONE ========== -->
+    <section id="page-prenotazione" class="fade-in space-y-4">
+      
+      <!-- Hub Banner Status -->
+      <div class="p-3 rounded-xl bg-surface-card border border-surface-border flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <i data-lucide="radio" class="w-4 h-4 text-emerald-400"></i>
+          <div>
+            <div class="text-[11px] text-slate-400 uppercase tracking-wider font-mono">Stato Rete</div>
+            <div class="text-xs font-semibold text-slate-200">Hub Flotta Centrale Online</div>
+          </div>
+        </div>
+        <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-emerald-950/80 text-emerald-400 border border-emerald-800/40">ONLINE SYNC</span>
+      </div>
+
+      <!-- Scelta Data -->
+      <div class="p-4 rounded-xl bg-surface-card border border-surface-border space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <i data-lucide="calendar" class="w-4 h-4 text-blue-400"></i>
+            <span class="text-xs font-mono font-semibold uppercase tracking-wider text-slate-300">Data Corsa</span>
+          </div>
+          <span id="displaySelectedDate" class="text-xs font-semibold text-blue-400 font-mono">--</span>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2">
+          <button type="button" onclick="selectDateShortcut(&#39;oggi&#39;)" id="btnDateOggi" class="py-2 px-1 text-center rounded-lg border text-xs font-medium transition bg-blue-600 text-white border-blue-500">
+            OGGI
+          </button>
+          <button type="button" onclick="selectDateShortcut(&#39;domani&#39;)" id="btnDateDomani" class="py-2 px-1 text-center rounded-lg border text-xs font-medium transition bg-surface-bright text-slate-300 border-surface-border hover:border-slate-600">
+            DOMANI
+          </button>
+          <div class="relative">
+            <input type="date" id="inputCustomDate" onchange="onCustomDateChange(this.value)" class="absolute inset-0 opacity-0 w-full h-full cursor-pointer z-10"/>
+            <button type="button" id="btnDateCalendar" class="w-full py-2 px-1 flex items-center justify-center gap-1 rounded-lg border text-xs font-medium transition bg-surface-bright text-slate-300 border-surface-border hover:border-slate-600">
+              <i data-lucide="calendar-days" class="w-3.5 h-3.5"></i> CALENDARIO
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modulo Prenotazione con Sequenza Rigorosa -->
+      <form id="bookingForm" onsubmit="handleBookingSubmit(event)" class="p-4 rounded-xl bg-surface-card border border-surface-border space-y-4">
+        
+        <!-- 1. PERSONALE -->
+        <div class="space-y-1.5">
+          <label class="flex items-center justify-between text-xs font-medium text-slate-300">
+            <span class="flex items-center gap-1.5"><i data-lucide="user" class="w-3.5 h-3.5 text-blue-400"></i> 1. Personale di Guida</span>
+            <span class="text-[10px] text-amber-400 uppercase font-mono">Obbligatorio</span>
+          </label>
+          <select id="selectPersonale" required="" class="w-full bg-surface-bright border border-surface-border rounded-lg px-3 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500 transition">
+            <option value="">Seleziona operatore conducente...</option>
+          </select>
+        </div>
+
+        <!-- 2. MEZZO DI TRASPORTO -->
+        <div class="space-y-1.5">
+          <label class="flex items-center justify-between text-xs font-medium text-slate-300">
+            <span class="flex items-center gap-1.5"><i data-lucide="bus" class="w-3.5 h-3.5 text-blue-400"></i> 2. Mezzo di Trasporto</span>
+            <span class="text-[10px] text-emerald-400 uppercase font-mono">Telemetria OK</span>
+          </label>
+          <select id="selectMezzo" required="" class="w-full bg-surface-bright border border-surface-border rounded-lg px-3 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500 transition">
+            <option value="">Assegna veicolo flotta...</option>
+          </select>
+        </div>
+
+        <!-- 3. FASCIA ORARIA (Sempre in ordine cronologico) -->
+        <div class="space-y-1.5">
+          <label class="flex items-center justify-between text-xs font-medium text-slate-300">
+            <span class="flex items-center gap-1.5"><i data-lucide="clock" class="w-3.5 h-3.5 text-blue-400"></i> 3. Fascia Oraria</span>
+            <span class="text-[10px] text-slate-400 uppercase font-mono">Orario Locale</span>
+          </label>
+          <select id="selectOrario" required="" class="w-full bg-surface-bright border border-surface-border rounded-lg px-3 py-2.5 text-xs text-white font-mono focus:outline-none focus:border-blue-500 transition">
+            <option value="">Fascia oraria di partenza autorizzata...</option>
+          </select>
+        </div>
+
+        <!-- 4. TIPO DI CORSA (ANDATA / RITORNO) -->
+        <div class="space-y-1.5">
+          <label class="flex items-center gap-1.5 text-xs font-medium text-slate-300">
+            <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-blue-400"></i> 4. Tipo di Corsa
+          </label>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" onclick="setBookingType(&#39;ANDATA&#39;)" id="btnTypeAndata" class="py-2.5 rounded-lg border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500">
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i> ANDATA
+            </button>
+            <button type="button" onclick="setBookingType(&#39;RITORNO&#39;)" id="btnTypeRitorno" class="py-2.5 rounded-lg border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-surface-bright text-slate-400 border-surface-border hover:border-slate-600">
+              <i data-lucide="arrow-down-left" class="w-3.5 h-3.5"></i> RITORNO
+            </button>
+          </div>
+        </div>
+
+        <!-- Bottone Invio -->
+        <button type="submit" id="btnSubmitBooking" class="w-full mt-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20 active:scale-[0.99] transition">
+          <i data-lucide="cloud-upload" class="w-4 h-4"></i> INVIO E SALVATAGGIO PRENOTAZIONE
+        </button>
+      </form>
+
+      <!-- Ultime Prenotazioni Registrate (Feed rapido) -->
+      <div class="space-y-2">
+        <div class="flex items-center justify-between text-xs text-slate-400 font-mono px-1">
+          <span>Ultime Corse Inserite</span>
+          <span class="text-[10px] text-blue-400">Tempo Reale</span>
+        </div>
+        <div id="quickRecentBookings" class="space-y-2">
+          <!-- Popolato dinamicamente da app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 2. PAGINA REPORT ========== -->
+    <section id="page-report" class="fade-in hidden space-y-4">
+      
+      <div class="flex items-center justify-between">
+        <div>
+          <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400">Logistica & Dispacci</span>
+          <h2 class="text-base font-bold text-white">Report Corse</h2>
+        </div>
+        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-emerald-950 text-emerald-400 border border-emerald-800/50 flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Cloud Sincronizzato
+        </span>
+      </div>
+
+      <!-- Selettore Data Report -->
+      <div class="p-3 rounded-xl bg-surface-card border border-surface-border flex items-center justify-between gap-2">
+        <button onclick="shiftReportDate(-1)" class="p-2 rounded-lg bg-surface-bright border border-surface-border text-slate-300 hover:text-white">
+          <i data-lucide="chevron-left" class="w-4 h-4"></i>
+        </button>
+        <div class="text-center flex-1">
+          <div id="reportCurrentDateFormatted" class="text-xs font-bold text-white font-mono">--</div>
+          <div id="reportTotalBadge" class="text-[10px] text-slate-400 font-mono">0 corse registrate</div>
+        </div>
+        <button onclick="shiftReportDate(1)" class="p-2 rounded-lg bg-surface-bright border border-surface-border text-slate-300 hover:text-white">
+          <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </button>
+        <div class="relative">
+          <input type="date" id="inputReportFilterDate" onchange="setReportFilterDate(this.value)" class="absolute inset-0 opacity-0 w-full h-full cursor-pointer z-10"/>
+          <button class="p-2 rounded-lg bg-blue-600/20 border border-blue-500/40 text-blue-400 hover:bg-blue-600/30">
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Card Info Raggruppamento Intelligente -->
+      <div class="p-3 rounded-xl bg-surface-card border border-surface-border text-xs space-y-1">
+        <div class="flex items-center gap-2 text-slate-300 font-medium">
+          <i data-lucide="palette" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span>Raggruppamento per Equipaggio</span>
+        </div>
+        <p class="text-[11px] text-slate-400 leading-relaxed">
+          Le corse con medesimi <strong class="text-slate-200">Orario, Mezzo e Tipo</strong> presentano lo stesso colore identificativo per verificare immediatamente i viaggi condivisi.
+        </p>
+      </div>
+
+      <!-- Tabella Ordinata Cronologicamente: PERSONALE | ORARIO | TIPO | MEZZO -->
+      <div class="rounded-xl border border-surface-border overflow-hidden bg-surface-card">
+        <div class="grid grid-cols-12 text-[10px] font-mono uppercase tracking-wider text-slate-400 bg-surface-bright/80 px-3 py-2 border-b border-surface-border">
+          <div class="col-span-4">Personale</div>
+          <div class="col-span-3 text-center">Orario</div>
+          <div class="col-span-2 text-center">Tipo</div>
+          <div class="col-span-3 text-right">Mezzo</div>
+        </div>
+        <div id="reportListRows" class="divide-y divide-surface-border">
+          <!-- Popolato dinamicamente da app.js -->
+        </div>
+      </div>
+
+      <!-- Pulsanti Azione Report -->
+      <div class="flex gap-2 pt-1">
+        <button onclick="exportReportToCsv()" class="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold flex items-center justify-center gap-2 transition">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i> Esporta Foglio Corse (CSV)
+        </button>
+        <button onclick="refreshCloudData()" class="p-2.5 rounded-xl bg-surface-card border border-surface-border text-slate-300 hover:text-white transition">
+          <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========== 3. PAGINA MANAGE (Protetta da password "strongroom") ========== -->
+    <section id="page-manage" class="fade-in hidden space-y-4">
+      
+      <!-- Lock Screen (Visibile se non autenticati) -->
+      <div id="manageAuthGate" class="p-6 rounded-2xl bg-surface-card border border-surface-border text-center space-y-4">
+        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mx-auto">
+          <i data-lucide="shield-alert" class="w-6 h-6"></i>
+        </div>
+        <div class="space-y-1">
+          <h3 class="text-sm font-bold text-white">Area Riservata Amministratore</h3>
+          <p class="text-xs text-slate-400">Inserisci la chiave d'accesso per gestire le variabili flotta.</p>
+        </div>
+        <form onsubmit="handleManageAuth(event)" class="space-y-3">
+          <input type="password" id="managePasswordInput" placeholder="Inserisci password..." class="w-full text-center tracking-widest bg-surface-bright border border-surface-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500 font-mono transition"/>
+          <button type="submit" class="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition">
+            <i data-lucide="unlock" class="w-3.5 h-3.5"></i> Sblocca Gestione
+          </button>
+        </form>
+      </div>
+
+      <!-- Area Manage Autenticata -->
+      <div id="manageDashboard" class="hidden space-y-4">
+        <div class="p-3 rounded-xl bg-emerald-950/40 border border-emerald-800/40 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span class="text-xs font-semibold text-emerald-300 font-mono">AUTENTICATO (strongroom)</span>
+          </div>
+          <button onclick="lockManageArea()" class="text-[11px] text-slate-400 hover:text-white flex items-center gap-1 font-mono">
+            <i data-lucide="lock" class="w-3 h-3"></i> Blocca
+          </button>
+        </div>
+
+        <!-- Selettore Tab Variabili -->
+        <div class="grid grid-cols-3 gap-1 p-1 bg-surface-card rounded-xl border border-surface-border">
+          <button type="button" onclick="switchVariableTab(&#39;personale&#39;)" id="tabVarPersonale" class="py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition">
+            1. Personale
+          </button>
+          <button type="button" onclick="switchVariableTab(&#39;mezzi&#39;)" id="tabVarMezzi" class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition">
+            2. Mezzi
+          </button>
+          <button type="button" onclick="switchVariableTab(&#39;fasce&#39;)" id="tabVarFasce" class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition">
+            3. Fasce Orarie
+          </button>
+        </div>
+
+        <!-- Form Inserimento / Modifica Variabile -->
+        <form onsubmit="handleVariableSave(event)" class="p-4 rounded-xl bg-surface-card border border-surface-border space-y-3">
+          <div class="flex items-center justify-between">
+            <span id="variableFormTitle" class="text-xs font-bold text-slate-200">Nuovo Personale</span>
+            <span id="variableFormHint" class="text-[10px] text-slate-400 font-mono">Variabile 1</span>
+          </div>
+          <div class="flex gap-2">
+            <input type="text" id="variableTextInput" required="" placeholder="Nome autista o operatore..." class="flex-1 bg-surface-bright border border-surface-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500"/>
+            <button type="submit" id="btnSaveVariable" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1.5 transition">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> Salva
+            </button>
+          </div>
+          <input type="hidden" id="variableEditIndex" value="-1"/>
+        </form>
+
+        <!-- Lista Elementi della Variabile Attiva -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between text-[11px] text-slate-400 font-mono px-1">
+            <span id="variableListLabel">Elenco Attivo</span>
+            <span class="text-emerald-400">Sincronizzazione Cloud</span>
+          </div>
+          <div id="variableItemsList" class="space-y-2">
+            <!-- Render dinamico da app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== MODAL CONFIGURAZIONE ENDPOINT ==================== -->
+  <div id="apiConfigModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="w-full max-w-sm bg-surface-card border border-surface-border rounded-2xl p-5 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2 text-blue-400">
+          <i data-lucide="cloud" class="w-5 h-5"></i>
+          <h3 class="text-sm font-bold text-white">Endpoint Cloudflare Worker</h3>
+        </div>
+        <button onclick="closeApiModal()" class="text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <p class="text-xs text-slate-300 leading-relaxed">
+        Inserisci l'URL del tuo Worker Cloudflare (es. <code class="text-blue-300 bg-surface-bright px-1 py-0.5 rounded text-[10px]">https://transportmanage-api...workers.dev</code>). I dati verranno letti e scritti direttamente sul repository GitHub <strong class="text-white">transportmanage</strong>.
+      </p>
+
+      <div class="space-y-1.5">
+        <label class="text-[11px] font-mono text-slate-400">URL WORKER / API</label>
+        <input type="url" id="workerApiUrlInput" placeholder="https://transportmanage-api.tuo-subdomain.workers.dev" class="w-full bg-surface-bright border border-surface-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500 font-mono"/>
+      </div>
+
+      <div class="flex gap-2">
+        <button onclick="saveApiUrl()" class="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition">
+          Salva Connessione
+        </button>
+        <button onclick="testWorkerConnection()" class="px-3 py-2.5 rounded-xl bg-surface-bright text-slate-300 border border-surface-border text-xs hover:text-white transition">
+          Test Ping
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== BOTTOM TAB BAR (PWA) ==================== -->
+  <nav class="fixed bottom-0 left-0 right-0 z-40 bg-surface/95 backdrop-blur-lg border-t border-surface-border py-2 px-4">
+    <div class="max-w-md mx-auto grid grid-cols-3 gap-1">
+      <button onclick="navigateToPage(&#39;prenotazione&#39;)" id="navBtnPrenotazione" class="py-1.5 flex flex-col items-center gap-1 text-blue-400 transition">
+        <i data-lucide="ticket" class="w-4 h-4"></i>
+        <span class="text-[10px] font-semibold tracking-tight">Prenotazione</span>
+      </button>
+      <button onclick="navigateToPage(&#39;report&#39;)" id="navBtnReport" class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition">
+        <i data-lucide="clipboard-list" class="w-4 h-4"></i>
+        <span class="text-[10px] font-semibold tracking-tight">Report</span>
+      </button>
+      <button onclick="navigateToPage(&#39;manage&#39;)" id="navBtnManage" class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition">
+        <i data-lucide="shield-check" class="w-4 h-4"></i>
+        <span class="text-[10px] font-semibold tracking-tight">Manage</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Script Applicativo Principale -->
+  <script src="app.js"></script>
+</body>
+</html>
