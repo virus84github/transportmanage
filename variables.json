@@ -1,25 +1,38 @@
 {
   "personale": [
-    "Marco Rossi",
-    "Luca Bianchi",
-    "Alessandro Verdi",
-    "Giulia Neri",
-    "Roberto Ferrari"
+   "TADDEO",
+    "DI STANO",
+    "RAIANO",
+    "REINA",
+    "LAI",
+    "SINDACO",
+    "GRIECO",
+    "MIGLIORANZA",
+    "MAGGIOLINI",
+    "CONTI"
   ],
   "mezzi": [
-    "Navetta Van 01 (Cap. 8p)",
-    "Minibus B2 (Cap. 16p)",
-    "Auto 04 (Cap. 4p)",
-    "Bus GT (Cap. 50p)",
-    "Van Cargo 02"
+    "NAVETTA",
+    "Auto 5200",
+    "Auto 5293"
   ],
   "fasce_orarie": [
-    "06:30",
-    "08:00",
+    "08:80",
+    "08:30",
+    "10:00",
+    "13:30",
     "14:00",
-    "17:30",
-    "19:15",
-    "21:00"
+    "15:00",
+    "15:30",
+    "16:00",
+    "16:30",
+    "17:00",
+    "18:30",
+    "19:00",
+    "20:00",
+    "21:00",
+    "22:00",
+    "FINE ATTIVITA'"
   ],
   "github_config": {
     "owner": "",
