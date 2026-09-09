@@ -1,0 +1,30 @@
+{
+  "personale": [
+    "Marco Rossi",
+    "Luca Bianchi",
+    "Alessandro Verdi",
+    "Giulia Neri",
+    "Roberto Ferrari"
+  ],
+  "mezzi": [
+    "Navetta Van 01 (Cap. 8p)",
+    "Minibus B2 (Cap. 16p)",
+    "Auto 04 (Cap. 4p)",
+    "Bus GT (Cap. 50p)",
+    "Van Cargo 02"
+  ],
+  "fasce_orarie": [
+    "06:30",
+    "08:00",
+    "14:00",
+    "17:30",
+    "19:15",
+    "21:00"
+  ],
+  "github_config": {
+    "owner": "",
+    "repo": "transportmanage",
+    "token": "",
+    "branch": "main"
+  }
+}
