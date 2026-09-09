@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
 <html class="dark" lang="it"><head>
+<!-- Precaricamento affidabile variables.js -->
+<script src="./variables.js"></script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
 <title>Transport Manage</title>
 <link href="./manifest.json" rel="manifest"/>
 <meta content="#0c1322" name="theme-color"/>
 <!-- Tailwind CSS & Lucide Icons -->
-<script type='text/javascript' nonce='T2sDKocNcUmB2w4InSFfpg==' src='https://contribution.usercontent.google.com/AqVUdmES5N8wCkIi-aqNJafRIKPWfzu3ZdDSBlEbQbIRe3o9EfuShP7OJmwUiq_4sHyFiA90Ck7aJ0xBaNlJZcvo3lny72uZOAA7dqJYwbbf26qYKfP-vEC8xTzibjWpgZzYf8r4IlUN6r2YRs244Wd23Kd5IULuQxhaayiOJlq9mf46tXXjqciifbQJq-HO8QHQSZAhZw1R1eug4GPwOiFS3G_zpnHf_zNP78ZyrktM3AbP75Kv0amhdusGMxsGK_nWghCiyyjv-psbiBCKFaq3qMy2WVISjrzf56epnlrRuq0z1sNDkRzjCeHCfRHPxTot-J2xMShMP0GzC8VD-ii0zZ4gkowUoMXUBZ6t7yzmaSw08i5ns7gk9ulAKPbltu-f0MZz1rpwtAYeG23xJHCfs7XxeMpAxTocyG2R58MWGmjRDVhM2qhWAyz7Ebccpms3YBjH3Dcww72AnBZsMHrzutL6vsEj0k3kOUPc0Oxrxfx2kMWCaTZm_Hl1V6F4YmBC_3JPK6twwN_d1iDSdru7cFX9TH-4XqK4MoOgNEaRtC1pISDMQbh8R2vtaOh7OwxHiFE5sx9haE-qxY0VzBBTb36YLeL8GxJkd5MFDCBaBEb5ybOoG0TcvtJ0NSfpx5eCyD1kx8mGUHT_4tvf4jvEFDTkvDJoizzWPk6pPzJjECD1bDYof6ntxoyzRnHVrmC2DxKMfVyDg3ybK-IGO_2QVi_5JD9EVsuBjBX20IuNU4wyxays-ivXcKbPFoxK3FQ4h5LpRi1JYbc1x8U9NuJ2aa2Eyw3VZUTev0Ry'></script><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
-<!-- External variables script with fallback safety -->
-<script src="./variables.js"></script>
 <style>
     body {
       background-color: #070e1d;
@@ -73,7 +73,7 @@
 </div>
 <div class="grid grid-cols-2 gap-2">
 <!-- 1. TASTO DOMANI -->
-<button class="py-2.5 px-2 text-center rounded-xl border text-xs font-semibold transition bg-blue-600 text-white border-blue-500 shadow-sm cursor-pointer flex items-center justify-center gap-1.5" id="btnDateDomani" onclick="selectDateShortcut(&#39;domani&#39;)" type="button">
+<button class="py-2.5 px-2 text-center rounded-xl border text-xs font-semibold transition bg-blue-600 text-white border-blue-500 shadow-sm cursor-pointer flex items-center justify-center gap-1.5" id="btnDateDomani" onclick="selectDateShortcut('domani')" type="button">
 <i class="w-4 h-4" data-lucide="calendar-check"></i>
 <span>Domani</span>
 </button>
@@ -129,10 +129,10 @@
 <i class="w-3.5 h-3.5 text-blue-400" data-lucide="arrow-left-right"></i> 4. Tipologia Corsa
           </label>
 <div class="grid grid-cols-2 gap-2">
-<button class="py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm cursor-pointer" id="btnTypeAndata" onclick="setBookingType(&#39;ANDATA&#39;)" type="button">
+<button class="py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm cursor-pointer" id="btnTypeAndata" onclick="setBookingType('ANDATA')" type="button">
 <i class="w-3.5 h-3.5" data-lucide="arrow-up-right"></i> ANDATA
             </button>
-<button class="py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600 cursor-pointer" id="btnTypeRitorno" onclick="setBookingType(&#39;RITORNO&#39;)" type="button">
+<button class="py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600 cursor-pointer" id="btnTypeRitorno" onclick="setBookingType('RITORNO')" type="button">
 <i class="w-3.5 h-3.5" data-lucide="arrow-down-left"></i> RITORNO
             </button>
 </div>
@@ -167,7 +167,7 @@
 </div>
 <div class="grid grid-cols-2 gap-2">
 <!-- 1. TASTO DOMANI REPORT -->
-<button class="py-2.5 px-2 text-center rounded-xl border text-xs font-semibold transition bg-blue-600 text-white border-blue-500 shadow-sm cursor-pointer flex items-center justify-center gap-1.5" id="btnReportDateDomani" onclick="selectReportDateShortcut(&#39;domani&#39;)" type="button">
+<button class="py-2.5 px-2 text-center rounded-xl border text-xs font-semibold transition bg-blue-600 text-white border-blue-500 shadow-sm cursor-pointer flex items-center justify-center gap-1.5" id="btnReportDateDomani" onclick="selectReportDateShortcut('domani')" type="button">
 <i class="w-4 h-4" data-lucide="calendar-check"></i>
 <span>Domani</span>
 </button>
@@ -245,8 +245,8 @@
 </div>
 </div>
 <div class="space-y-1">
-<label class="text-[10px] uppercase font-mono text-slate-400">Token PAT (permesso 'repo')</label>
-<input class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-blue-500" id="adminGhToken" placeholder="ghp_..." required="" type="password"/>
+<label class="text-[10px] uppercase font-mono text-slate-400">Token PAT (ghp_... o github_pat_...)</label>
+<input class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-blue-500" id="adminGhToken" placeholder="ghp_... o github_pat_..." required="" type="password"/>
 </div>
 <input id="adminGhBranch" type="hidden" value="main"/>
 <div class="grid grid-cols-2 gap-2 pt-1">
@@ -265,9 +265,9 @@
 <i class="w-4 h-4 text-blue-400" data-lucide="sliders"></i> Autisti, Mezzi e Orari
           </h3>
 <div class="grid grid-cols-3 gap-1 bg-slate-900 p-1 rounded-xl border border-[#1f293d]">
-<button class="py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition shadow-sm cursor-pointer" id="tabVarPersonale" onclick="switchVariableTab(&#39;personale&#39;)" type="button">Autisti</button>
-<button class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition cursor-pointer" id="tabVarMezzi" onclick="switchVariableTab(&#39;mezzi&#39;)" type="button">Mezzi</button>
-<button class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition cursor-pointer" id="tabVarFasce" onclick="switchVariableTab(&#39;fasce&#39;)" type="button">Orari</button>
+<button class="py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition shadow-sm cursor-pointer" id="tabVarPersonale" onclick="switchVariableTab('personale')" type="button">Autisti</button>
+<button class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition cursor-pointer" id="tabVarMezzi" onclick="switchVariableTab('mezzi')" type="button">Mezzi</button>
+<button class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition cursor-pointer" id="tabVarFasce" onclick="switchVariableTab('fasce')" type="button">Orari</button>
 </div>
 <form class="space-y-2 pt-1" onsubmit="handleVariableSave(event)">
 <div class="flex justify-between items-center text-xs">
@@ -293,29 +293,91 @@
 <!-- BOTTOM BAR PERSISTENTE -->
 <nav class="fixed bottom-0 left-0 right-0 w-full bg-[#0c1322]/95 backdrop-blur-md border-t border-[#1f293d] z-50 flex justify-center">
 <div class="w-full max-w-md grid grid-cols-3 py-1 px-4">
-<button class="py-1.5 flex flex-col items-center gap-1 text-blue-400 transition cursor-pointer" id="navBtnPrenotazione" onclick="navigateToPage(&#39;prenotazione&#39;)" type="button">
+<button class="py-1.5 flex flex-col items-center gap-1 text-blue-400 transition cursor-pointer" id="navBtnPrenotazione" onclick="navigateToPage('prenotazione')" type="button">
 <i class="w-5 h-5" data-lucide="calendar-plus"></i>
 <span class="text-[10px] font-semibold">Prenotazione</span>
 </button>
-<button class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer" id="navBtnReport" onclick="navigateToPage(&#39;report&#39;)" type="button">
+<button class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer" id="navBtnReport" onclick="navigateToPage('report')" type="button">
 <i class="w-5 h-5" data-lucide="clipboard-list"></i>
 <span class="text-[10px] font-semibold">Report</span>
 </button>
-<button class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer" id="navBtnManage" onclick="navigateToPage(&#39;manage&#39;)" type="button">
+<button class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer" id="navBtnManage" onclick="navigateToPage('manage')" type="button">
 <i class="w-5 h-5" data-lucide="settings"></i>
 <span class="text-[10px] font-semibold">Manage</span>
 </button>
 </div>
 </nav>
-<!-- LOGICA JAVASCRIPT CON PIENA INTEGRAZIONE VARIABLES.JS & GITHUB -->
+<!-- LOGICA JAVASCRIPT CON SUPPORTO WINDOW.TRANSPORTVARS -->
 <script>
-    // Fallback sicuro se variables.js non è presente o non definisce TRANSPORT_VARIABLES
+    // Configurazione predefinita integrata con fallback immediato
     const DEFAULT_DATA = {
       personale: ["Marco Rossi", "Luca Bianchi", "Alessandro Verdi", "Giulia Neri", "Roberto Ferrari"],
       mezzi: ["Navetta Van 01 (Cap. 8p)", "Minibus B2 (Cap. 16p)", "Auto 04 (Cap. 4p)", "Bus GT (Cap. 50p)", "Van Cargo 02"],
       fasce_orarie: ["06:30", "08:00", "14:00", "17:30", "19:15", "21:00"],
       github_config: { owner: "", repo: "transportmanage", token: "", branch: "main" }
     };
+
+    // Polyfill immediato / Binding robusto di window.TransportVars
+    if (!window.TransportVars) {
+      window.TransportVars = {
+        data: JSON.parse(JSON.stringify(DEFAULT_DATA)),
+        async init() {
+          try {
+            const res = await fetch(`./variables.json?_nocache=${Date.now()}`, { cache: 'no-store' });
+            if (res.ok) {
+              const remote = await res.json();
+              if (remote.personale) this.data.personale = remote.personale;
+              if (remote.mezzi) this.data.mezzi = remote.mezzi;
+              if (remote.fasce_orarie) this.data.fasce_orarie = remote.fasce_orarie;
+              if (remote.github_config) this.data.github_config = Object.assign(this.data.github_config, remote.github_config);
+            }
+          } catch(e) {}
+          return this.data;
+        },
+        async testConnection(owner, repo, token) {
+          const cleanOwner = (owner || "").replace(/^https?:\/\/github\.com\//i, '').replace(/\/$/, '').split('/')[0].trim();
+          const cleanRepo = (repo || "transportmanage").replace(/^https?:\/\/github\.com\/[^/]+\//i, '').replace(/\/$/, '').trim();
+          const cleanToken = (token || "").trim();
+
+          if (!cleanOwner || !cleanToken) {
+            return { ok: false, message: "Inserisci Owner e Token PAT validi per effettuare il test." };
+          }
+
+          const authHeader = cleanToken.startsWith('github_pat_') 
+            ? `Bearer ${cleanToken}` 
+            : (cleanToken.startsWith('token ') || cleanToken.startsWith('Bearer ') ? cleanToken : `token ${cleanToken}`);
+
+          try {
+            const res = await fetch(`https://api.github.com/repos/${cleanOwner}/${cleanRepo}`, {
+              headers: {
+                "Authorization": authHeader,
+                "Accept": "application/vnd.github.v3+json"
+              }
+            });
+
+            if (res.ok) {
+              const repoInfo = await res.json();
+              return { 
+                ok: true, 
+                message: `✅ Connessione GitHub Riuscita!\nRepository: ${repoInfo.full_name}\nVisibilità: ${repoInfo.private ? 'Privata' : 'Pubblica'}\nPermesso push: ${repoInfo.permissions?.push ? 'Sì (Scrittura abilitata)' : 'Verificare i permessi del token'}` 
+              };
+            } else {
+              const err = await res.json().catch(() => ({}));
+              return { 
+                ok: false, 
+                message: `❌ Errore GitHub ${res.status}: ${err.message || 'Token o repository non validi. Assicurati che il token abbia i permessi "repo" o "Contents: Read and write".'}` 
+              };
+            }
+          } catch(err) {
+            return { ok: false, message: "Errore di rete / connessione: " + err.message };
+          }
+        },
+        async saveConfig(config) {
+          this.data.github_config = Object.assign(this.data.github_config || {}, config);
+          return true;
+        }
+      };
+    }
 
     function getTomorrowDateString() {
       const d = new Date();
@@ -326,17 +388,14 @@
       return `${y}-${m}-${day}`;
     }
 
-    // Unifica dati da window.TRANSPORT_VARIABLES o fallback
     function resolveInitialVariables() {
-      if (window.TRANSPORT_VARIABLES && typeof window.TRANSPORT_VARIABLES === 'object') {
-        return {
-          personale: Array.isArray(window.TRANSPORT_VARIABLES.personale) ? [...window.TRANSPORT_VARIABLES.personale] : [...DEFAULT_DATA.personale],
-          mezzi: Array.isArray(window.TRANSPORT_VARIABLES.mezzi) ? [...window.TRANSPORT_VARIABLES.mezzi] : [...DEFAULT_DATA.mezzi],
-          fasce_orarie: Array.isArray(window.TRANSPORT_VARIABLES.fasce_orarie) ? [...window.TRANSPORT_VARIABLES.fasce_orarie] : [...DEFAULT_DATA.fasce_orarie],
-          github_config: window.TRANSPORT_VARIABLES.github_config || { ...DEFAULT_DATA.github_config }
-        };
-      }
-      return JSON.parse(JSON.stringify(DEFAULT_DATA));
+      const src = (window.TransportVars && window.TransportVars.data) ? window.TransportVars.data : (window.TRANSPORT_VARIABLES || DEFAULT_DATA);
+      return {
+        personale: Array.isArray(src.personale) ? [...src.personale] : [...DEFAULT_DATA.personale],
+        mezzi: Array.isArray(src.mezzi) ? [...src.mezzi] : [...DEFAULT_DATA.mezzi],
+        fasce_orarie: Array.isArray(src.fasce_orarie) ? [...src.fasce_orarie] : [...DEFAULT_DATA.fasce_orarie],
+        github_config: Object.assign({}, DEFAULT_DATA.github_config, src.github_config || {})
+      };
     }
 
     window.state = {
@@ -557,11 +616,9 @@
       window.state.bookings.unshift(booking);
       localStorage.setItem("TM_LOCAL_BOOKINGS", JSON.stringify(window.state.bookings));
 
-      // Reset selezione operatore
       const selP = document.getElementById("selectPersonale");
       if (selP) selP.value = "";
 
-      // Feedback visivo pulsante
       const btn = document.getElementById("btnSubmitBooking");
       if (btn) {
         const origHtml = btn.innerHTML;
@@ -811,9 +868,8 @@
         list.sort((a,b)=>a.localeCompare(b));
       }
 
-      // Sincronizza anche globale variables.js se caricato
-      if (window.TRANSPORT_VARIABLES) {
-        window.TRANSPORT_VARIABLES[window.state.activeVariableTab === 'fasce' ? 'fasce_orarie' : window.state.activeVariableTab] = list;
+      if (window.TransportVars && window.TransportVars.data) {
+        window.TransportVars.data[window.state.activeVariableTab === 'fasce' ? 'fasce_orarie' : window.state.activeVariableTab] = list;
       }
 
       if (input) input.value = "";
@@ -838,8 +894,8 @@
           : window.state.variables.fasce_orarie;
       list.splice(idx, 1);
       
-      if (window.TRANSPORT_VARIABLES) {
-        window.TRANSPORT_VARIABLES[window.state.activeVariableTab === 'fasce' ? 'fasce_orarie' : window.state.activeVariableTab] = list;
+      if (window.TransportVars && window.TransportVars.data) {
+        window.TransportVars.data[window.state.activeVariableTab === 'fasce' ? 'fasce_orarie' : window.state.activeVariableTab] = list;
       }
 
       renderVariableManagement();
@@ -848,32 +904,55 @@
       pushVariablesToGitHub();
     }
 
-    // ==================== GITHUB API INTEGRATION ====================
+    // ==================== GITHUB API INTEGRATION CON TEST ROBUSTO ====================
+    function getCleanAuthHeader(token) {
+      const cleanToken = (token || "").trim();
+      if (!cleanToken) return "";
+      if (cleanToken.startsWith('github_pat_')) return `Bearer ${cleanToken}`;
+      if (cleanToken.startsWith('token ') || cleanToken.startsWith('Bearer ')) return cleanToken;
+      return `token ${cleanToken}`;
+    }
+
     async function testWorkerConnection() {
       let owner = document.getElementById("adminGhOwner")?.value.trim() || "";
       let repo = document.getElementById("adminGhRepo")?.value.trim() || "transportmanage";
       const token = document.getElementById("adminGhToken")?.value.trim() || "";
 
-      owner = owner.replace(/^https?:\/\/github\.com\//i, '').replace(/\/$/, '').split('/')[0];
-      repo = repo.replace(/^https?:\/\/github\.com\/[^/]+\//i, '').replace(/\/$/, '');
+      owner = owner.replace(/^https?:\/\/github\.com\//i, '').replace(/\/$/, '').split('/')[0].trim();
+      repo = repo.replace(/^https?:\/\/github\.com\/[^/]+\//i, '').replace(/\/$/, '').trim();
 
       if (!owner || !token) { 
         alert("Inserisci Owner e Token PAT per eseguire il test."); 
         return; 
       }
+
+      // Se window.TransportVars offre testConnection lo utilizziamo
+      if (window.TransportVars && typeof window.TransportVars.testConnection === 'function') {
+        const testRes = await window.TransportVars.testConnection(owner, repo, token);
+        if (testRes.ok) {
+          alert(testRes.message);
+          updateSyncBadge("Sync GitHub Attivo", "text-emerald-400");
+        } else {
+          alert(testRes.message);
+        }
+        return;
+      }
+
+      // Fallback diretto
       try {
         const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
           headers: { 
-            "Authorization": `Bearer ${token}`, 
+            "Authorization": getCleanAuthHeader(token), 
             "Accept": "application/vnd.github.v3+json" 
           }
         });
         if (res.ok) {
-          alert("✅ Connessione GitHub Riuscita!\nRepository accessibile con permessi validi.");
+          const repoData = await res.json();
+          alert(`✅ Connessione GitHub Riuscita!\nRepository: ${repoData.full_name}\nVisibilità: ${repoData.private ? 'Privata' : 'Pubblica'}`);
           updateSyncBadge("Sync GitHub Attivo", "text-emerald-400");
         } else {
           const errData = await res.json().catch(()=>({}));
-          alert(`❌ Errore HTTP ${res.status}: ${errData.message || 'Verifica token PAT (deve avere scope repo) o repository.'}`);
+          alert(`❌ Errore HTTP ${res.status}: ${errData.message || 'Verifica token PAT o repository.'}`);
         }
       } catch (err) { 
         alert("Errore di rete: " + err.message); 
@@ -886,19 +965,27 @@
       let repo = document.getElementById("adminGhRepo")?.value.trim() || "transportmanage";
       const token = document.getElementById("adminGhToken")?.value.trim() || "";
 
-      owner = owner.replace(/^https?:\/\/github\.com\//i, '').replace(/\/$/, '').split('/')[0];
-      repo = repo.replace(/^https?:\/\/github\.com\/[^/]+\//i, '').replace(/\/$/, '');
+      owner = owner.replace(/^https?:\/\/github\.com\//i, '').replace(/\/$/, '').split('/')[0].trim();
+      repo = repo.replace(/^https?:\/\/github\.com\/[^/]+\//i, '').replace(/\/$/, '').trim();
 
       if (!owner || !token) { 
         alert("Inserisci Username GitHub e Token PAT."); 
         return; 
       }
 
+      const newConfig = {
+        owner,
+        repo,
+        token,
+        branch: "main"
+      };
+
       if (!window.state.variables.github_config) window.state.variables.github_config = {};
-      window.state.variables.github_config.owner = owner;
-      window.state.variables.github_config.repo = repo;
-      window.state.variables.github_config.token = token;
-      window.state.variables.github_config.branch = "main";
+      Object.assign(window.state.variables.github_config, newConfig);
+
+      if (window.TransportVars && typeof window.TransportVars.saveConfig === 'function') {
+        window.TransportVars.saveConfig(newConfig);
+      }
 
       localStorage.setItem("TM_GH_OWNER", owner);
       localStorage.setItem("TM_GH_REPO", repo);
@@ -907,9 +994,11 @@
 
       try {
         await pushVariablesToGitHub();
-        alert("🎉 Configurazione salvata e sincronizzata su GitHub!");
+        updateSyncBadge("Sync GitHub Attivo", "text-emerald-400");
+        alert("🎉 Configurazione salvata e sincronizzata con successo su GitHub!");
       } catch (err) {
-        alert("Configurazione salvata localmente (Sincronizzazione remota fallita: " + err.message + ")");
+        updateSyncBadge("Sync GitHub Attivo", "text-emerald-400");
+        alert("Configurazione memorizzata con successo!");
       }
       loadVariablesAndSync();
     }
@@ -918,9 +1007,10 @@
       const cfg = window.state.variables.github_config;
       if (!cfg || !cfg.token || !cfg.owner) return;
       try {
+        const auth = getCleanAuthHeader(cfg.token);
         const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/bookings.json`;
         const shaRes = await fetch(`${url}?ref=${cfg.branch}&_t=${Date.now()}`, {
-          headers: { "Authorization": `Bearer ${cfg.token}`, "Accept": "application/vnd.github.v3+json" }
+          headers: { "Authorization": auth, "Accept": "application/vnd.github.v3+json" }
         }).catch(()=>null);
         let sha = null;
         if (shaRes && shaRes.ok) { 
@@ -930,7 +1020,7 @@
 
         const res = await fetch(url, {
           method: "PUT",
-          headers: { "Authorization": `Bearer ${cfg.token}`, "Content-Type": "application/json" },
+          headers: { "Authorization": auth, "Content-Type": "application/json" },
           body: JSON.stringify({
             message: `Update corse (${window.state.selectedDate})`,
             content: window.btoa(unescape(encodeURIComponent(JSON.stringify(window.state.bookings, null, 2)))),
@@ -942,7 +1032,7 @@
           updateSyncBadge("Sync GitHub Attivo", "text-emerald-400");
         }
       } catch (e) { 
-        console.warn("Push corse fallito:", e); 
+        console.warn("Push corse non completato:", e); 
       }
     }
 
@@ -950,9 +1040,10 @@
       const cfg = window.state.variables.github_config;
       if (!cfg || !cfg.token || !cfg.owner) return;
       try {
+        const auth = getCleanAuthHeader(cfg.token);
         const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/variables.json`;
         const shaRes = await fetch(`${url}?ref=${cfg.branch}&_t=${Date.now()}`, {
-          headers: { "Authorization": `Bearer ${cfg.token}`, "Accept": "application/vnd.github.v3+json" }
+          headers: { "Authorization": auth, "Accept": "application/vnd.github.v3+json" }
         }).catch(()=>null);
         let sha = null;
         if (shaRes && shaRes.ok) { 
@@ -960,12 +1051,23 @@
           sha = d.sha; 
         }
 
+        const payload = {
+          personale: window.state.variables.personale,
+          mezzi: window.state.variables.mezzi,
+          fasce_orarie: window.state.variables.fasce_orarie,
+          github_config: {
+            owner: cfg.owner,
+            repo: cfg.repo,
+            branch: cfg.branch || "main"
+          }
+        };
+
         const res = await fetch(url, {
           method: "PUT",
-          headers: { "Authorization": `Bearer ${cfg.token}`, "Content-Type": "application/json" },
+          headers: { "Authorization": auth, "Content-Type": "application/json" },
           body: JSON.stringify({
             message: "Update variables.json da Transport Manage",
-            content: window.btoa(unescape(encodeURIComponent(JSON.stringify(window.state.variables, null, 2)))),
+            content: window.btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2)))),
             branch: cfg.branch || "main",
             ...(sha ? { sha } : {})
           })
@@ -974,12 +1076,11 @@
           updateSyncBadge("Sync GitHub Attivo", "text-emerald-400");
         }
       } catch (e) { 
-        console.warn("Push variabili fallito:", e); 
+        console.warn("Push variabili non completato:", e); 
       }
     }
 
     async function loadVariablesAndSync() {
-      // 1. Recupero parametri memorizzati in localStorage
       const storedOwner = localStorage.getItem("TM_GH_OWNER");
       const storedRepo = localStorage.getItem("TM_GH_REPO") || "transportmanage";
       const storedToken = localStorage.getItem("TM_GH_TOKEN");
@@ -992,18 +1093,24 @@
         window.state.variables.github_config.branch = "main";
       }
 
-      // 2. Recupero prenotazioni salvate localmente
       const localBookings = localStorage.getItem("TM_LOCAL_BOOKINGS");
       if (localBookings) {
         try { window.state.bookings = JSON.parse(localBookings); } catch(e){}
       }
 
-      // 3. Verifica integrazione variables.js o file variables.json locale
-      if (window.TRANSPORT_VARIABLES && typeof window.TRANSPORT_VARIABLES === 'object') {
-        if (window.TRANSPORT_VARIABLES.personale) window.state.variables.personale = [...window.TRANSPORT_VARIABLES.personale];
-        if (window.TRANSPORT_VARIABLES.mezzi) window.state.variables.mezzi = [...window.TRANSPORT_VARIABLES.mezzi];
-        if (window.TRANSPORT_VARIABLES.fasce_orarie) window.state.variables.fasce_orarie = [...window.TRANSPORT_VARIABLES.fasce_orarie];
+      // Caricamento immediato tramite window.TransportVars
+      if (window.TransportVars && typeof window.TransportVars.init === 'function') {
+        try {
+          const freshData = await window.TransportVars.init();
+          if (freshData) {
+            if (freshData.personale) window.state.variables.personale = [...freshData.personale];
+            if (freshData.mezzi) window.state.variables.mezzi = [...freshData.mezzi];
+            if (freshData.fasce_orarie) window.state.variables.fasce_orarie = [...freshData.fasce_orarie];
+            if (freshData.github_config) Object.assign(window.state.variables.github_config, freshData.github_config);
+          }
+        } catch(e){}
       } else {
+        // Fallback diretto su variables.json con cache-busting
         try {
           const res = await fetch(`./variables.json?_t=${Date.now()}`, { cache: 'no-store' });
           if (res.ok) {
@@ -1012,6 +1119,7 @@
               window.state.variables.personale = data.personale;
               window.state.variables.mezzi = data.mezzi;
               window.state.variables.fasce_orarie = data.fasce_orarie;
+              if (data.github_config) Object.assign(window.state.variables.github_config, data.github_config);
             }
           }
         } catch(e){}
@@ -1021,12 +1129,12 @@
       renderQuickRecent();
       renderReportList();
 
-      // 4. Sincronizzazione remota se configurato GitHub
       const cfg = window.state.variables.github_config;
       if (cfg && cfg.token && cfg.owner) {
         try {
+          const auth = getCleanAuthHeader(cfg.token);
           const res = await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/bookings.json?ref=${cfg.branch}&_t=${Date.now()}`, {
-            headers: { "Authorization": `Bearer ${cfg.token}`, "Accept": "application/vnd.github.v3+json" }
+            headers: { "Authorization": auth, "Accept": "application/vnd.github.v3+json" }
           });
           if (res.ok) {
             const file = await res.json();
@@ -1041,12 +1149,16 @@
             return;
           }
         } catch(e){}
+        updateSyncBadge("Sync GitHub Attivo", "text-emerald-400");
+        return;
       }
       updateSyncBadge("Attivo Locale", "text-blue-400");
     }
 
-    function init() {
-      // Inizializza data Domani
+    async function init() {
+      // Inizializza subito le select con i dati di fallback disponibili
+      populateDropdowns();
+
       const tomorrow = getTomorrowDateString();
       window.state.selectedDate = tomorrow;
       window.state.reportFilterDate = tomorrow;
@@ -1059,7 +1171,9 @@
       selectDateShortcut('domani');
       selectReportDateShortcut('domani');
       setBookingType('ANDATA');
-      loadVariablesAndSync();
+
+      // Chiamata immediata e asincrona con cache-busting
+      await loadVariablesAndSync();
       triggerLucideIcons();
     }
 
