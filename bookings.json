@@ -1,1 +1,38 @@
-
+[
+  {
+    "id": "bk_1729753200000",
+    "date": "2024-10-24",
+    "personale": "Marco Rossi",
+    "mezzo": "Navetta Van 01 (Cap. 8p)",
+    "orario": "06:30",
+    "type": "ANDATA",
+    "createdAt": "2024-10-24T06:30:00.000Z"
+  },
+  {
+    "id": "bk_1729753201000",
+    "date": "2024-10-24",
+    "personale": "Luca Bianchi",
+    "mezzo": "Navetta Van 01 (Cap. 8p)",
+    "orario": "06:30",
+    "type": "ANDATA",
+    "createdAt": "2024-10-24T06:30:00.000Z"
+  },
+  {
+    "id": "bk_1729758600000",
+    "date": "2024-10-24",
+    "personale": "Roberto Ferrari",
+    "mezzo": "Minibus B2 (Cap. 16p)",
+    "orario": "08:00",
+    "type": "RITORNO",
+    "createdAt": "2024-10-24T08:00:00.000Z"
+  },
+  {
+    "id": "bk_1729758601000",
+    "date": "2024-10-24",
+    "personale": "Giulia Neri",
+    "mezzo": "Minibus B2 (Cap. 16p)",
+    "orario": "08:00",
+    "type": "RITORNO",
+    "createdAt": "2024-10-24T08:00:00.000Z"
+  }
+]
