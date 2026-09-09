@@ -1,11 +1,18 @@
 /**
- * Transport Manage - app.js (GitHub API Direct Sync)
- * Connessione diretta alle GitHub REST API senza intermediari (no Cloudflare, no Firebase).
+ * Transport Manage - app.js
+ * Sincronizzazione centralizzata con GitHub REST API
  * 
- * I file bookings.json e variables.json risiedono nella root del repository "transportmanage".
+ * Caratteristiche:
+ * 1. Token e configurazione salvati dall'amministratore in Pagina 3 (Manage)
+ * 2. Condivisione automatica della configurazione via variables.json per tutti i dispositivi collegati al link
+ * 3. Fallback locale su LocalStorage se non ancora sincronizzato
+ * 4. Gestione CRUD completa: Autisti, Mezzi, Fasce Orarie (ordinate cronologicamente)
+ * 5. Registrazione corse ANDATA / RITORNO con persistenza su bookings.json
+ * 6. Report giornaliero con raggruppamento per colore ed esportazione CSV
+ * 7. Esportazione globale su window per risposta immediata a tutti gli eventi onclick / onsubmit
  */
 
-// 1. Dati predefiniti di fallback
+// 1. DATI PREDEFINITI DI BASE (Fallback iniziale immediato)
 const DEFAULT_VARIABLES = {
   personale: [
     "Marco Rossi",
@@ -28,28 +35,85 @@ const DEFAULT_VARIABLES = {
     "17:30",
     "19:15",
     "21:00"
-  ]
+  ],
+  github_config: {
+    owner: "",
+    repo: "transportmanage",
+    token: "",
+    branch: "main"
+  }
 };
 
-// 2. Configurazione GitHub memorizzata in LocalStorage
+// 2. CONFIGURAZIONE GITHUB CENTRALIZZATA CON FALLBACK SU LOCALSTORAGE
 const GITHUB_CONFIG = {
-  get owner() { return localStorage.getItem("TM_GH_OWNER") || ""; },
-  set owner(val) { localStorage.setItem("TM_GH_OWNER", val.trim()); },
-  get repo() { return localStorage.getItem("TM_GH_REPO") || "transportmanage"; },
-  set repo(val) { localStorage.setItem("TM_GH_REPO", val.trim()); },
-  get token() { return localStorage.getItem("TM_GH_TOKEN") || ""; },
-  set token(val) { localStorage.setItem("TM_GH_TOKEN", val.trim()); },
-  get branch() { return localStorage.getItem("TM_GH_BRANCH") || "main"; },
-  set branch(val) { localStorage.setItem("TM_GH_BRANCH", val.trim()); }
+  get owner() {
+    return (window.state && window.state.variables && window.state.variables.github_config && window.state.variables.github_config.owner) 
+      || localStorage.getItem("TM_GH_OWNER") 
+      || "";
+  },
+  set owner(val) {
+    if (!window.state.variables.github_config) window.state.variables.github_config = {};
+    window.state.variables.github_config.owner = val.trim();
+    localStorage.setItem("TM_GH_OWNER", val.trim());
+  },
+  get repo() {
+    return (window.state && window.state.variables && window.state.variables.github_config && window.state.variables.github_config.repo) 
+      || localStorage.getItem("TM_GH_REPO") 
+      || "transportmanage";
+  },
+  set repo(val) {
+    if (!window.state.variables.github_config) window.state.variables.github_config = {};
+    window.state.variables.github_config.repo = val.trim();
+    localStorage.setItem("TM_GH_REPO", val.trim());
+  },
+  get token() {
+    return (window.state && window.state.variables && window.state.variables.github_config && window.state.variables.github_config.token) 
+      || localStorage.getItem("TM_GH_TOKEN") 
+      || "";
+  },
+  set token(val) {
+    if (!window.state.variables.github_config) window.state.variables.github_config = {};
+    window.state.variables.github_config.token = val.trim();
+    localStorage.setItem("TM_GH_TOKEN", val.trim());
+  },
+  get branch() {
+    return (window.state && window.state.variables && window.state.variables.github_config && window.state.variables.github_config.branch) 
+      || localStorage.getItem("TM_GH_BRANCH") 
+      || "main";
+  },
+  set branch(val) {
+    if (!window.state.variables.github_config) window.state.variables.github_config = {};
+    window.state.variables.github_config.branch = val.trim();
+    localStorage.setItem("TM_GH_BRANCH", val.trim());
+  }
 };
 
-// 3. Stato globale dell'applicazione
+// 3. STATO GLOBALE DELL'APPLICAZIONE
 window.state = {
   activeTab: 'prenotazione',
   selectedDate: getTodayDateString(),
   bookingType: 'ANDATA',
   variables: JSON.parse(JSON.stringify(DEFAULT_VARIABLES)),
-  bookings: [],
+  bookings: [
+    {
+      id: "bk_demo_1",
+      date: getTodayDateString(),
+      personale: "Marco Rossi",
+      mezzo: "Navetta Van 01 (Cap. 8p)",
+      orario: "06:30",
+      type: "ANDATA",
+      createdAt: new Date().toISOString()
+    },
+    {
+      id: "bk_demo_2",
+      date: getTodayDateString(),
+      personale: "Luca Bianchi",
+      mezzo: "Navetta Van 01 (Cap. 8p)",
+      orario: "06:30",
+      type: "ANDATA",
+      createdAt: new Date().toISOString()
+    }
+  ],
   isManageAuthenticated: false,
   activeVariableTab: 'personale',
   reportFilterDate: getTodayDateString(),
@@ -59,7 +123,7 @@ window.state = {
   }
 };
 
-// Palette cromatica per raggruppamento dinamico nel report
+// Palette cromatica per il raggruppamento report
 const PALETTE = [
   { border: 'border-l-emerald-400', badge: 'bg-emerald-950 text-emerald-300 border-emerald-800/60', tag: 'text-emerald-400' },
   { border: 'border-l-blue-400', badge: 'bg-blue-950 text-blue-300 border-blue-800/60', tag: 'text-blue-400' },
@@ -81,7 +145,7 @@ function getTodayDateString() {
 }
 
 function formatDateDisplay(dateStr) {
-  if (!dateStr) return "--";
+  if (!dateStr) return "--/--/----";
   const parts = dateStr.split('-');
   if (parts.length !== 3) return dateStr;
   return `${parts[2]}/${parts[1]}/${parts[0]}`;
@@ -117,7 +181,7 @@ function updateSyncBadge(text, colorClass) {
   }
 }
 
-// ==================== GITHUB DIRECT API ====================
+// ==================== GITHUB DIRECT REST API ====================
 function utf8ToBase64(str) {
   return window.btoa(unescape(encodeURIComponent(str)));
 }
@@ -127,20 +191,26 @@ function base64ToUtf8(str) {
 }
 
 async function fetchFileFromGitHub(filename) {
-  if (!GITHUB_CONFIG.owner || !GITHUB_CONFIG.token) {
-    throw new Error("Credenziali GitHub mancanti");
+  const owner = GITHUB_CONFIG.owner;
+  const repo = GITHUB_CONFIG.repo;
+  const token = GITHUB_CONFIG.token;
+  const branch = GITHUB_CONFIG.branch;
+
+  if (!owner) {
+    throw new Error("Repository GitHub non configurata");
   }
 
-  const url = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${filename}?ref=${GITHUB_CONFIG.branch}&t=${Date.now()}`;
-  const res = await fetch(url, {
-    headers: {
-      "Authorization": `Bearer ${GITHUB_CONFIG.token}`,
-      "Accept": "application/vnd.github.v3+json"
-    }
-  });
+  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${filename}?ref=${branch}&t=${Date.now()}`;
+  const headers = {
+    "Accept": "application/vnd.github.v3+json"
+  };
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
 
+  const res = await fetch(url, { headers });
   if (!res.ok) {
-    throw new Error(`Errore HTTP ${res.status}: ${res.statusText}`);
+    throw new Error(`HTTP ${res.status}: ${res.statusText}`);
   }
 
   const data = await res.json();
@@ -152,19 +222,24 @@ async function fetchFileFromGitHub(filename) {
 }
 
 async function saveFileToGitHub(filename, jsonData, commitMessage) {
-  if (!GITHUB_CONFIG.owner || !GITHUB_CONFIG.token) {
-    throw new Error("Configura Token e Utente GitHub in Manage per sincronizzare");
+  const owner = GITHUB_CONFIG.owner;
+  const repo = GITHUB_CONFIG.repo;
+  const token = GITHUB_CONFIG.token;
+  const branch = GITHUB_CONFIG.branch;
+
+  if (!owner || !token) {
+    throw new Error("Credenziali GitHub (Owner e Token) obbligatorie per salvare le modifiche");
   }
 
   const fileKey = filename.replace('.json', '');
-  const url = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${filename}`;
+  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${filename}`;
   const jsonString = JSON.stringify(jsonData, null, 2);
   const base64Content = utf8ToBase64(jsonString);
 
   const bodyPayload = {
     message: commitMessage || `Update ${filename} via PWA Transport Manage`,
     content: base64Content,
-    branch: GITHUB_CONFIG.branch
+    branch: branch
   };
 
   if (window.state.githubSha[fileKey]) {
@@ -174,7 +249,7 @@ async function saveFileToGitHub(filename, jsonData, commitMessage) {
   const res = await fetch(url, {
     method: "PUT",
     headers: {
-      "Authorization": `Bearer ${GITHUB_CONFIG.token}`,
+      "Authorization": `Bearer ${token}`,
       "Accept": "application/vnd.github.v3+json",
       "Content-Type": "application/json"
     },
@@ -183,7 +258,7 @@ async function saveFileToGitHub(filename, jsonData, commitMessage) {
 
   if (!res.ok) {
     const errData = await res.json().catch(() => ({}));
-    throw new Error(errData.message || `Errore commit ${res.status}`);
+    throw new Error(errData.message || `Errore salvataggio ${res.status}`);
   }
 
   const resData = await res.json();
@@ -193,14 +268,28 @@ async function saveFileToGitHub(filename, jsonData, commitMessage) {
   return true;
 }
 
+// Sincronizzazione automatica all'avvio
 async function syncWithGitHub() {
+  // Prova prima a leggere il file variables.json dal repository
+  try {
+    const localVarsRes = await fetch(`./variables.json?t=${Date.now()}`).catch(() => null);
+    if (localVarsRes && localVarsRes.ok) {
+      const parsed = await localVarsRes.json();
+      if (parsed && parsed.github_config && parsed.github_config.token) {
+        window.state.variables = parsed;
+      }
+    }
+  } catch (e) {
+    console.log("Controllo variables.json completato.");
+  }
+
   if (!GITHUB_CONFIG.owner || !GITHUB_CONFIG.token) {
-    updateSyncBadge("GitHub non configurato (Uso Locale)", "text-amber-400");
+    updateSyncBadge("Configura in Manage", "text-amber-400");
     renderAllViews();
     return;
   }
 
-  updateSyncBadge("Sincronizzazione GitHub...", "text-blue-400");
+  updateSyncBadge("Sync GitHub...", "text-blue-400");
 
   try {
     try {
@@ -212,7 +301,7 @@ async function syncWithGitHub() {
         }
       }
     } catch (e) {
-      console.warn("Impossibile caricare variables.json:", e);
+      console.warn("Impossibile caricare variables.json da GitHub:", e);
     }
 
     try {
@@ -221,13 +310,13 @@ async function syncWithGitHub() {
         window.state.bookings = books;
       }
     } catch (e) {
-      console.warn("Impossibile caricare bookings.json:", e);
+      console.warn("Impossibile caricare bookings.json da GitHub:", e);
     }
 
-    updateSyncBadge("GitHub Connesso • Sync OK", "text-emerald-400");
+    updateSyncBadge("Sync Attivo (GitHub)", "text-emerald-400");
   } catch (err) {
-    console.error("Errore Sync GitHub:", err);
-    updateSyncBadge("Errore Connessione GitHub", "text-rose-400");
+    console.error("Errore sincronizzazione GitHub:", err);
+    updateSyncBadge("Errore Connessione", "text-rose-400");
   }
 
   renderAllViews();
@@ -236,26 +325,26 @@ async function syncWithGitHub() {
 async function pushBookingsToGitHub() {
   if (!GITHUB_CONFIG.owner || !GITHUB_CONFIG.token) return;
   try {
-    updateSyncBadge("Invio corsa a GitHub...", "text-amber-400");
+    updateSyncBadge("Invio corsa...", "text-amber-400");
     await saveFileToGitHub("bookings.json", window.state.bookings, `Nuova corsa registrata: ${window.state.selectedDate}`);
-    updateSyncBadge("Corsa salvata su GitHub", "text-emerald-400");
+    updateSyncBadge("Sync Attivo (GitHub)", "text-emerald-400");
   } catch (err) {
     console.error("Errore salvataggio corse GitHub:", err);
-    updateSyncBadge("Errore Salvataggio GitHub", "text-rose-400");
-    alert("Attenzione: salvato localmente ma non su GitHub. Verifica token o connessione: " + err.message);
+    updateSyncBadge("Errore Salvataggio", "text-rose-400");
+    alert("Salvataggio locale completato, ma errore su GitHub: " + err.message);
   }
 }
 
 async function pushVariablesToGitHub() {
   if (!GITHUB_CONFIG.owner || !GITHUB_CONFIG.token) return;
   try {
-    updateSyncBadge("Salvataggio variabili GitHub...", "text-amber-400");
-    await saveFileToGitHub("variables.json", window.state.variables, "Aggiornamento flotta e orari");
-    updateSyncBadge("Variabili salvate su GitHub", "text-emerald-400");
+    updateSyncBadge("Salvataggio su GitHub...", "text-amber-400");
+    await saveFileToGitHub("variables.json", window.state.variables, "Aggiornamento flotta, orari o credenziali");
+    updateSyncBadge("Sync Attivo (GitHub)", "text-emerald-400");
   } catch (err) {
     console.error("Errore variabili GitHub:", err);
-    updateSyncBadge("Errore Salvataggio GitHub", "text-rose-400");
-    alert("Errore salvataggio variabili su GitHub: " + err.message);
+    updateSyncBadge("Errore Salvataggio", "text-rose-400");
+    alert("Errore salvataggio su GitHub: " + err.message);
   }
 }
 
@@ -274,7 +363,7 @@ function navigateToPage(pageId) {
   const titleMap = {
     prenotazione: "Prenotazione",
     report: "Report",
-    manage: "Manage"
+    manage: "Manage (Admin)"
   };
   const headerTitle = document.getElementById("headerPageTitle");
   if (headerTitle) headerTitle.innerText = titleMap[pageId] || "App";
@@ -283,9 +372,9 @@ function navigateToPage(pageId) {
     const btn = document.getElementById(`navBtn${tab.charAt(0).toUpperCase() + tab.slice(1)}`);
     if (btn) {
       if (tab === pageId) {
-        btn.className = "py-1.5 flex flex-col items-center gap-1 text-blue-400 transition";
+        btn.className = "py-1.5 flex flex-col items-center gap-1 text-blue-400 transition cursor-pointer";
       } else {
-        btn.className = "py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition";
+        btn.className = "py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer";
       }
     }
   });
@@ -315,15 +404,15 @@ function selectDateShortcut(type) {
 
   if (btnOggi && btnDomani) {
     if (type === 'oggi') {
-      btnOggi.className = "py-2 px-1 text-center rounded-lg border text-xs font-medium transition bg-blue-600 text-white border-blue-500 shadow-sm";
-      btnDomani.className = "py-2 px-1 text-center rounded-lg border text-xs font-medium transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700";
+      btnOggi.className = "py-2 px-1 text-center rounded-xl border text-xs font-semibold transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-500/20";
+      btnDomani.className = "py-2 px-1 text-center rounded-xl border text-xs font-medium transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700";
     } else {
-      btnDomani.className = "py-2 px-1 text-center rounded-lg border text-xs font-medium transition bg-blue-600 text-white border-blue-500 shadow-sm";
-      btnOggi.className = "py-2 px-1 text-center rounded-lg border text-xs font-medium transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700";
+      btnDomani.className = "py-2 px-1 text-center rounded-xl border text-xs font-semibold transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-500/20";
+      btnOggi.className = "py-2 px-1 text-center rounded-xl border text-xs font-medium transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700";
     }
   }
   if (btnCal) {
-    btnCal.className = "w-full py-2 px-1 flex items-center justify-center gap-1 rounded-lg border text-xs font-medium transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700";
+    btnCal.className = "w-full py-2 px-1 flex items-center justify-center gap-1 rounded-xl border text-xs font-medium transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700";
   }
 }
 
@@ -349,11 +438,11 @@ function setBookingType(type) {
 
   if (btnAndata && btnRitorno) {
     if (type === 'ANDATA') {
-      btnAndata.className = "py-2.5 rounded-lg border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm";
-      btnRitorno.className = "py-2.5 rounded-lg border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600";
+      btnAndata.className = "py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-500/20";
+      btnRitorno.className = "py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600";
     } else {
-      btnRitorno.className = "py-2.5 rounded-lg border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-indigo-600 text-white border-indigo-500 shadow-sm";
-      btnAndata.className = "py-2.5 rounded-lg border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600";
+      btnRitorno.className = "py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-500/20";
+      btnAndata.className = "py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600";
     }
   }
   triggerLucideIcons();
@@ -414,13 +503,12 @@ async function handleBookingSubmit(e) {
   };
 
   window.state.bookings.unshift(newBooking);
-
   if (selP) selP.value = "";
 
   const submitBtn = document.getElementById("btnSubmitBooking");
   if (submitBtn) {
     const origHtml = submitBtn.innerHTML;
-    submitBtn.innerHTML = `<i data-lucide="check" class="w-4 h-4 inline-block mr-1"></i> PRENOTAZIONE SALVATA!`;
+    submitBtn.innerHTML = `<i data-lucide="check" class="w-4 h-4 inline-block mr-1"></i> SALVATO CON SUCCESSO!`;
     submitBtn.classList.replace("bg-blue-600", "bg-emerald-600");
     triggerLucideIcons();
 
@@ -603,6 +691,7 @@ function checkManageAuthState() {
     if (window.state.isManageAuthenticated) {
       gate.classList.add("hidden");
       dash.classList.remove("hidden");
+      populateAdminConfigFields();
       renderVariableManagement();
     } else {
       gate.classList.remove("hidden");
@@ -610,6 +699,72 @@ function checkManageAuthState() {
     }
   }
   triggerLucideIcons();
+}
+
+function populateAdminConfigFields() {
+  const ownerInput = document.getElementById("adminGhOwner");
+  const repoInput = document.getElementById("adminGhRepo");
+  const tokenInput = document.getElementById("adminGhToken");
+  const branchInput = document.getElementById("adminGhBranch");
+
+  if (ownerInput) ownerInput.value = GITHUB_CONFIG.owner;
+  if (repoInput) repoInput.value = GITHUB_CONFIG.repo;
+  if (tokenInput) tokenInput.value = GITHUB_CONFIG.token;
+  if (branchInput) branchInput.value = GITHUB_CONFIG.branch;
+}
+
+async function saveAdminGitHubConfig(e) {
+  if (e && e.preventDefault) e.preventDefault();
+
+  const ownerInput = document.getElementById("adminGhOwner");
+  const repoInput = document.getElementById("adminGhRepo");
+  const tokenInput = document.getElementById("adminGhToken");
+  const branchInput = document.getElementById("adminGhBranch");
+
+  const owner = ownerInput ? ownerInput.value.trim() : "";
+  const repo = repoInput ? repoInput.value.trim() : "transportmanage";
+  const token = tokenInput ? tokenInput.value.trim() : "";
+  const branch = branchInput ? branchInput.value.trim() : "main";
+
+  if (!owner || !token) {
+    alert("Inserisci sia l'utente GitHub che il Personal Access Token (PAT).");
+    return;
+  }
+
+  GITHUB_CONFIG.owner = owner;
+  GITHUB_CONFIG.repo = repo;
+  GITHUB_CONFIG.token = token;
+  GITHUB_CONFIG.branch = branch;
+
+  if (!window.state.variables.github_config) {
+    window.state.variables.github_config = {};
+  }
+  window.state.variables.github_config.owner = owner;
+  window.state.variables.github_config.repo = repo;
+  window.state.variables.github_config.token = token;
+  window.state.variables.github_config.branch = branch;
+
+  const btn = document.getElementById("btnSaveAdminConfig");
+  if (btn) {
+    btn.innerHTML = `<i data-lucide="check" class="w-4 h-4 inline-block mr-1"></i> SALVATAGGIO IN CORSO...`;
+    btn.className = "w-full py-2.5 px-3 bg-emerald-600 text-white rounded-xl text-xs font-bold transition";
+    triggerLucideIcons();
+  }
+
+  try {
+    await pushVariablesToGitHub();
+    alert("✅ Configurazione GitHub salvata con successo!\nTutti i dispositivi con il link avranno ora la sincronizzazione attiva automaticamente.");
+  } catch (err) {
+    alert("Configurazione memorizzata nel dispositivo locale, ma salvataggio su variables.json fallito: " + err.message);
+  } finally {
+    if (btn) {
+      btn.innerHTML = `<i data-lucide="save" class="w-4 h-4 inline-block mr-1"></i> Salva e Condividi con Tutti i Dispositivi`;
+      btn.className = "w-full py-2.5 px-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold shadow transition cursor-pointer";
+      triggerLucideIcons();
+    }
+  }
+
+  syncWithGitHub();
 }
 
 function switchVariableTab(tabKey) {
@@ -691,10 +846,10 @@ function renderVariableManagement() {
           <span class="text-xs font-semibold text-slate-100 ${window.state.activeVariableTab === 'fasce' ? 'font-mono text-blue-300' : ''}">${escapeHtml(item)}</span>
         </div>
         <div class="flex items-center gap-1">
-          <button onclick="editVariableItem(${index})" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition" title="Modifica">
+          <button onclick="editVariableItem(${index})" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer" title="Modifica">
             <i data-lucide="edit-2" class="w-3.5 h-3.5"></i>
           </button>
-          <button onclick="deleteVariableItem(${index})" class="p-1.5 rounded-lg text-rose-400 hover:text-rose-300 hover:bg-rose-950/30 transition" title="Elimina">
+          <button onclick="deleteVariableItem(${index})" class="p-1.5 rounded-lg text-rose-400 hover:text-rose-300 hover:bg-rose-950/30 transition cursor-pointer" title="Elimina">
             <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
           </button>
         </div>
@@ -771,22 +926,9 @@ async function deleteVariableItem(index) {
   await pushVariablesToGitHub();
 }
 
-// ==================== MODALE CONFIGURAZIONE GITHUB ====================
+// ==================== MODALE & TEST CONNESSIONE ====================
 function openApiModal() {
-  const modal = document.getElementById("apiConfigModal");
-  if (!modal) return;
-
-  const ownerInput = document.getElementById("ghOwnerInput");
-  const repoInput = document.getElementById("ghRepoInput");
-  const tokenInput = document.getElementById("ghTokenInput");
-  const branchInput = document.getElementById("ghBranchInput");
-
-  if (ownerInput) ownerInput.value = GITHUB_CONFIG.owner;
-  if (repoInput) repoInput.value = GITHUB_CONFIG.repo;
-  if (tokenInput) tokenInput.value = GITHUB_CONFIG.token;
-  if (branchInput) branchInput.value = GITHUB_CONFIG.branch;
-
-  modal.classList.remove("hidden");
+  navigateToPage('manage');
 }
 
 function closeApiModal() {
@@ -794,32 +936,13 @@ function closeApiModal() {
   if (modal) modal.classList.add("hidden");
 }
 
-function saveApiUrl() {
-  const ownerInput = document.getElementById("ghOwnerInput");
-  const repoInput = document.getElementById("ghRepoInput");
-  const tokenInput = document.getElementById("ghTokenInput");
-  const branchInput = document.getElementById("ghBranchInput");
-
-  if (ownerInput) GITHUB_CONFIG.owner = ownerInput.value;
-  if (repoInput) GITHUB_CONFIG.repo = repoInput.value;
-  if (tokenInput) GITHUB_CONFIG.token = tokenInput.value;
-  if (branchInput) GITHUB_CONFIG.branch = branchInput.value;
-
-  closeApiModal();
-  syncWithGitHub();
-}
-
 async function testWorkerConnection() {
-  const ownerInput = document.getElementById("ghOwnerInput");
-  const repoInput = document.getElementById("ghRepoInput");
-  const tokenInput = document.getElementById("ghTokenInput");
-
-  const owner = ownerInput ? ownerInput.value.trim() : GITHUB_CONFIG.owner;
-  const repo = repoInput ? repoInput.value.trim() : GITHUB_CONFIG.repo;
-  const token = tokenInput ? tokenInput.value.trim() : GITHUB_CONFIG.token;
+  const owner = GITHUB_CONFIG.owner;
+  const repo = GITHUB_CONFIG.repo;
+  const token = GITHUB_CONFIG.token;
 
   if (!owner || !token) {
-    alert("Inserisci sia il tuo Username GitHub che il Personal Access Token.");
+    alert("Inserisci prima l'Utente GitHub e il Token PAT nei campi di configurazione sottostanti.");
     return;
   }
 
@@ -837,7 +960,7 @@ async function testWorkerConnection() {
     } else if (res.status === 401) {
       alert("❌ Token GitHub non valido o scaduto.");
     } else if (res.status === 404) {
-      alert(`❌ Repository "${owner}/${repo}" non trovato. Verifica che il nome sia esatto e che il token abbia il permesso "repo".`);
+      alert(`❌ Repository "${owner}/${repo}" non trovato. Verifica il nome o i permessi del token.`);
     } else {
       alert(`Errore risposta GitHub: HTTP ${res.status}`);
     }
@@ -875,7 +998,7 @@ if (document.readyState === 'loading') {
   initApp();
 }
 
-// Esporta tutte le funzioni su window per i trigger HTML (onclick / onsubmit)
+// ESPORTAZIONE ESPLICITA SU WINDOW PER TUTTI I TRIGGER INLINE HTML
 window.navigateToPage = navigateToPage;
 window.selectDateShortcut = selectDateShortcut;
 window.onCustomDateChange = onCustomDateChange;
@@ -893,5 +1016,5 @@ window.editVariableItem = editVariableItem;
 window.deleteVariableItem = deleteVariableItem;
 window.openApiModal = openApiModal;
 window.closeApiModal = closeApiModal;
-window.saveApiUrl = saveApiUrl;
+window.saveAdminGitHubConfig = saveAdminGitHubConfig;
 window.testWorkerConnection = testWorkerConnection;
