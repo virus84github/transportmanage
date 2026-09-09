@@ -1,30 +1,4 @@
 <!DOCTYPE html>
-
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #000;
-    }
-  </style>
-</head>
-<body>
-<!-- STITCH_THREEJS_START:ANIMATION_54 class="fixed inset-0 w-full h-full bg-transparent" -->
-<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
-<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
-<div id="threejs-container-ANIMATION_54" style="width:100%;height:100%"></div>
-<script>
-(function() {
-  const container = document.getElementById('threejs-container-ANIMATION_54');
-  const devicePixelRatio = window.devicePixelRatio || 1;
-  <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
@@ -33,10 +7,11 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Lucide Icons -->
-<script src="https://unpkg.com/lucide@latest"></script>
-<link href="./manifest.json" rel="manifest"/>
-<style>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="manifest" href="./manifest.json" />
+
+  <style>
     body {
       touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
@@ -54,273 +29,279 @@
       border-radius: 4px;
     }
   </style>
-
+</head>
 <body class="bg-[#0c1322] text-slate-100 min-h-screen flex flex-col font-sans antialiased selection:bg-blue-600 selection:text-white pb-20">
-<!-- ==================== HEADER PERSISTENTE ==================== -->
-<header class="sticky top-0 z-30 bg-[#0c1322]/90 backdrop-blur-md border-b border-slate-800/80 px-4 py-3 flex items-center justify-between shadow-sm">
-<div class="flex items-center gap-2.5">
-<div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-600/20">
-<i class="w-5 h-5" data-lucide="bus"></i>
-</div>
-<div>
-<div class="flex items-center gap-1.5">
-<h1 class="text-sm font-bold tracking-tight text-white leading-tight">Transport Manage</h1>
-<span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-800/60">Sheets DB</span>
-</div>
-<div class="text-[10px] tracking-wide font-mono uppercase text-slate-400 flex items-center gap-1" id="syncStatusBadge">
-<span class="w-1.5 h-1.5 rounded-full bg-slate-400 inline-block animate-pulse"></span> Sincronizzazione attiva
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="sticky top-0 z-30 bg-[#0c1322]/90 backdrop-blur-md border-b border-slate-800/80 px-4 py-3 flex items-center justify-between shadow-sm">
+    <div class="flex items-center gap-2.5">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-600/20">
+        <i data-lucide="bus" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-1.5">
+          <h1 class="text-sm font-bold tracking-tight text-white leading-tight">Transport Manage</h1>
+          <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-800/60">Sheets DB</span>
         </div>
-</div>
-</div>
-<!-- Pulsante Refresh Manuale -->
-<button class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/60 transition active:scale-95" id="btnManualRefresh" onclick="manualRefresh()" title="Aggiorna dati da Google Sheets">
-<i class="w-4 h-4" data-lucide="refresh-cw"></i>
-</button>
-</header>
-<!-- ==================== CONTENUTO PRINCIPALE (ROUTING SCHEDE) ==================== -->
-<main class="flex-1 max-w-md w-full mx-auto p-4 space-y-4">
-<!-- ==================== SCHEDA 1: PRENOTAZIONE ==================== -->
-<section class="space-y-4" id="page-prenotazione">
-<!-- SELETTORE DATA -->
-<div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-3.5 shadow-sm space-y-2.5">
-<div class="flex items-center justify-between text-xs">
-<span class="font-bold text-slate-300 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-<i class="w-3.5 h-3.5 text-blue-400" data-lucide="calendar"></i> Data Corsa
+        <div id="syncStatusBadge" class="text-[10px] tracking-wide font-mono uppercase text-slate-400 flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-400 inline-block animate-pulse"></span> Sincronizzazione attiva
+        </div>
+      </div>
+    </div>
+
+    <!-- Refresh Manuale -->
+    <button onclick="manualRefresh()" id="btnManualRefresh" class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/60 transition active:scale-95" title="Aggiorna dati da Google Sheets">
+      <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+    </button>
+  </header>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="flex-1 max-w-md w-full mx-auto p-4 space-y-4">
+
+    <!-- ==================== SCHEDA 1: PRENOTAZIONE ==================== -->
+    <section id="page-prenotazione" class="space-y-4">
+
+      <!-- SELETTORE DATA -->
+      <div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-3.5 shadow-sm space-y-2.5">
+        <div class="flex items-center justify-between text-xs">
+          <span class="font-bold text-slate-300 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+            <i data-lucide="calendar" class="w-3.5 h-3.5 text-blue-400"></i> Data Corsa
           </span>
-<span class="font-mono font-bold text-blue-400 bg-blue-950/60 px-2 py-0.5 rounded-md border border-blue-900/60" id="displaySelectedDate">--/--/----</span>
-</div>
-<div class="grid grid-cols-2 gap-2">
-<!-- TASTO 1: DOMANI -->
-<button class="py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95" id="btnDateDomani" onclick="setBookingDateShortcut('domani')" type="button">
-<i class="w-4 h-4" data-lucide="chevrons-right"></i> Domani
+          <span id="displaySelectedDate" class="font-mono font-bold text-blue-400 bg-blue-950/60 px-2 py-0.5 rounded-md border border-blue-900/60">--/--/----</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <!-- TASTO 1: DOMANI -->
+          <button type="button" id="btnDateDomani" onclick="setBookingDateShortcut('domani')" class="py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95">
+            <i data-lucide="chevrons-right" class="w-4 h-4"></i> Domani
           </button>
-<!-- TASTO 2: CALENDARIO -->
-<label class="cursor-pointer relative py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95" id="btnDateCalendarWrapper">
-<i class="w-4 h-4 text-slate-400" data-lucide="calendar-days"></i> Calendario
-            <input class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" id="inputCustomDate" onchange="onCustomDatePicked(this.value)" type="date"/>
-</label>
-</div>
-</div>
-<!-- FORM PRENOTAZIONE -->
-<form class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-4 shadow-sm space-y-4" id="bookingForm" onsubmit="submitBooking(event)">
-<!-- 1. PERSONALE -->
-<div class="space-y-1.5">
-<label class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5 uppercase tracking-wide">
-<i class="w-3.5 h-3.5 text-slate-400" data-lucide="user"></i> 1. Operatore / Autista
+
+          <!-- TASTO 2: CALENDARIO -->
+          <label id="btnDateCalendarWrapper" class="cursor-pointer relative py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95">
+            <i data-lucide="calendar-days" class="w-4 h-4 text-slate-400"></i> Calendario
+            <input type="date" id="inputCustomDate" onchange="onCustomDatePicked(this.value)" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" />
           </label>
-<select class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition" id="selPersonale" required="">
-<option value="">Caricamento conducenti...</option>
-</select>
-</div>
-<!-- 2. MEZZO -->
-<div class="space-y-1.5">
-<label class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5 uppercase tracking-wide">
-<i class="w-3.5 h-3.5 text-slate-400" data-lucide="truck"></i> 2. Mezzo di Trasporto
+        </div>
+      </div>
+
+      <!-- FORM PRENOTAZIONE -->
+      <form id="bookingForm" onsubmit="submitBooking(event)" class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-4 shadow-sm space-y-4">
+
+        <!-- 1. PERSONALE -->
+        <div class="space-y-1.5">
+          <label class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5 uppercase tracking-wide">
+            <i data-lucide="user" class="w-3.5 h-3.5 text-slate-400"></i> 1. Operatore / Autista
           </label>
-<select class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition" id="selMezzo" required="">
-<option value="">Caricamento flotta...</option>
-</select>
-</div>
-<!-- 3. FASCIA ORARIA -->
-<div class="space-y-1.5">
-<label class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5 uppercase tracking-wide">
-<i class="w-3.5 h-3.5 text-slate-400" data-lucide="clock"></i> 3. Fascia Oraria
+          <select id="selPersonale" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition">
+            <option value="">Caricamento conducenti...</option>
+          </select>
+        </div>
+
+        <!-- 2. MEZZO -->
+        <div class="space-y-1.5">
+          <label class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5 uppercase tracking-wide">
+            <i data-lucide="truck" class="w-3.5 h-3.5 text-slate-400"></i> 2. Mezzo di Trasporto
           </label>
-<select class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 font-mono focus:outline-none focus:border-blue-500 transition" id="selOrario" required="">
-<option value="">Caricamento orari autorizzati...</option>
-</select>
-</div>
-<!-- 4. TIPOLOGIA CORSA -->
-<div class="space-y-1.5">
-<label class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5 uppercase tracking-wide">
-<i class="w-3.5 h-3.5 text-slate-400" data-lucide="repeat"></i> 4. Tipologia Corsa
+          <select id="selMezzo" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition">
+            <option value="">Caricamento flotta...</option>
+          </select>
+        </div>
+
+        <!-- 3. FASCIA ORARIA -->
+        <div class="space-y-1.5">
+          <label class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5 uppercase tracking-wide">
+            <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-400"></i> 3. Fascia Oraria
           </label>
-<div class="grid grid-cols-2 gap-2">
-<button class="py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95" id="btnTypeAndata" onclick="setTripType('ANDATA')" type="button">
-<i class="w-4 h-4" data-lucide="arrow-up-right"></i> ANDATA
+          <select id="selOrario" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 font-mono focus:outline-none focus:border-blue-500 transition">
+            <option value="">Caricamento orari autorizzati...</option>
+          </select>
+        </div>
+
+        <!-- 4. TIPOLOGIA CORSA -->
+        <div class="space-y-1.5">
+          <label class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5 uppercase tracking-wide">
+            <i data-lucide="repeat" class="w-3.5 h-3.5 text-slate-400"></i> 4. Tipologia Corsa
+          </label>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" id="btnTypeAndata" onclick="setTripType('ANDATA')" class="py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95">
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i> ANDATA
             </button>
-<button class="py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600 active:scale-95" id="btnTypeRitorno" onclick="setTripType('RITORNO')" type="button">
-<i class="w-4 h-4" data-lucide="arrow-down-left"></i> RITORNO
+            <button type="button" id="btnTypeRitorno" onclick="setTripType('RITORNO')" class="py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600 active:scale-95">
+              <i data-lucide="arrow-down-left" class="w-4 h-4"></i> RITORNO
             </button>
-</div>
-</div>
-<!-- PULSANTE SALVATAGGIO -->
-<button class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs tracking-wider uppercase transition shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2 active:scale-[0.98]" id="btnSubmitTrip" type="submit">
-<i class="w-4 h-4" data-lucide="send"></i> Salva e Invia su Google Fogli
+          </div>
+        </div>
+
+        <!-- SALVATAGGIO -->
+        <button type="submit" id="btnSubmitTrip" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs tracking-wider uppercase transition shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2 active:scale-[0.98]">
+          <i data-lucide="send" class="w-4 h-4"></i> Salva e Invia su Google Fogli
         </button>
-</form>
-<!-- ULTIME CORSE RECENTI REGISTRATE -->
-<div class="space-y-2">
-<div class="flex items-center justify-between text-xs px-1">
-<span class="font-bold text-slate-400 uppercase tracking-wider text-[11px]">Ultime Corse Registrate</span>
-<span class="text-[11px] font-mono text-slate-500" id="quickRecentCount">0 corse totali</span>
-</div>
-<div class="space-y-2" id="quickRecentList">
-<!-- Righe corse recenti -->
-</div>
-</div>
-</section>
-<!-- ==================== SCHEDA 2: REPORT CORSE ==================== -->
-<section class="space-y-4 hidden" id="page-report">
-<!-- CONTROLLI DATA REPORT E AZIONI -->
-<div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-3.5 shadow-sm space-y-3">
-<div class="flex items-center justify-between text-xs">
-<span class="font-bold text-slate-300 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-<i class="w-3.5 h-3.5 text-blue-400" data-lucide="filter"></i> Filtra per Data
+      </form>
+
+      <!-- ULTIME CORSE RECENTI REGISTRATE -->
+      <div class="space-y-2">
+        <div class="flex items-center justify-between text-xs px-1">
+          <span class="font-bold text-slate-400 uppercase tracking-wider text-[11px]">Ultime Corse Registrate</span>
+          <span id="quickRecentCount" class="text-[11px] font-mono text-slate-500">0 corse totali</span>
+        </div>
+        <div id="quickRecentList" class="space-y-2"></div>
+      </div>
+    </section>
+
+    <!-- ==================== SCHEDA 2: REPORT CORSE ==================== -->
+    <section id="page-report" class="space-y-4 hidden">
+      <div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-3.5 shadow-sm space-y-3">
+        <div class="flex items-center justify-between text-xs">
+          <span class="font-bold text-slate-300 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+            <i data-lucide="filter" class="w-3.5 h-3.5 text-blue-400"></i> Filtra per Data
           </span>
-<span class="font-mono font-bold text-blue-400 bg-blue-950/60 px-2 py-0.5 rounded-md border border-blue-900/60" id="reportFilterDateDisplay">--/--/----</span>
-</div>
-<div class="grid grid-cols-2 gap-2">
-<!-- TASTO 1: DOMANI -->
-<button class="py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95" id="btnReportDateDomani" onclick="setReportDateShortcut('domani')" type="button">
-<i class="w-4 h-4" data-lucide="chevrons-right"></i> Domani
+          <span id="reportFilterDateDisplay" class="font-mono font-bold text-blue-400 bg-blue-950/60 px-2 py-0.5 rounded-md border border-blue-900/60">--/--/----</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <button type="button" id="btnReportDateDomani" onclick="setReportDateShortcut('domani')" class="py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95">
+            <i data-lucide="chevrons-right" class="w-4 h-4"></i> Domani
           </button>
-<!-- TASTO 2: CALENDARIO -->
-<label class="cursor-pointer relative py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95" id="btnReportCalendarWrapper">
-<i class="w-4 h-4 text-slate-400" data-lucide="calendar-days"></i> Calendario
-            <input class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" id="inputReportDate" onchange="onReportCustomDatePicked(this.value)" type="date"/>
-</label>
-</div>
-<!-- PULSANTE ESPORTAZIONE CSV -->
-<button class="w-full py-2 px-3 rounded-xl bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-center gap-2 transition active:scale-95" onclick="exportToCsv()">
-<i class="w-3.5 h-3.5 text-slate-400" data-lucide="download"></i> Esporta Report in CSV
+
+          <label id="btnReportCalendarWrapper" class="cursor-pointer relative py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95">
+            <i data-lucide="calendar-days" class="w-4 h-4 text-slate-400"></i> Calendario
+            <input type="date" id="inputReportDate" onchange="onReportCustomDatePicked(this.value)" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" />
+          </label>
+        </div>
+
+        <button onclick="exportToCsv()" class="w-full py-2 px-3 rounded-xl bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-center gap-2 transition active:scale-95">
+          <i data-lucide="download" class="w-3.5 h-3.5 text-slate-400"></i> Esporta Report in CSV
         </button>
-</div>
-<!-- LEGENDA COLORI E RAGGRUPPAMENTO -->
-<div class="px-2 text-[11px] text-slate-400 flex items-center justify-between">
-<span class="flex items-center gap-1.5">
-<span class="w-2 h-2 rounded-full bg-blue-500 inline-block"></span>
+      </div>
+
+      <div class="px-2 text-[11px] text-slate-400 flex items-center justify-between">
+        <span class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-blue-500 inline-block"></span>
           Corse con stesso orario, tipo e mezzo condividono lo stesso colore
         </span>
-<span class="font-mono font-bold text-slate-300" id="reportRowCountBadge">0 corse</span>
-</div>
-<!-- TABELLA DETTAGLIATA REPORT -->
-<div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl overflow-hidden shadow-sm">
-<div class="grid grid-cols-12 px-3 py-2.5 text-[10px] font-mono uppercase tracking-wider text-slate-400 border-b border-slate-800 bg-slate-950/60 font-bold">
-<div class="col-span-4">Personale</div>
-<div class="col-span-3 text-center">Orario</div>
-<div class="col-span-2 text-center">Tipo</div>
-<div class="col-span-3 text-right">Mezzo</div>
-</div>
-<div class="divide-y divide-slate-800/50 custom-scrollbar max-h-[55vh] overflow-y-auto" id="reportListRows">
-<!-- Righe generate -->
-</div>
-</div>
-</section>
-<!-- ==================== SCHEDA 3: MANAGE (CONFIGURAZIONE & ADMIN) ==================== -->
-<section class="space-y-4 hidden" id="page-manage">
-<!-- BLOCCO PASSWORD PER ACCESSO GESTIONE -->
-<div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-5 shadow-sm space-y-3.5 text-center" id="manageAuthGate">
-<div class="w-12 h-12 mx-auto rounded-2xl bg-blue-950/80 border border-blue-800/50 flex items-center justify-center text-blue-400 shadow-md">
-<i class="w-6 h-6" data-lucide="shield-lock"></i>
-</div>
-<div>
-<h2 class="text-sm font-bold text-white">Area Riservata Amministratore</h2>
-<p class="text-xs text-slate-400 mt-1">Inserisci la chiave d'accesso per configurare il backend Google Sheets e gestire le variabili flotta.</p>
-</div>
-<form class="space-y-2.5 max-w-xs mx-auto" onsubmit="handleAuth(event)">
-<input class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-center text-slate-200 focus:outline-none focus:border-blue-500 transition" id="inputManagePassword" placeholder="Password (predefinita: strongroom)" required="" type="password"/>
-<button class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs transition shadow-md shadow-blue-600/20 active:scale-95" type="submit">
+        <span id="reportRowCountBadge" class="font-mono font-bold text-slate-300">0 corse</span>
+      </div>
+
+      <div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl overflow-hidden shadow-sm">
+        <div class="grid grid-cols-12 px-3 py-2.5 text-[10px] font-mono uppercase tracking-wider text-slate-400 border-b border-slate-800 bg-slate-950/60 font-bold">
+          <div class="col-span-4">Personale</div>
+          <div class="col-span-3 text-center">Orario</div>
+          <div class="col-span-2 text-center">Tipo</div>
+          <div class="col-span-3 text-right">Mezzo</div>
+        </div>
+        <div id="reportListRows" class="divide-y divide-slate-800/50 custom-scrollbar max-h-[55vh] overflow-y-auto"></div>
+      </div>
+    </section>
+
+    <!-- ==================== SCHEDA 3: MANAGE ==================== -->
+    <section id="page-manage" class="space-y-4 hidden">
+      <div id="manageAuthGate" class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-5 shadow-sm space-y-3.5 text-center">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-blue-950/80 border border-blue-800/50 flex items-center justify-center text-blue-400 shadow-md">
+          <i data-lucide="shield-lock" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h2 class="text-sm font-bold text-white">Area Riservata Amministratore</h2>
+          <p class="text-xs text-slate-400 mt-1">Inserisci la password per gestire il backend Google Sheets e la flotta.</p>
+        </div>
+        <form onsubmit="handleAuth(event)" class="space-y-2.5 max-w-xs mx-auto">
+          <input type="password" id="inputManagePassword" placeholder="Password (predefinita: strongroom)" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-center text-slate-200 focus:outline-none focus:border-blue-500 transition" />
+          <button type="submit" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs transition shadow-md shadow-blue-600/20 active:scale-95">
             Sblocca Area Manage
           </button>
-</form>
-</div>
-<!-- DASHBOARD GESTIONE SBLOCCATA -->
-<div class="space-y-4 hidden" id="manageDashboard">
-<!-- HEADER ADMIN -->
-<div class="flex items-center justify-between bg-slate-900/80 border border-slate-800/90 rounded-2xl p-3.5">
-<div class="flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-<span class="text-xs font-bold text-white uppercase tracking-wider">Pannello Admin Attivo</span>
-</div>
-<button class="text-xs text-slate-400 hover:text-rose-400 flex items-center gap-1 transition" onclick="lockManage()">
-<i class="w-3.5 h-3.5" data-lucide="lock"></i> Blocca
+        </form>
+      </div>
+
+      <div id="manageDashboard" class="space-y-4 hidden">
+        <div class="flex items-center justify-between bg-slate-900/80 border border-slate-800/90 rounded-2xl p-3.5">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span class="text-xs font-bold text-white uppercase tracking-wider">Pannello Admin Attivo</span>
+          </div>
+          <button onclick="lockManage()" class="text-xs text-slate-400 hover:text-rose-400 flex items-center gap-1 transition">
+            <i data-lucide="lock" class="w-3.5 h-3.5"></i> Blocca
           </button>
-</div>
-<!-- 1. CONFIGURAZIONE GOOGLE APPS SCRIPT WEB APP URL -->
-<div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-4 shadow-sm space-y-3">
-<div class="flex items-center justify-between">
-<h3 class="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
-<i class="w-3.5 h-3.5 text-blue-400" data-lucide="link-2"></i> Backend Google Sheets API
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-4 shadow-sm space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="link-2" class="w-3.5 h-3.5 text-blue-400"></i> Backend Google Sheets API
             </h3>
-<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-900">Google Drive</span>
-</div>
-<p class="text-[11px] text-slate-400 leading-relaxed">
-            Incolla qui l'URL dell'Applicazione Web Google Apps Script terminante con <code class="text-blue-300 font-mono">/exec</code>.
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-900">Google Drive</span>
+          </div>
+          <p class="text-[11px] text-slate-400 leading-relaxed">
+            Incolla l'URL dell'Applicazione Web Google Apps Script terminante con <code class="text-blue-300 font-mono">/exec</code>.
           </p>
-<div class="space-y-2">
-<input class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs font-mono text-slate-200 focus:outline-none focus:border-blue-500 transition" id="inputSheetsUrl" placeholder="https://script.google.com/macros/s/.../exec" type="url"/>
-<div class="grid grid-cols-2 gap-2">
-<button class="py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95" id="btnTestGoogle" onclick="testGoogleConnection()">
-<i class="w-3.5 h-3.5 text-slate-400" data-lucide="activity"></i> Test Connessione
+          <div class="space-y-2">
+            <input type="url" id="inputSheetsUrl" placeholder="https://script.google.com/macros/s/.../exec" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs font-mono text-slate-200 focus:outline-none focus:border-blue-500 transition" />
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="testGoogleConnection()" id="btnTestGoogle" class="py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95">
+                <i data-lucide="activity" class="w-3.5 h-3.5 text-slate-400"></i> Test Connessione
               </button>
-<button class="py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition shadow-sm shadow-blue-600/20 active:scale-95" onclick="saveGoogleUrl()">
-<i class="w-3.5 h-3.5" data-lucide="save"></i> Salva URL
+              <button onclick="saveGoogleUrl()" class="py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition shadow-sm shadow-blue-600/20 active:scale-95">
+                <i data-lucide="save" class="w-3.5 h-3.5"></i> Salva URL
               </button>
-</div>
-<div class="hidden p-2.5 rounded-xl text-xs font-mono" id="testFeedback"></div>
-</div>
-</div>
-<!-- 2. GESTIONE CRUD DELLE 3 VARIABILI (Autisti, Mezzi, Orari) -->
-<div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-4 shadow-sm space-y-4">
-<div class="flex items-center justify-between">
-<h3 class="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
-<i class="w-3.5 h-3.5 text-blue-400" data-lucide="sliders"></i> Gestione Variabili Flotta
+            </div>
+            <div id="testFeedback" class="hidden p-2.5 rounded-xl text-xs font-mono"></div>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-4 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="sliders" class="w-3.5 h-3.5 text-blue-400"></i> Gestione Variabili Flotta
             </h3>
-<span class="text-[10px] text-slate-500 font-mono">Sincronizzazione su Sheet</span>
-</div>
-<!-- TAB SELETTORE VARIABILE -->
-<div class="grid grid-cols-3 gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
-<button class="py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition" id="tabVarPersonale" onclick="selectVarTab('personale')">Autisti</button>
-<button class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition" id="tabVarMezzi" onclick="selectVarTab('mezzi')">Mezzi</button>
-<button class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition" id="tabVarFasce" onclick="selectVarTab('fasce')">Orari</button>
-</div>
-<!-- FORM AGGIUNTA / MODIFICA -->
-<form class="space-y-2" onsubmit="handleVariableFormSubmit(event)">
-<div class="flex items-center justify-between text-[11px] font-semibold text-slate-400">
-<span id="varFormTitle">Nuovo Autista/Operatore</span>
-<span class="text-slate-500 font-mono" id="varFormHint">Variabile 1</span>
-</div>
-<input id="varEditIndex" type="hidden" value="-1"/>
-<div class="flex gap-2">
-<input class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition" id="inputVarText" placeholder="Nome e Cognome..." required="" type="text"/>
-<button class="py-2 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition active:scale-95" id="btnSaveVar" type="submit">
+            <span class="text-[10px] text-slate-500 font-mono">Sincronizzazione su Sheet</span>
+          </div>
+
+          <div class="grid grid-cols-3 gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
+            <button onclick="selectVarTab('personale')" id="tabVarPersonale" class="py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition">Autisti</button>
+            <button onclick="selectVarTab('mezzi')" id="tabVarMezzi" class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition">Mezzi</button>
+            <button onclick="selectVarTab('fasce')" id="tabVarFasce" class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition">Orari</button>
+          </div>
+
+          <form onsubmit="handleVariableFormSubmit(event)" class="space-y-2">
+            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400">
+              <span id="varFormTitle">Nuovo Autista/Operatore</span>
+              <span id="varFormHint" class="text-slate-500 font-mono">Variabile 1</span>
+            </div>
+            <input type="hidden" id="varEditIndex" value="-1" />
+            <div class="flex gap-2">
+              <input type="text" id="inputVarText" required placeholder="Nome e Cognome..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition" />
+              <button type="submit" id="btnSaveVar" class="py-2 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition active:scale-95">
                 Salva
               </button>
-</div>
-</form>
-<!-- LISTA ELEMENTI ESISTENTI -->
-<div class="space-y-2 pt-1">
-<span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider" id="varListLabel">Elenco Conducenti</span>
-<div class="space-y-1.5 custom-scrollbar max-h-60 overflow-y-auto" id="varItemsList">
-<!-- Elementi variabili -->
-</div>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- ==================== BOTTOM BAR DI NAVIGAZIONE ==================== -->
-<nav class="fixed bottom-0 inset-x-0 z-30 bg-[#0c1322]/95 backdrop-blur-md border-t border-slate-800/80 px-6 py-1.5 flex justify-around items-center">
-<!-- TAB 1 -->
-<button class="flex flex-col items-center gap-1 py-1 text-blue-400 transition" id="navPrenotazione" onclick="switchTab('prenotazione')">
-<i class="w-5 h-5" data-lucide="calendar-plus"></i>
-<span class="text-[10px] font-semibold">Prenotazione</span>
-</button>
-<!-- TAB 2 -->
-<button class="flex flex-col items-center gap-1 py-1 text-slate-400 hover:text-slate-200 transition" id="navReport" onclick="switchTab('report')">
-<i class="w-5 h-5" data-lucide="bar-chart-3"></i>
-<span class="text-[10px] font-semibold">Report</span>
-</button>
-<!-- TAB 3 -->
-<button class="flex flex-col items-center gap-1 py-1 text-slate-400 hover:text-slate-200 transition" id="navManage" onclick="switchTab('manage')">
-<i class="w-5 h-5" data-lucide="settings"></i>
-<span class="text-[10px] font-semibold">Manage</span>
-</button>
-</nav>
-<!-- ==================== SCRIPT LOGICA APPLICATIVA ==================== -->
-<script>
-    // Dati di fallback predefiniti
+            </div>
+          </form>
+
+          <div class="space-y-2 pt-1">
+            <span id="varListLabel" class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Elenco Conducenti</span>
+            <div id="varItemsList" class="space-y-1.5 custom-scrollbar max-h-60 overflow-y-auto"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== BOTTOM NAV ==================== -->
+  <nav class="fixed bottom-0 inset-x-0 z-30 bg-[#0c1322]/95 backdrop-blur-md border-t border-slate-800/80 px-6 py-1.5 flex justify-around items-center">
+    <button onclick="switchTab('prenotazione')" id="navPrenotazione" class="flex flex-col items-center gap-1 py-1 text-blue-400 transition">
+      <i data-lucide="calendar-plus" class="w-5 h-5"></i>
+      <span class="text-[10px] font-semibold">Prenotazione</span>
+    </button>
+    <button onclick="switchTab('report')" id="navReport" class="flex flex-col items-center gap-1 py-1 text-slate-400 hover:text-slate-200 transition">
+      <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+      <span class="text-[10px] font-semibold">Report</span>
+    </button>
+    <button onclick="switchTab('manage')" id="navManage" class="flex flex-col items-center gap-1 py-1 text-slate-400 hover:text-slate-200 transition">
+      <i data-lucide="settings" class="w-5 h-5"></i>
+      <span class="text-[10px] font-semibold">Manage</span>
+    </button>
+  </nav>
+
+  <!-- ==================== LOGICA JAVASCRIPT ==================== -->
+  <script>
     const DEFAULT_DATA = {
       variables: {
         personale: ["Marco Rossi", "Luca Bianchi", "Alessandro Verdi", "Giulia Neri", "Roberto Ferrari"],
@@ -330,7 +311,6 @@
       bookings: []
     };
 
-    // Palette per raggruppamento dinamico delle corse nel Report
     const PALETTE = [
       { border: 'border-l-blue-400', tag: 'text-blue-400', badge: 'bg-blue-950/80 text-blue-300' },
       { border: 'border-l-emerald-400', tag: 'text-emerald-400', badge: 'bg-emerald-950/80 text-emerald-300' },
@@ -342,7 +322,6 @@
       { border: 'border-l-teal-400', tag: 'text-teal-400', badge: 'bg-teal-950/80 text-teal-300' }
     ];
 
-    // Stato applicazione
     window.AppState = {
       activeTab: 'prenotazione',
       selectedDate: getTomorrowDateString(),
@@ -355,7 +334,6 @@
       isManageUnlocked: false
     };
 
-    // Date Utilities
     function getTodayDateString() {
       const d = new Date();
       return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -385,7 +363,6 @@
       }
     }
 
-    // ==================== NAVIGAZIONE TAB ====================
     function switchTab(tabId) {
       AppState.activeTab = tabId;
 
@@ -396,11 +373,9 @@
       ['prenotazione', 'report', 'manage'].forEach(t => {
         const btn = document.getElementById(`nav${t.charAt(0).toUpperCase() + t.slice(1)}`);
         if (btn) {
-          if (t === tabId) {
-            btn.className = "flex flex-col items-center gap-1 py-1 text-blue-400 transition";
-          } else {
-            btn.className = "flex flex-col items-center gap-1 py-1 text-slate-400 hover:text-slate-200 transition";
-          }
+          btn.className = (t === tabId)
+            ? "flex flex-col items-center gap-1 py-1 text-blue-400 transition"
+            : "flex flex-col items-center gap-1 py-1 text-slate-400 hover:text-slate-200 transition";
         }
       });
 
@@ -409,12 +384,10 @@
       refreshIcons();
     }
 
-    // ==================== GESTIONE DATA PRENOTAZIONE ====================
     function setBookingDateShortcut(type) {
       if (type === 'domani') {
         AppState.selectedDate = getTomorrowDateString();
         document.getElementById('displaySelectedDate').innerText = formatDateDisplay(AppState.selectedDate);
-
         document.getElementById('btnDateDomani').className = "py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95";
         document.getElementById('btnDateCalendarWrapper').className = "cursor-pointer relative py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95";
       }
@@ -425,7 +398,6 @@
       if (!val) return;
       AppState.selectedDate = val;
       document.getElementById('displaySelectedDate').innerText = formatDateDisplay(val);
-
       document.getElementById('btnDateDomani').className = "py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95";
       document.getElementById('btnDateCalendarWrapper').className = "cursor-pointer relative py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95";
       refreshIcons();
@@ -446,7 +418,6 @@
       refreshIcons();
     }
 
-    // ==================== POPOLAMENTO FORM E RENDER ====================
     function populateDropdowns() {
       const p = document.getElementById('selPersonale');
       const m = document.getElementById('selMezzo');
@@ -513,12 +484,10 @@
       refreshIcons();
     }
 
-    // ==================== SCHEDA REPORT ====================
     function setReportDateShortcut(type) {
       if (type === 'domani') {
         AppState.reportFilterDate = getTomorrowDateString();
         document.getElementById('reportFilterDateDisplay').innerText = formatDateDisplay(AppState.reportFilterDate);
-
         document.getElementById('btnReportDateDomani').className = "py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95";
         document.getElementById('btnReportCalendarWrapper').className = "cursor-pointer relative py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95";
       }
@@ -529,7 +498,6 @@
       if (!val) return;
       AppState.reportFilterDate = val;
       document.getElementById('reportFilterDateDisplay').innerText = formatDateDisplay(val);
-
       document.getElementById('btnReportDateDomani').className = "py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95";
       document.getElementById('btnReportCalendarWrapper').className = "cursor-pointer relative py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95";
       renderReportView();
@@ -608,8 +576,6 @@
       URL.revokeObjectURL(url);
     }
 
-    // ==================== COMUNICAZIONE GOOGLE APPS SCRIPT ====================
-    // NOTA FONDAMENTALE: Usiamo text/plain per bypassare il preflight CORS di Google Apps Script
     async function syncFromGoogleSheets() {
       if (!AppState.sheetsUrl) {
         updateBadge("Incolla URL Sheets in Manage", "text-amber-400");
@@ -670,16 +636,13 @@
         createdAt: new Date().toISOString()
       };
 
-      // Aggiungi subito localmente per feedback immediato
       AppState.bookings.unshift(newBooking);
       localStorage.setItem('TM_BOOKINGS_CACHE', JSON.stringify(AppState.bookings));
       renderRecentList();
       renderReportView();
 
-      // Reset campo conducente
       document.getElementById('selPersonale').value = '';
 
-      // Feedback visivo pulsante
       const btn = document.getElementById('btnSubmitTrip');
       const origHtml = btn.innerHTML;
       btn.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i> PRENOTAZIONE SALVATA!`;
@@ -694,10 +657,8 @@
         refreshIcons();
       }, 1400);
 
-      // Invio asincrono a Google Sheets
       if (AppState.sheetsUrl) {
         try {
-          // PAYLOAD INVIATO COME TEXT/PLAIN PER EVITARE PREFLIGHT CORS
           await fetch(AppState.sheetsUrl, {
             method: 'POST',
             redirect: 'follow',
@@ -749,7 +710,6 @@
       });
     }
 
-    // ==================== AREA MANAGE / ADMIN ====================
     function handleAuth(e) {
       if (e && e.preventDefault) e.preventDefault();
       const pwd = document.getElementById('inputManagePassword').value;
@@ -810,7 +770,7 @@
 
         if (data && data.status === 'success') {
           fb.className = "p-2.5 rounded-xl text-xs font-mono bg-emerald-950/60 border border-emerald-800 text-emerald-300";
-          fb.innerHTML = `✅ Connessione Riuscita!<br/>• Autisti trovati: ${data.variables?.personale?.length || 0}<br/>• Mezzi trovati: ${data.variables?.mezzi?.length || 0}<br/>• Orari: ${data.variables?.fasce_orarie?.length || 0}<br/>• Corse nel DB: ${data.bookings?.length || 0}`;
+          fb.innerHTML = `✅ Connessione Riuscita!<br/>• Autisti: ${data.variables?.personale?.length || 0}<br/>• Mezzi: ${data.variables?.mezzi?.length || 0}<br/>• Orari: ${data.variables?.fasce_orarie?.length || 0}<br/>• Corse nel DB: ${data.bookings?.length || 0}`;
         } else {
           throw new Error(data.message || 'Risposta inattesa da Google');
         }
@@ -820,17 +780,14 @@
       }
     }
 
-    // CRUD VARIABILI
     function selectVarTab(tabKey) {
       AppState.currentVarTab = tabKey;
       ['personale', 'mezzi', 'fasce'].forEach(k => {
         const btn = document.getElementById(`tabVar${k.charAt(0).toUpperCase() + k.slice(1)}`);
         if (btn) {
-          if (k === tabKey) {
-            btn.className = "py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition";
-          } else {
-            btn.className = "py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition";
-          }
+          btn.className = (k === tabKey)
+            ? "py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition"
+            : "py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition";
         }
       });
 
@@ -956,9 +913,7 @@
       pushVariablesToSheets();
     }
 
-    // ==================== INIZIALIZZAZIONE ====================
     function init() {
-      // Carica eventuale cache locale
       try {
         const cachedVars = localStorage.getItem('TM_VARS_CACHE');
         if (cachedVars) AppState.variables = JSON.parse(cachedVars);
@@ -966,7 +921,6 @@
         if (cachedBooks) AppState.bookings = JSON.parse(cachedBooks);
       } catch(e) {}
 
-      // Imposta data domani per impostazione predefinita
       setBookingDateShortcut('domani');
       setReportDateShortcut('domani');
 
@@ -974,10 +928,8 @@
       renderRecentList();
       renderReportView();
 
-      // Sincronizza con Google Sheets all'avvio
       syncFromGoogleSheets();
 
-      // Polling refresh automatico ogni 10 secondi
       setInterval(() => {
         if (AppState.sheetsUrl) {
           syncFromGoogleSheets();
@@ -987,19 +939,11 @@
       refreshIcons();
     }
 
-    // Avvio sia su DOMContentLoaded che immediato
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', init);
     } else {
       init();
     }
   </script>
-</body>
-
-
-})();
-
-</div>
-<!-- STITCH_THREEJS_END:ANIMATION_54 -->
 </body>
 </html>
