@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="it" class="dark">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>Transport Manage</title>
-  <link rel="manifest" href="./manifest.json"/>
-  <meta name="theme-color" content="#0c1322"/>
-  
-  <!-- Tailwind CSS & Lucide Icons -->
-  <script type='text/javascript' nonce='qmNGlzpcWr1vviU7wHBQpA==' src='https://contribution.usercontent.google.com/DshQAPtM_wM8bHI1K0MyTOJEkqyPgOgZxwYFYvRds0SrP0gee2d_2H1HHv4QMBJ8RlgG6JPjjgTJ1qlBoppswmZ2H2L9SZypeNfqHpMId6D3iCnCpF74NEZ9_nR072FuQuNnyjkx_yf7j7hvUYuQA0FCePown0Eubpng236y-MR6vWpUWcpK65F6UCUCymn8zTsx5uySmqmmD--CAG5AMbAzMgABIQx6dhCI2H6jNTPWbnZ6tpp-17IkNnAz5wAk5r9gW8O3H8sDcfkRE62dxQLij-S44VrPLa50fo-OdCxmiKOhnStn1H9zLy-50UBXlOsiDAz2uchcpbcCfSch3fW43nK1tN3qBRwCLmkfmEAHeZ0OyUFOjzvGRb1JECcFCt9uEkAPKefRKc6wgt6qLAu_dVtYjHbsfel_sAFrM77kWF8R-i1PVD1JWQyg7D4wwI0CyXTL0I1v5jYcDz1koGmLXoqUy0gFZyRNuPPOXtxI5oM0t03JGq9LEVfX1glZtywEUuOvUJKny-B19yr2aQUWzTgMpkmDa6HCifFnxxtW6cEzcJFL3pVccOQk5ZvwxyUg53fV9nd9OlFXsXX3WcPtocjCzqbAEp-gMEFQbS_bctypDp5QBx_rRlxIedtFBfXZsD-YSM11l1KUru6C_ruCCKdvvxjiNfdwQ7Jgo0GI70cVXTgmPFIqfsuaw4RKO0-xINOznqmwQ8fKozLPetuupCX1ET38klIHZb9PJBjSZPRNHBTmfyUsm2RBDJ1k_Wp5T0Na0pZGDGyZlZEJVBrqUhZ4Jj5_ih6oH_oL'></script><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <style>
+
+<html class="dark" lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Transport Manage</title>
+<link href="./manifest.json" rel="manifest"/>
+<meta content="#0c1322" name="theme-color"/>
+<!-- Tailwind CSS & Lucide Icons -->
+<script type='text/javascript' nonce='JCit1ly0havql+QxMHVIEA==' src='https://contribution.usercontent.google.com/lZzQl_bwUN5XKTjeduvpFgg6D6FJr9BXLXx807YT9X9pDn96qmbiKf4_2LKVy1U7vKit3cNZyANmlN_TqBLpjpX9fKY4zJBhl31gH--IXHf_xbkbClEn1ZPrIDkI7bTdk6cJg2KowZDodpF6WaWu-3d_Krh6p6FUPWcOIYleMY0IpeV30K4fR1oDP2dUsZ2--fltgUb1OX2lcZ2jbN_kO5m6-qoLRGsdP_YZPRw8wdYmwm--ePZoRLeuxVmSasruzEmedbKHvg2-8s9mA7xqjTqoJX7MLBm6LjLx4mB6PG7_oFgaljTWJ7okBcrea9ALDwbywaJGDfVAWiFlHmsjDFq4phSx8NWvPHO7dbAxItIcc6nlxMpNweIv7jsIFhR3yzsn3eH3vk6gUfABrIULOyUEO_cefXFqALHuDqe0_IkR6D5tQbMvJKfWnDHWL6ouUcc2U545jMUi8SDg5s6ZoBlYZDF0EuT9KKVsg-uMlvykPukxwzV6--8k2PQOLFXJ2MGZDNnOyjAqbbrQXaCwrlTXqvtPSdvjmo6YeE8McTK9NDYp--b_LFt9imVmPkOlG2ROwjv1kazehtDWuPzNwEuIpr8CX3f7fn24Ni0LhVG8mx7HZVmPcC8AJoVWnQYlIzg5anEM9J6w-hxSfSiauBUNKrr1WI93_9y6XH7LS4qVN83K2pXMwHmWdAmXyzZU_jn2_HgXJCMepaGdWDDTw6mzFo0rN0LD63FMyIG6SqAvn-KVI5Hni2tp4J-iIGq6SaZOR-MozEw9pawRxUo_kxwNptw4emc-1yST-h2X'></script><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
     body {
       background-color: #070e1d;
       color: #f1f5f9;
@@ -24,282 +23,268 @@
   </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-start pb-20 antialiased font-sans">
-
-  <!-- TOP BAR -->
-  <header class="w-full max-w-md bg-[#0c1322]/90 backdrop-blur-md sticky top-0 z-50 border-b border-[#1f293d] px-4 py-3 flex items-center justify-between">
-    <div class="flex items-center gap-2.5">
-      <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-md">
-        <i data-lucide="bus" class="w-4 h-4"></i>
-      </div>
-      <div>
-        <h1 class="text-sm font-bold text-white leading-tight">Transport Manage</h1>
-        <div class="flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-          <span id="headerPageTitle" class="text-[11px] text-slate-400 font-medium">Prenotazione</span>
-        </div>
-      </div>
-    </div>
-    
-    <div class="flex items-center gap-1.5">
-      <button onclick="loadVariablesAndSync()" type="button" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition" title="Ricarica Dati">
-        <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
-      </button>
-      <div class="px-2 py-1 rounded-full bg-slate-900 border border-[#1f293d] flex items-center gap-1.5 shadow-inner">
-        <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-        <span id="syncStatusBadge" class="text-[10px] tracking-wide font-mono uppercase text-blue-400">Attivo</span>
-      </div>
-    </div>
-  </header>
-
-  <!-- CONTENITORE PRINCIPALE -->
-  <main class="w-full max-w-md px-4 pt-4 flex-1 flex flex-col gap-4">
-
-    <!-- ==================== SCHEDA 1: PRENOTAZIONE ==================== -->
-    <section id="page-prenotazione" class="space-y-4">
-      
-      <!-- DATA CORSA -->
-      <div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-3.5 shadow-lg space-y-2.5">
-        <div class="flex items-center justify-between text-xs">
-          <span class="font-bold uppercase tracking-wider text-slate-400 text-[10px] flex items-center gap-1">
-            <i data-lucide="calendar" class="w-3 h-3 text-blue-400"></i> Data Selezionata
+<!-- TOP BAR -->
+<header class="w-full max-w-md bg-[#0c1322]/90 backdrop-blur-md sticky top-0 z-50 border-b border-[#1f293d] px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-md">
+<i class="w-4 h-4" data-lucide="bus"></i>
+</div>
+<div>
+<h1 class="text-sm font-bold text-white leading-tight">Transport Manage</h1>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse" id="headerStatusDot"></span>
+<span class="text-[11px] text-slate-400 font-medium" id="headerPageTitle">Prenotazione</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition" onclick="loadVariablesAndSync()" title="Ricarica Dati" type="button">
+<i class="w-3.5 h-3.5" data-lucide="refresh-cw"></i>
+</button>
+<div class="px-2 py-1 rounded-full bg-slate-900 border border-[#1f293d] flex items-center gap-1.5 shadow-inner">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400" id="syncDotIndicator"></span>
+<span class="text-[10px] tracking-wide font-mono uppercase text-blue-400" id="syncStatusBadge">Attivo Locale</span>
+</div>
+</div>
+</header>
+<!-- CONTENITORE PRINCIPALE -->
+<main class="w-full max-w-md px-4 pt-4 flex-1 flex flex-col gap-4">
+<!-- ==================== SCHEDA 1: PRENOTAZIONE ==================== -->
+<section class="space-y-4" id="page-prenotazione">
+<!-- DATA CORSA -->
+<div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-3.5 shadow-lg space-y-2.5">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold uppercase tracking-wider text-slate-400 text-[10px] flex items-center gap-1">
+<i class="w-3 h-3 text-blue-400" data-lucide="calendar"></i> Data Selezionata
           </span>
-          <span id="displaySelectedDate" class="font-mono font-bold text-blue-400 bg-blue-950/60 px-2 py-0.5 rounded border border-blue-800/50">--/--/----</span>
-        </div>
-        
-        <div class="grid grid-cols-3 gap-2">
-          <button id="btnDateOggi" onclick="selectDateShortcut(&#39;oggi&#39;)" type="button" class="py-2 px-1 text-center rounded-xl border text-xs font-semibold transition bg-blue-600 text-white border-blue-500 shadow-sm cursor-pointer">
+<span class="font-mono font-bold text-blue-400 bg-blue-950/60 px-2 py-0.5 rounded border border-blue-800/50" id="displaySelectedDate">--/--/----</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 px-1 text-center rounded-xl border text-xs font-semibold transition bg-blue-600 text-white border-blue-500 shadow-sm cursor-pointer" id="btnDateOggi" onclick="selectDateShortcut(&#39;oggi&#39;)" type="button">
             Oggi
           </button>
-          <button id="btnDateDomani" onclick="selectDateShortcut(&#39;domani&#39;)" type="button" class="py-2 px-1 text-center rounded-xl border text-xs font-medium transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 cursor-pointer">
+<button class="py-2 px-1 text-center rounded-xl border text-xs font-medium transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 cursor-pointer" id="btnDateDomani" onclick="selectDateShortcut(&#39;domani&#39;)" type="button">
             Domani
           </button>
-          <label id="btnDateCalendar" class="py-2 px-1 flex items-center justify-center gap-1 rounded-xl border text-xs font-medium transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 cursor-pointer">
-            <i data-lucide="calendar-days" class="w-3.5 h-3.5"></i>
-            <span>Altra</span>
-            <input type="date" id="inputCustomDate" onchange="onCustomDateChange(this.value)" class="sr-only"/>
+<label class="py-2 px-1 flex items-center justify-center gap-1 rounded-xl border text-xs font-medium transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 cursor-pointer" id="btnDateCalendar">
+<i class="w-3.5 h-3.5" data-lucide="calendar-days"></i>
+<span>Altra</span>
+<input class="sr-only" id="inputCustomDate" onchange="onCustomDateChange(this.value)" type="date"/>
+</label>
+</div>
+</div>
+<!-- FORM -->
+<form class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-4 shadow-lg space-y-4" id="formPrenotazione" onsubmit="handleBookingSubmit(event)">
+<div class="space-y-1.5">
+<div class="flex justify-between items-center text-xs">
+<label class="font-semibold text-slate-200 flex items-center gap-1.5" for="selectPersonale">
+<i class="w-3.5 h-3.5 text-blue-400" data-lucide="user"></i> 1. Operatore / Autista
+            </label>
+<span class="text-[10px] text-blue-400 font-mono uppercase">Obbligatorio</span>
+</div>
+<select class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500 transition" id="selectPersonale" required="">
+<option value="">Seleziona operatore...</option>
+</select>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between items-center text-xs">
+<label class="font-semibold text-slate-200 flex items-center gap-1.5" for="selectMezzo">
+<i class="w-3.5 h-3.5 text-blue-400" data-lucide="truck"></i> 2. Mezzo di Trasporto
+            </label>
+<span class="text-[10px] text-slate-400 font-mono uppercase">Flotta</span>
+</div>
+<select class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500 transition" id="selectMezzo" required="">
+<option value="">Seleziona mezzo...</option>
+</select>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between items-center text-xs">
+<label class="font-semibold text-slate-200 flex items-center gap-1.5" for="selectOrario">
+<i class="w-3.5 h-3.5 text-blue-400" data-lucide="clock"></i> 3. Fascia Oraria
+            </label>
+<span class="text-[10px] text-slate-400 font-mono uppercase">Orario</span>
+</div>
+<select class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3.5 py-2.5 text-xs text-slate-100 font-mono focus:outline-none focus:border-blue-500 transition" id="selectOrario" required="">
+<option value="">Seleziona orario...</option>
+</select>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-semibold text-slate-200 flex items-center gap-1.5">
+<i class="w-3.5 h-3.5 text-blue-400" data-lucide="arrow-left-right"></i> 4. Tipologia Corsa
           </label>
-        </div>
-      </div>
-
-      <!-- FORM -->
-      <form id="formPrenotazione" onsubmit="handleBookingSubmit(event)" class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-4 shadow-lg space-y-4">
-        
-        <div class="space-y-1.5">
-          <div class="flex justify-between items-center text-xs">
-            <label for="selectPersonale" class="font-semibold text-slate-200 flex items-center gap-1.5">
-              <i data-lucide="user" class="w-3.5 h-3.5 text-blue-400"></i> 1. Operatore / Autista
-            </label>
-            <span class="text-[10px] text-blue-400 font-mono uppercase">Obbligatorio</span>
-          </div>
-          <select id="selectPersonale" required="" class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500 transition">
-            <option value="">Seleziona operatore...</option>
-          </select>
-        </div>
-
-        <div class="space-y-1.5">
-          <div class="flex justify-between items-center text-xs">
-            <label for="selectMezzo" class="font-semibold text-slate-200 flex items-center gap-1.5">
-              <i data-lucide="truck" class="w-3.5 h-3.5 text-blue-400"></i> 2. Mezzo di Trasporto
-            </label>
-            <span class="text-[10px] text-slate-400 font-mono uppercase">Flotta</span>
-          </div>
-          <select id="selectMezzo" required="" class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500 transition">
-            <option value="">Seleziona mezzo...</option>
-          </select>
-        </div>
-
-        <div class="space-y-1.5">
-          <div class="flex justify-between items-center text-xs">
-            <label for="selectOrario" class="font-semibold text-slate-200 flex items-center gap-1.5">
-              <i data-lucide="clock" class="w-3.5 h-3.5 text-blue-400"></i> 3. Fascia Oraria
-            </label>
-            <span class="text-[10px] text-slate-400 font-mono uppercase">Orario</span>
-          </div>
-          <select id="selectOrario" required="" class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3.5 py-2.5 text-xs text-slate-100 font-mono focus:outline-none focus:border-blue-500 transition">
-            <option value="">Seleziona orario...</option>
-          </select>
-        </div>
-
-        <div class="space-y-1.5">
-          <label class="text-xs font-semibold text-slate-200 flex items-center gap-1.5">
-            <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-blue-400"></i> 4. Tipologia Corsa
-          </label>
-          <div class="grid grid-cols-2 gap-2">
-            <button id="btnTypeAndata" type="button" onclick="setBookingType(&#39;ANDATA&#39;)" class="py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm cursor-pointer">
-              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i> ANDATA
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-500/20 cursor-pointer" id="btnTypeAndata" onclick="setBookingType(&#39;ANDATA&#39;)" type="button">
+<i class="w-3.5 h-3.5" data-lucide="arrow-up-right"></i> ANDATA
             </button>
-            <button id="btnTypeRitorno" type="button" onclick="setBookingType(&#39;RITORNO&#39;)" class="py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600 cursor-pointer">
-              <i data-lucide="arrow-down-left" class="w-3.5 h-3.5"></i> RITORNO
+<button class="py-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600 cursor-pointer" id="btnTypeRitorno" onclick="setBookingType(&#39;RITORNO&#39;)" type="button">
+<i class="w-3.5 h-3.5" data-lucide="arrow-down-left"></i> RITORNO
             </button>
-          </div>
-        </div>
-
-        <button id="btnSubmitBooking" type="submit" class="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition active:scale-[0.98] cursor-pointer">
-          <i data-lucide="send" class="w-4 h-4"></i> Salva e Invia Corsa
+</div>
+</div>
+<button class="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition active:scale-[0.98] cursor-pointer" id="btnSubmitBooking" type="submit">
+<i class="w-4 h-4" data-lucide="send"></i> Salva e Invia Corsa
         </button>
-      </form>
-
-      <!-- RECENTI -->
-      <div class="space-y-2">
-        <div class="flex items-center justify-between text-xs px-1">
-          <span class="font-bold uppercase tracking-wider text-slate-400 text-[10px]">Ultime Registrate</span>
-          <span class="text-[10px] text-emerald-400 font-mono">Live</span>
-        </div>
-        <div id="quickRecentBookings" class="space-y-2">
-          <div class="p-3 text-center text-xs text-slate-500 bg-slate-900/60 rounded-xl border border-[#1f293d]">Nessuna corsa registrata</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SCHEDA 2: REPORT ==================== -->
-    <section id="page-report" class="hidden space-y-4">
-      <div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-3.5 shadow-lg flex items-center justify-between">
-        <button onclick="shiftReportDate(-1)" type="button" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition cursor-pointer">
-          <i data-lucide="chevron-left" class="w-4 h-4"></i>
+</form>
+<!-- RECENTI -->
+<div class="space-y-2">
+<div class="flex items-center justify-between text-xs px-1">
+<span class="font-bold uppercase tracking-wider text-slate-400 text-[10px]">Ultime Registrate</span>
+<span class="text-[10px] text-emerald-400 font-mono">Live</span>
+</div>
+<div class="space-y-2" id="quickRecentBookings">
+<div class="p-3 text-center text-xs text-slate-500 bg-slate-900/60 rounded-xl border border-[#1f293d]">Nessuna corsa registrata</div>
+</div>
+</div>
+</section>
+<!-- ==================== SCHEDA 2: REPORT ==================== -->
+<section class="hidden space-y-4" id="page-report">
+<div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-3.5 shadow-lg flex items-center justify-between">
+<button class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition cursor-pointer" onclick="shiftReportDate(-1)" type="button">
+<i class="w-4 h-4" data-lucide="chevron-left"></i>
+</button>
+<div class="text-center">
+<span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Report Giornaliero</span>
+<div class="text-sm font-bold font-mono text-white" id="reportCurrentDateFormatted">--/--/----</div>
+</div>
+<button class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition cursor-pointer" onclick="shiftReportDate(1)" type="button">
+<i class="w-4 h-4" data-lucide="chevron-right"></i>
+</button>
+</div>
+<div class="flex items-center justify-between px-1">
+<span class="text-xs font-semibold text-slate-300 font-mono" id="reportTotalBadge">0 corse registrate</span>
+<button class="py-1.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow transition cursor-pointer" onclick="exportReportToCsv()" type="button">
+<i class="w-3.5 h-3.5 text-blue-400" data-lucide="download"></i> Esporta CSV
         </button>
-        <div class="text-center">
-          <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Report Giornaliero</span>
-          <div id="reportCurrentDateFormatted" class="text-sm font-bold font-mono text-white">--/--/----</div>
-        </div>
-        <button onclick="shiftReportDate(1)" type="button" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition cursor-pointer">
-          <i data-lucide="chevron-right" class="w-4 h-4"></i>
-        </button>
-      </div>
-
-      <div class="flex items-center justify-between px-1">
-        <span id="reportTotalBadge" class="text-xs font-semibold text-slate-300 font-mono">0 corse registrate</span>
-        <button onclick="exportReportToCsv()" type="button" class="py-1.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow transition cursor-pointer">
-          <i data-lucide="download" class="w-3.5 h-3.5 text-blue-400"></i> Esporta CSV
-        </button>
-      </div>
-
-      <div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl overflow-hidden shadow-lg">
-        <div class="grid grid-cols-12 px-3 py-2.5 bg-slate-900/80 border-b border-[#1f293d] text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-          <div class="col-span-4">Autista</div>
-          <div class="col-span-3 text-center">Orario</div>
-          <div class="col-span-2 text-center">Tipo</div>
-          <div class="col-span-3 text-right">Mezzo</div>
-        </div>
-        <div id="reportListRows" class="divide-y divide-[#1f293d]/50 max-h-[55vh] overflow-y-auto">
-          <div class="py-8 text-center text-xs text-slate-500">Nessuna corsa registrata</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SCHEDA 3: MANAGE (ADMIN) ==================== -->
-    <section id="page-manage" class="hidden space-y-4">
-      <div id="manageAuthGate" class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-6 shadow-xl text-center space-y-4">
-        <div class="w-12 h-12 mx-auto rounded-2xl bg-blue-950/60 border border-blue-800/50 flex items-center justify-center text-blue-400">
-          <i data-lucide="lock" class="w-6 h-6"></i>
-        </div>
-        <div class="space-y-1">
-          <h2 class="text-base font-bold text-white">Area Riservata Amministratore</h2>
-          <p class="text-xs text-slate-400">Password: <strong class="text-white font-mono">strongroom</strong></p>
-        </div>
-        <form onsubmit="handleManageAuth(event)" class="space-y-3">
-          <input type="password" id="managePasswordInput" placeholder="Password (strongroom)" required="" class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3.5 py-2.5 text-xs text-center text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-blue-500 transition"/>
-          <button type="submit" class="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition shadow-md cursor-pointer">
+</div>
+<div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl overflow-hidden shadow-lg">
+<div class="grid grid-cols-12 px-3 py-2.5 bg-slate-900/80 border-b border-[#1f293d] text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+<div class="col-span-4">Autista</div>
+<div class="col-span-3 text-center">Orario</div>
+<div class="col-span-2 text-center">Tipo</div>
+<div class="col-span-3 text-right">Mezzo</div>
+</div>
+<div class="divide-y divide-[#1f293d]/50 max-h-[55vh] overflow-y-auto" id="reportListRows">
+<div class="py-8 text-center text-xs text-slate-500">Nessuna corsa registrata</div>
+</div>
+</div>
+</section>
+<!-- ==================== SCHEDA 3: MANAGE (ADMIN) ==================== -->
+<section class="hidden space-y-4" id="page-manage">
+<div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-6 shadow-xl text-center space-y-4" id="manageAuthGate">
+<div class="w-12 h-12 mx-auto rounded-2xl bg-blue-950/60 border border-blue-800/50 flex items-center justify-center text-blue-400">
+<i class="w-6 h-6" data-lucide="lock"></i>
+</div>
+<div class="space-y-1">
+<h2 class="text-base font-bold text-white">Area Riservata Amministratore</h2>
+<p class="text-xs text-slate-400">Password: <strong class="text-white font-mono">strongroom</strong></p>
+</div>
+<form class="space-y-3" onsubmit="handleManageAuth(event)">
+<input class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3.5 py-2.5 text-xs text-center text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-blue-500 transition" id="managePasswordInput" placeholder="Password (strongroom)" required="" type="password"/>
+<button class="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition shadow-md cursor-pointer" type="submit">
             Sblocca Pannello
           </button>
-        </form>
-      </div>
-
-      <div id="manageDashboard" class="hidden space-y-4">
-        <div class="flex items-center justify-between bg-[#141b2b] border border-[#1f293d] rounded-2xl px-4 py-3">
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-            <span class="text-xs font-bold text-white">Amministrazione Attiva</span>
-          </div>
-          <button onclick="lockManageArea()" type="button" class="text-xs text-slate-400 hover:text-rose-400 transition cursor-pointer flex items-center gap-1">
-            <i data-lucide="log-out" class="w-3.5 h-3.5"></i> Blocca
+</form>
+</div>
+<div class="hidden space-y-4" id="manageDashboard">
+<div class="flex items-center justify-between bg-[#141b2b] border border-[#1f293d] rounded-2xl px-4 py-3">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="text-xs font-bold text-white">Amministrazione Attiva</span>
+</div>
+<button class="text-xs text-slate-400 hover:text-rose-400 transition cursor-pointer flex items-center gap-1" onclick="lockManageArea()" type="button">
+<i class="w-3.5 h-3.5" data-lucide="log-out"></i> Blocca
           </button>
-        </div>
-
-        <!-- CONFIG GITHUB -->
-        <div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-4 shadow-lg space-y-3">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-200 flex items-center gap-1.5">
-            <i data-lucide="github" class="w-4 h-4 text-blue-400"></i> Sincronizzazione GitHub
+</div>
+<!-- CONFIG GITHUB -->
+<div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-4 shadow-lg space-y-3">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-200 flex items-center gap-1.5">
+<i class="w-4 h-4 text-blue-400" data-lucide="github"></i> Sincronizzazione GitHub
           </h3>
-          <form onsubmit="saveAdminGitHubConfig(event)" class="space-y-2.5">
-            <div class="grid grid-cols-2 gap-2">
-              <div class="space-y-1">
-                <label class="text-[10px] uppercase font-mono text-slate-400">Owner</label>
-                <input type="text" id="adminGhOwner" placeholder="Username GitHub" required="" class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500"/>
-              </div>
-              <div class="space-y-1">
-                <label class="text-[10px] uppercase font-mono text-slate-400">Repo</label>
-                <input type="text" id="adminGhRepo" value="transportmanage" required="" class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500"/>
-              </div>
-            </div>
-            <div class="space-y-1">
-              <label class="text-[10px] uppercase font-mono text-slate-400">Token PAT (permesso 'repo')</label>
-              <input type="password" id="adminGhToken" placeholder="ghp_..." required="" class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-blue-500"/>
-            </div>
-            <input type="hidden" id="adminGhBranch" value="main"/>
-            <div class="grid grid-cols-2 gap-2 pt-1">
-              <button type="button" onclick="testWorkerConnection()" class="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer">
-                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-blue-400"></i> Test Connessione
+<form class="space-y-2.5" onsubmit="saveAdminGitHubConfig(event)">
+<div class="grid grid-cols-2 gap-2">
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-mono text-slate-400">Owner (Username)</label>
+<input class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500" id="adminGhOwner" placeholder="es. mario-rossi" required="" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-mono text-slate-400">Repo</label>
+<input class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500" id="adminGhRepo" required="" type="text" value="transportmanage"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-mono text-slate-400">Token PAT (con permesso 'repo')</label>
+<input class="w-full bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-blue-500" id="adminGhToken" placeholder="ghp_... oppure github_pat_..." required="" type="password"/>
+</div>
+<input id="adminGhBranch" type="hidden" value="main"/>
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer" onclick="testWorkerConnection()" type="button">
+<i class="w-3.5 h-3.5 text-blue-400" data-lucide="check-circle-2"></i> Test Connessione
               </button>
-              <button id="btnSaveAdminConfig" type="submit" class="py-2.5 px-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow transition cursor-pointer">
-                <i data-lucide="save" class="w-3.5 h-3.5"></i> Salva e Condividi
+<button class="py-2.5 px-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow transition cursor-pointer" id="btnSaveAdminConfig" type="submit">
+<i class="w-3.5 h-3.5" data-lucide="save"></i> Salva e Connetti
               </button>
-            </div>
-          </form>
-        </div>
-
-        <!-- GESTIONE VARIABILI -->
-        <div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-4 shadow-lg space-y-3">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-200 flex items-center gap-1.5">
-            <i data-lucide="sliders" class="w-4 h-4 text-blue-400"></i> Autisti, Mezzi e Orari
-          </h3>
-          <div class="grid grid-cols-3 gap-1 bg-slate-900 p-1 rounded-xl border border-[#1f293d]">
-            <button id="tabVarPersonale" onclick="switchVariableTab(&#39;personale&#39;)" type="button" class="py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition shadow-sm cursor-pointer">Autisti</button>
-            <button id="tabVarMezzi" onclick="switchVariableTab(&#39;mezzi&#39;)" type="button" class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition cursor-pointer">Mezzi</button>
-            <button id="tabVarFasce" onclick="switchVariableTab(&#39;fasce&#39;)" type="button" class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition cursor-pointer">Orari</button>
-          </div>
-          <form onsubmit="handleVariableSave(event)" class="space-y-2 pt-1">
-            <div class="flex justify-between items-center text-xs">
-              <span id="variableFormTitle" class="font-semibold text-slate-200">Nuovo Autista</span>
-              <span id="variableFormHint" class="text-[10px] text-slate-500">Variabile 1</span>
-            </div>
-            <input type="hidden" id="variableEditIndex" value="-1"/>
-            <div class="flex gap-2">
-              <input type="text" id="variableTextInput" placeholder="Nome..." required="" class="flex-1 bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500 transition"/>
-              <button type="submit" class="py-2 px-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 cursor-pointer">
-                <i data-lucide="plus" class="w-3.5 h-3.5"></i> Salva
+</div>
+</form>
+</div>
+<!-- GESTIONE VARIABILI -->
+<div class="bg-[#141b2b] border border-[#1f293d] rounded-2xl p-4 shadow-lg space-y-3">
+<div class="flex items-center justify-between">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-200 flex items-center gap-1.5">
+<i class="w-4 h-4 text-blue-400" data-lucide="sliders"></i> Autisti, Mezzi e Orari
+            </h3>
+<span class="text-[10px] font-mono text-emerald-400 opacity-0 transition-opacity" id="varActionFeedback">Salvato!</span>
+</div>
+<div class="grid grid-cols-3 gap-1 bg-slate-900 p-1 rounded-xl border border-[#1f293d]">
+<button class="py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition shadow-sm cursor-pointer" id="tabVarPersonale" onclick="switchVariableTab(&#39;personale&#39;)" type="button">Autisti</button>
+<button class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition cursor-pointer" id="tabVarMezzi" onclick="switchVariableTab(&#39;mezzi&#39;)" type="button">Mezzi</button>
+<button class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition cursor-pointer" id="tabVarFasce" onclick="switchVariableTab(&#39;fasce&#39;)" type="button">Orari</button>
+</div>
+<form class="space-y-2 pt-1" id="variableManageForm" onsubmit="handleVariableSave(event)">
+<div class="flex justify-between items-center text-xs">
+<span class="font-semibold text-slate-200" id="variableFormTitle">Nuovo Autista</span>
+<span class="text-[10px] text-slate-500" id="variableFormHint">Variabile 1</span>
+</div>
+<input id="variableEditIndex" type="hidden" value="-1"/>
+<div class="flex gap-2">
+<input class="flex-1 bg-slate-900 border border-[#1f293d] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500 transition" id="variableTextInput" placeholder="Nome e cognome..." required="" type="text"/>
+<button class="py-2 px-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 cursor-pointer whitespace-nowrap" id="btnVariableSubmit" type="submit">
+<i class="w-3.5 h-3.5" data-lucide="plus" id="btnVariableSubmitIcon"></i> <span id="btnVariableSubmitText">Aggiungi</span>
+</button>
+<button class="hidden py-2 px-3 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold transition cursor-pointer" id="btnCancelEditVariable" onclick="cancelVariableEdit()" type="button">
+                Annulla
               </button>
-            </div>
-          </form>
-          <div class="space-y-2 pt-2">
-            <div id="variableListLabel" class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Elenco Attuale</div>
-            <div id="variableItemsList" class="space-y-1.5 max-h-52 overflow-y-auto"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- BOTTOM BAR -->
-  <nav class="fixed bottom-0 left-0 right-0 w-full bg-[#0c1322]/95 backdrop-blur-md border-t border-[#1f293d] z-50 flex justify-center">
-    <div class="w-full max-w-md grid grid-cols-3 py-1 px-4">
-      <button id="navBtnPrenotazione" onclick="navigateToPage(&#39;prenotazione&#39;)" type="button" class="py-1.5 flex flex-col items-center gap-1 text-blue-400 transition cursor-pointer">
-        <i data-lucide="calendar-plus" class="w-5 h-5"></i>
-        <span class="text-[10px] font-semibold">Prenotazione</span>
-      </button>
-      <button id="navBtnReport" onclick="navigateToPage(&#39;report&#39;)" type="button" class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer">
-        <i data-lucide="clipboard-list" class="w-5 h-5"></i>
-        <span class="text-[10px] font-semibold">Report</span>
-      </button>
-      <button id="navBtnManage" onclick="navigateToPage(&#39;manage&#39;)" type="button" class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer">
-        <i data-lucide="settings" class="w-5 h-5"></i>
-        <span class="text-[10px] font-semibold">Manage</span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- JAVASCRIPT INTEGRATO COMPLETO -->
-  <script>
+</div>
+</form>
+<div class="space-y-2 pt-2">
+<div class="flex items-center justify-between text-[10px] font-mono text-slate-400 uppercase tracking-wider">
+<span id="variableListLabel">Elenco Autisti</span>
+<span class="text-blue-400" id="variableCountBadge">0 elementi</span>
+</div>
+<div class="space-y-1.5 max-h-56 overflow-y-auto pr-0.5" id="variableItemsList"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BOTTOM BAR -->
+<nav class="fixed bottom-0 left-0 right-0 w-full bg-[#0c1322]/95 backdrop-blur-md border-t border-[#1f293d] z-50 flex justify-center">
+<div class="w-full max-w-md grid grid-cols-3 py-1 px-4">
+<button class="py-1.5 flex flex-col items-center gap-1 text-blue-400 transition cursor-pointer" id="navBtnPrenotazione" onclick="navigateToPage(&#39;prenotazione&#39;)" type="button">
+<i class="w-5 h-5" data-lucide="calendar-plus"></i>
+<span class="text-[10px] font-semibold">Prenotazione</span>
+</button>
+<button class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer" id="navBtnReport" onclick="navigateToPage(&#39;report&#39;)" type="button">
+<i class="w-5 h-5" data-lucide="clipboard-list"></i>
+<span class="text-[10px] font-semibold">Report</span>
+</button>
+<button class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition cursor-pointer" id="navBtnManage" onclick="navigateToPage(&#39;manage&#39;)" type="button">
+<i class="w-5 h-5" data-lucide="settings"></i>
+<span class="text-[10px] font-semibold">Manage</span>
+</button>
+</div>
+</nav>
+<!-- JAVASCRIPT INTEGRATO COMPLETO -->
+<script>
     const INITIAL_DATA = {
       personale: ["Marco Rossi", "Luca Bianchi", "Alessandro Verdi", "Giulia Neri", "Roberto Ferrari"],
       mezzi: ["Navetta Van 01 (Cap. 8p)", "Minibus B2 (Cap. 16p)", "Auto 04 (Cap. 4p)", "Bus GT (Cap. 50p)", "Van Cargo 02"],
@@ -315,8 +300,7 @@
       bookings: [],
       isManageAuthenticated: false,
       activeVariableTab: 'personale',
-      reportFilterDate: getTodayDateString(),
-      githubSha: { bookings: null, variables: null }
+      reportFilterDate: getTodayDateString()
     };
 
     function getTodayDateString() {
@@ -343,10 +327,51 @@
 
     function updateSyncBadge(text, colorClass) {
       const badge = document.getElementById("syncStatusBadge");
+      const dot = document.getElementById("syncDotIndicator");
+      const headerDot = document.getElementById("headerStatusDot");
       if (badge) {
         badge.innerText = text;
         badge.className = `text-[10px] tracking-wide font-mono uppercase ${colorClass}`;
       }
+      if (dot) {
+        if (colorClass.includes("emerald")) {
+          dot.className = "w-1.5 h-1.5 rounded-full bg-emerald-400";
+          if (headerDot) headerDot.className = "w-2 h-2 rounded-full bg-emerald-400 animate-pulse";
+        } else {
+          dot.className = "w-1.5 h-1.5 rounded-full bg-blue-400";
+          if (headerDot) headerDot.className = "w-2 h-2 rounded-full bg-blue-400 animate-pulse";
+        }
+      }
+    }
+
+    function parseGitHubRepoInput(rawOwner, rawRepo) {
+      let owner = (rawOwner || "").trim();
+      let repo = (rawRepo || "").trim();
+
+      // Rimuovi prefissi come https://github.com/ o github.com/
+      owner = owner.replace(/^https?:\/\/github\.com\/?/i, "").replace(/^\/+|\/+$/g, "");
+      repo = repo.replace(/^https?:\/\/github\.com\/?/i, "").replace(/^\/+|\/+$/g, "");
+
+      if (owner.includes("/")) {
+        const parts = owner.split("/").filter(Boolean);
+        owner = parts[0] || "";
+        if (!repo || repo === "transportmanage") {
+          repo = parts[1] || repo;
+        }
+      }
+      if (repo.includes("/")) {
+        const parts = repo.split("/").filter(Boolean);
+        if (parts.length >= 2) {
+          owner = parts[0];
+          repo = parts[1];
+        } else if (parts.length === 1) {
+          repo = parts[0];
+        }
+      }
+
+      if (!repo) repo = "transportmanage";
+      repo = repo.replace(/\.git$/i, "");
+      return { owner, repo };
     }
 
     function populateDropdowns() {
@@ -362,19 +387,19 @@
         const cur = selP.value;
         selP.innerHTML = '<option value="">Seleziona operatore...</option>' +
           pList.map(p => `<option value="${escapeHtml(p)}">${escapeHtml(p)}</option>`).join("");
-        if (cur) selP.value = cur;
+        if (cur && pList.includes(cur)) selP.value = cur;
       }
       if (selM) {
         const cur = selM.value;
         selM.innerHTML = '<option value="">Seleziona mezzo...</option>' +
           mList.map(m => `<option value="${escapeHtml(m)}">${escapeHtml(m)}</option>`).join("");
-        if (cur) selM.value = cur;
+        if (cur && mList.includes(cur)) selM.value = cur;
       }
       if (selO) {
         const cur = selO.value;
         selO.innerHTML = '<option value="">Seleziona orario...</option>' +
           oList.map(o => `<option value="${escapeHtml(o)}">${escapeHtml(o)}</option>`).join("");
-        if (cur) selO.value = cur;
+        if (cur && oList.includes(cur)) selO.value = cur;
       }
     }
 
@@ -407,6 +432,12 @@
       window.state.selectedDate = val;
       const disp = document.getElementById("displaySelectedDate");
       if (disp) disp.innerText = formatDateDisplay(val);
+      const btnOggi = document.getElementById("btnDateOggi");
+      const btnDomani = document.getElementById("btnDateDomani");
+      if (btnOggi && btnDomani) {
+        btnOggi.className = "py-2 px-1 text-center rounded-xl border text-xs font-medium transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 cursor-pointer";
+        btnDomani.className = "py-2 px-1 text-center rounded-xl border text-xs font-medium transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 cursor-pointer";
+      }
     }
 
     function setBookingType(type) {
@@ -471,6 +502,7 @@
       };
 
       window.state.bookings.unshift(booking);
+      localStorage.setItem("TM_LOCAL_BOOKINGS", JSON.stringify(window.state.bookings));
       document.getElementById("selectPersonale").value = "";
 
       const btn = document.getElementById("btnSubmitBooking");
@@ -594,7 +626,7 @@
           gate.classList.add("hidden");
           dash.classList.remove("hidden");
           populateAdminConfigFields();
-          renderVariableManagement();
+          switchVariableTab(window.state.activeVariableTab || 'personale');
         } else {
           gate.classList.remove("hidden");
           dash.classList.add("hidden");
@@ -613,196 +645,586 @@
       if (t) t.value = c.token || localStorage.getItem("TM_GH_TOKEN") || "";
     }
 
+    /* 1. FIX TITOLO FORM VARIABILI & CONFIG TABS */
     function switchVariableTab(tab) {
       window.state.activeVariableTab = tab;
+      
+      // Resetta stato di editing se si cambia tab
+      const editIdx = document.getElementById("variableEditIndex");
+      if (editIdx) editIdx.value = "-1";
+      const cancelBtn = document.getElementById("btnCancelEditVariable");
+      if (cancelBtn) cancelBtn.classList.add("hidden");
+      const submitBtnText = document.getElementById("btnVariableSubmitText");
+      if (submitBtnText) submitBtnText.innerText = "Aggiungi";
+      const submitBtnIcon = document.getElementById("btnVariableSubmitIcon");
+      if (submitBtnIcon) submitBtnIcon.setAttribute("data-lucide", "plus");
+
+      // Aggiorna classi bottoni Tab
       ['personale', 'mezzi', 'fasce'].forEach(t => {
         const btn = document.getElementById(`tabVar${t.charAt(0).toUpperCase() + t.slice(1)}`);
-        if (btn) btn.className = (t === tab) ? "py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white shadow-sm cursor-pointer" : "py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white cursor-pointer";
+        if (btn) {
+          btn.className = (t === tab)
+            ? "py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition shadow-sm cursor-pointer"
+            : "py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition cursor-pointer";
+        }
       });
+
+      const titleEl = document.getElementById("variableFormTitle");
+      const hintEl = document.getElementById("variableFormHint");
+      const inputEl = document.getElementById("variableTextInput");
+      const listLabelEl = document.getElementById("variableListLabel");
+
+      if (inputEl) inputEl.value = "";
+
+      if (tab === 'personale') {
+        if (titleEl) titleEl.innerText = "Nuovo Autista";
+        if (hintEl) hintEl.innerText = "Variabile 1";
+        if (inputEl) {
+          inputEl.type = "text";
+          inputEl.placeholder = "Nome e cognome...";
+        }
+        if (listLabelEl) listLabelEl.innerText = "Elenco Autisti";
+      } else if (tab === 'mezzi') {
+        if (titleEl) titleEl.innerText = "Nuovo Mezzo di Trasporto";
+        if (hintEl) hintEl.innerText = "Variabile 2";
+        if (inputEl) {
+          inputEl.type = "text";
+          inputEl.placeholder = "Nome mezzo (es. Minibus B2)...";
+        }
+        if (listLabelEl) listLabelEl.innerText = "Elenco Mezzi";
+      } else if (tab === 'fasce') {
+        if (titleEl) titleEl.innerText = "Nuova Fascia Oraria";
+        if (hintEl) hintEl.innerText = "Variabile 3 (Ordinamento automatico)";
+        if (inputEl) {
+          inputEl.type = "time";
+          inputEl.placeholder = "HH:MM (es. 08:30)";
+        }
+        if (listLabelEl) listLabelEl.innerText = "Elenco Orari";
+      }
+
       renderVariableManagement();
+      triggerLucideIcons();
+    }
+
+    function editVariableItem(idx) {
+      const tab = window.state.activeVariableTab;
+      const list = tab === 'personale'
+        ? window.state.variables.personale
+        : tab === 'mezzi'
+          ? window.state.variables.mezzi
+          : window.state.variables.fasce_orarie;
+
+      if (!list || idx < 0 || idx >= list.length) return;
+
+      const itemVal = list[idx];
+      const editIdx = document.getElementById("variableEditIndex");
+      const inputEl = document.getElementById("variableTextInput");
+      const titleEl = document.getElementById("variableFormTitle");
+      const cancelBtn = document.getElementById("btnCancelEditVariable");
+      const submitBtnText = document.getElementById("btnVariableSubmitText");
+      const submitBtnIcon = document.getElementById("btnVariableSubmitIcon");
+
+      if (editIdx) editIdx.value = idx;
+      if (inputEl) {
+        inputEl.value = itemVal;
+        inputEl.focus();
+      }
+
+      if (titleEl) {
+        if (tab === 'personale') titleEl.innerText = `Modifica Autista: ${itemVal}`;
+        else if (tab === 'mezzi') titleEl.innerText = `Modifica Mezzo: ${itemVal}`;
+        else if (tab === 'fasce') titleEl.innerText = `Modifica Orario: ${itemVal}`;
+      }
+
+      if (cancelBtn) cancelBtn.classList.remove("hidden");
+      if (submitBtnText) submitBtnText.innerText = "Aggiorna";
+      if (submitBtnIcon) submitBtnIcon.setAttribute("data-lucide", "check");
+      triggerLucideIcons();
+    }
+
+    function cancelVariableEdit() {
+      const editIdx = document.getElementById("variableEditIndex");
+      if (editIdx) editIdx.value = "-1";
+      const inputEl = document.getElementById("variableTextInput");
+      if (inputEl) inputEl.value = "";
+      const cancelBtn = document.getElementById("btnCancelEditVariable");
+      if (cancelBtn) cancelBtn.classList.add("hidden");
+      const submitBtnText = document.getElementById("btnVariableSubmitText");
+      if (submitBtnText) submitBtnText.innerText = "Aggiungi";
+      const submitBtnIcon = document.getElementById("btnVariableSubmitIcon");
+      if (submitBtnIcon) submitBtnIcon.setAttribute("data-lucide", "plus");
+
+      const titleEl = document.getElementById("variableFormTitle");
+      const tab = window.state.activeVariableTab;
+      if (titleEl) {
+        if (tab === 'personale') titleEl.innerText = "Nuovo Autista";
+        else if (tab === 'mezzi') titleEl.innerText = "Nuovo Mezzo di Trasporto";
+        else if (tab === 'fasce') titleEl.innerText = "Nuova Fascia Oraria";
+      }
+      triggerLucideIcons();
+    }
+
+    function showVariableSuccessFeedback(text = "Salvato con successo!") {
+      const fb = document.getElementById("varActionFeedback");
+      if (fb) {
+        fb.innerText = text;
+        fb.classList.remove("opacity-0");
+        setTimeout(() => {
+          fb.classList.add("opacity-0");
+        }, 2200);
+      }
     }
 
     function renderVariableManagement() {
       const c = document.getElementById("variableItemsList");
+      const countEl = document.getElementById("variableCountBadge");
       if (!c) return;
-      const list = window.state.activeVariableTab === 'personale'
+
+      const tab = window.state.activeVariableTab;
+      const list = tab === 'personale'
         ? window.state.variables.personale
-        : window.state.activeVariableTab === 'mezzi'
+        : tab === 'mezzi'
           ? window.state.variables.mezzi
           : window.state.variables.fasce_orarie;
 
-      if (window.state.activeVariableTab === 'fasce') list.sort((a,b)=>a.localeCompare(b));
+      if (countEl) countEl.innerText = `${list.length} element${list.length === 1 ? 'o' : 'i'}`;
+
+      if (list.length === 0) {
+        c.innerHTML = `<div class="p-3 text-center text-xs text-slate-500 bg-slate-900/40 rounded-xl border border-[#1f293d]">Nessun elemento presente.</div>`;
+        return;
+      }
+
       c.innerHTML = list.map((it, idx) => `
-        <div class="p-3 rounded-xl bg-slate-900/70 border border-[#1f293d] flex items-center justify-between">
-          <span class="text-xs text-slate-100 font-semibold">${escapeHtml(it)}</span>
-          <button onclick="deleteVariableItem(${idx})" class="text-rose-400 p-1 text-xs cursor-pointer">Elimina</button>
+        <div class="p-2.5 rounded-xl bg-slate-900/70 border border-[#1f293d] flex items-center justify-between group hover:border-slate-700 transition">
+          <span class="text-xs text-slate-100 font-medium truncate pr-2 ${tab === 'fasce' ? 'font-mono' : ''}">${escapeHtml(it)}</span>
+          <div class="flex items-center gap-1">
+            <button onclick="editVariableItem(${idx})" type="button" class="text-blue-400 hover:text-blue-300 p-1.5 rounded-lg hover:bg-slate-800 transition cursor-pointer" title="Modifica">
+              <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+            </button>
+            <button onclick="deleteVariableItem(${idx})" type="button" class="text-rose-400 hover:text-rose-300 p-1.5 rounded-lg hover:bg-slate-800 transition cursor-pointer" title="Elimina">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
         </div>
       `).join("");
+      triggerLucideIcons();
     }
 
+    /* 4. FIX AGGIUNTA E MODIFICA VARIABILI */
     async function handleVariableSave(e) {
       if (e && e.preventDefault) e.preventDefault();
       const input = document.getElementById("variableTextInput");
+      const editIdxInput = document.getElementById("variableEditIndex");
       const val = input ? input.value.trim() : "";
       if (!val) return;
-      const list = window.state.activeVariableTab === 'personale'
+
+      const tab = window.state.activeVariableTab;
+      const list = tab === 'personale'
         ? window.state.variables.personale
-        : window.state.activeVariableTab === 'mezzi'
+        : tab === 'mezzi'
           ? window.state.variables.mezzi
           : window.state.variables.fasce_orarie;
-      list.push(val);
-      if (input) input.value = "";
+
+      const editIdx = editIdxInput ? parseInt(editIdxInput.value, 10) : -1;
+
+      if (editIdx >= 0 && editIdx < list.length) {
+        // Modifica esistente
+        list[editIdx] = val;
+        showVariableSuccessFeedback("Elemento aggiornato!");
+      } else {
+        // Nuovo inserimento
+        if (list.includes(val)) {
+          alert("Questo valore è già presente nella lista.");
+          return;
+        }
+        list.push(val);
+        showVariableSuccessFeedback("Elemento aggiunto!");
+      }
+
+      if (tab === 'fasce') {
+        window.state.variables.fasce_orarie.sort((a,b) => a.localeCompare(b));
+      }
+
+      cancelVariableEdit();
       renderVariableManagement();
       populateDropdowns();
-      pushVariablesToGitHub();
+
+      // Salva in localStorage come backup
+      localStorage.setItem("TM_LOCAL_VARIABLES", JSON.stringify(window.state.variables));
+
+      // Se configurato GitHub, esegui il push immediato
+      const cfg = window.state.variables.github_config;
+      if (cfg && cfg.token && cfg.owner) {
+        try {
+          await pushVariablesToGitHub();
+          showVariableSuccessFeedback("Sincronizzato su GitHub!");
+        } catch (err) {
+          console.warn("Sync GitHub fallito:", err);
+          showVariableSuccessFeedback("Salvato in locale!");
+        }
+      }
     }
 
-    function deleteVariableItem(idx) {
-      if (!confirm("Eliminare?")) return;
-      const list = window.state.activeVariableTab === 'personale'
+    async function deleteVariableItem(idx) {
+      const tab = window.state.activeVariableTab;
+      const list = tab === 'personale'
         ? window.state.variables.personale
-        : window.state.activeVariableTab === 'mezzi'
+        : tab === 'mezzi'
           ? window.state.variables.mezzi
           : window.state.variables.fasce_orarie;
+
+      const itemName = list[idx];
+      if (!confirm(`Sei sicuro di voler eliminare "${itemName}"?`)) return;
+
       list.splice(idx, 1);
+      cancelVariableEdit();
       renderVariableManagement();
       populateDropdowns();
-      pushVariablesToGitHub();
+      localStorage.setItem("TM_LOCAL_VARIABLES", JSON.stringify(window.state.variables));
+
+      const cfg = window.state.variables.github_config;
+      if (cfg && cfg.token && cfg.owner) {
+        try {
+          await pushVariablesToGitHub();
+          showVariableSuccessFeedback("Eliminato e sincronizzato!");
+        } catch(e) {
+          showVariableSuccessFeedback("Eliminato in locale!");
+        }
+      }
     }
 
+    /* 2. FIX ERRORE 404 TEST CONNESSIONE GITHUB */
     async function testWorkerConnection() {
-      const owner = document.getElementById("adminGhOwner")?.value.trim();
-      const repo = document.getElementById("adminGhRepo")?.value.trim() || "transportmanage";
-      const token = document.getElementById("adminGhToken")?.value.trim();
-      if (!owner || !token) { alert("Inserisci Username e Token PAT."); return; }
+      const rawOwner = document.getElementById("adminGhOwner")?.value || "";
+      const rawRepo = document.getElementById("adminGhRepo")?.value || "transportmanage";
+      const token = (document.getElementById("adminGhToken")?.value || "").trim();
+
+      const { owner, repo } = parseGitHubRepoInput(rawOwner, rawRepo);
+
+      // Riaggiorna i campi del form con i dati sanitizzati
+      const ownerInput = document.getElementById("adminGhOwner");
+      const repoInput = document.getElementById("adminGhRepo");
+      if (ownerInput) ownerInput.value = owner;
+      if (repoInput) repoInput.value = repo;
+
+      if (!owner) {
+        alert("⚠️ Inserisci l'Owner (Username GitHub o organizzazione).");
+        return;
+      }
+      if (!token) {
+        alert("⚠️ Inserisci il Personal Access Token (PAT) di GitHub.");
+        return;
+      }
+
+      const testBtn = document.querySelector("button[onclick='testWorkerConnection()']");
+      const origText = testBtn ? testBtn.innerHTML : "";
+      if (testBtn) {
+        testBtn.disabled = true;
+        testBtn.innerHTML = `<i data-lucide="loader" class="w-3.5 h-3.5 animate-spin"></i> Verifica...`;
+        triggerLucideIcons();
+      }
+
       try {
-        const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
-          headers: { "Authorization": `Bearer ${token}`, "Accept": "application/vnd.github.v3+json" }
+        const url = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}`;
+        const res = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Accept": "application/vnd.github.v3+json"
+          }
         });
-        if (res.ok) alert("✅ Connessione Riuscita!");
-        else alert(`❌ Errore HTTP ${res.status}: controlla permessi o username.`);
-      } catch (err) { alert("Errore rete: " + err.message); }
+
+        if (res.ok) {
+          const repoData = await res.json();
+          alert(`✅ Connessione Riuscita con GitHub!\n\nRepository: ${repoData.full_name}\nVisibilità: ${repoData.private ? 'Privato' : 'Pubblico'}\nPermessi verificati!`);
+        } else if (res.status === 404) {
+          alert(`❌ Errore 404 - Repository "${owner}/${repo}" NON trovato!\n\nCause possibili:\n1. Il nome repository o username sono errati (verifica se è '${repo}' o simile).\n2. Se il repository è PRIVATO, il token PAT deve obbligatoriamente avere il permesso 'repo' spuntato (o fine-grained 'Repository access' abilitato).\n3. L'utente specificato "${owner}" non ha accesso al repository.`);
+        } else if (res.status === 401) {
+          alert("❌ Errore 401 - Token non valido o scaduto. Rigenera un Personal Access Token su GitHub (con permessi 'repo').");
+        } else if (res.status === 403) {
+          alert("❌ Errore 403 - Limite chiamate GitHub API superato oppure token senza permessi sufficienti.");
+        } else {
+          alert(`❌ Errore GitHub API (${res.status}): ${res.statusText}`);
+        }
+      } catch (err) {
+        alert("❌ Errore di rete o connessione assente:\n" + err.message);
+      } finally {
+        if (testBtn) {
+          testBtn.disabled = false;
+          testBtn.innerHTML = origText;
+          triggerLucideIcons();
+        }
+      }
     }
 
+    /* 3. FIX SALVATAGGIO ADMIN E SYNC */
     async function saveAdminGitHubConfig(e) {
       if (e && e.preventDefault) e.preventDefault();
-      const owner = document.getElementById("adminGhOwner")?.value.trim();
-      const repo = document.getElementById("adminGhRepo")?.value.trim() || "transportmanage";
-      const token = document.getElementById("adminGhToken")?.value.trim();
-      if (!owner || !token) { alert("Inserisci Username e Token."); return; }
+      const rawOwner = document.getElementById("adminGhOwner")?.value || "";
+      const rawRepo = document.getElementById("adminGhRepo")?.value || "transportmanage";
+      const token = (document.getElementById("adminGhToken")?.value || "").trim();
+      const branch = (document.getElementById("adminGhBranch")?.value || "main").trim();
+
+      const { owner, repo } = parseGitHubRepoInput(rawOwner, rawRepo);
+
+      if (!owner || !token) {
+        alert("Inserisci sia l'Username che il Token PAT.");
+        return;
+      }
+
+      // Aggiorna gli input coi dati puliti
+      if (document.getElementById("adminGhOwner")) document.getElementById("adminGhOwner").value = owner;
+      if (document.getElementById("adminGhRepo")) document.getElementById("adminGhRepo").value = repo;
 
       if (!window.state.variables.github_config) window.state.variables.github_config = {};
       window.state.variables.github_config.owner = owner;
       window.state.variables.github_config.repo = repo;
       window.state.variables.github_config.token = token;
-      window.state.variables.github_config.branch = "main";
+      window.state.variables.github_config.branch = branch;
 
+      // Salva in localStorage
       localStorage.setItem("TM_GH_OWNER", owner);
       localStorage.setItem("TM_GH_REPO", repo);
       localStorage.setItem("TM_GH_TOKEN", token);
+      localStorage.setItem("TM_GH_BRANCH", branch);
+
+      const saveBtn = document.getElementById("btnSaveAdminConfig");
+      const origBtn = saveBtn ? saveBtn.innerHTML : "";
+      if (saveBtn) {
+        saveBtn.disabled = true;
+        saveBtn.innerHTML = `<i data-lucide="loader" class="w-3.5 h-3.5 animate-spin"></i> Connessione...`;
+        triggerLucideIcons();
+      }
 
       try {
         await pushVariablesToGitHub();
-        alert("🎉 Salvato su GitHub!");
+        await pushBookingsToGitHub();
+        updateSyncBadge("Sync GitHub Attivo", "text-emerald-400");
+        alert("🎉 Configurazione salvata e file variables.json / bookings.json sincronizzati con successo su GitHub!");
       } catch (err) {
-        alert("Salvato in locale (errore remoto: " + err.message + ")");
+        console.warn("Push remoto dopo salvataggio config fallito:", err);
+        updateSyncBadge("Attivo Locale", "text-blue-400");
+        alert("Configurazione salvata in locale. Connessione remota non riuscita: " + err.message);
+      } finally {
+        if (saveBtn) {
+          saveBtn.disabled = false;
+          saveBtn.innerHTML = origBtn;
+          triggerLucideIcons();
+        }
       }
+
       loadVariablesAndSync();
     }
 
     async function pushBookingsToGitHub() {
       const cfg = window.state.variables.github_config;
-      if (!cfg || !cfg.token || !cfg.owner) return;
+      if (!cfg || !cfg.token || !cfg.owner || !cfg.repo) return;
       try {
-        const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/bookings.json`;
-        const shaRes = await fetch(`${url}?ref=${cfg.branch}&_t=${Date.now()}`, {
-          headers: { "Authorization": `Bearer ${cfg.token}`, "Accept": "application/vnd.github.v3+json" }
+        const url = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/bookings.json`;
+        const shaRes = await fetch(`${url}?ref=${encodeURIComponent(cfg.branch || 'main')}&_t=${Date.now()}`, {
+          headers: {
+            "Authorization": `Bearer ${cfg.token}`,
+            "Accept": "application/vnd.github.v3+json"
+          }
         }).catch(()=>null);
-        let sha = null;
-        if (shaRes && shaRes.ok) { const d = await shaRes.json(); sha = d.sha; }
 
-        await fetch(url, {
+        let sha = null;
+        if (shaRes && shaRes.ok) {
+          const d = await shaRes.json();
+          sha = d.sha;
+        }
+
+        const putRes = await fetch(url, {
           method: "PUT",
-          headers: { "Authorization": `Bearer ${cfg.token}`, "Content-Type": "application/json" },
+          headers: {
+            "Authorization": `Bearer ${cfg.token}`,
+            "Content-Type": "application/json",
+            "Accept": "application/vnd.github.v3+json"
+          },
           body: JSON.stringify({
-            message: `Update corse ${window.state.selectedDate}`,
+            message: `Update corse (${new Date().toISOString()})`,
             content: window.btoa(unescape(encodeURIComponent(JSON.stringify(window.state.bookings, null, 2)))),
             branch: cfg.branch || "main",
             ...(sha ? { sha } : {})
           })
         });
-      } catch (e) { console.warn("Push corse:", e); }
+
+        if (putRes.ok) {
+          updateSyncBadge("Sync GitHub Attivo", "text-emerald-400");
+        }
+      } catch (e) {
+        console.warn("Push corse fallito:", e);
+      }
     }
 
     async function pushVariablesToGitHub() {
       const cfg = window.state.variables.github_config;
-      if (!cfg || !cfg.token || !cfg.owner) return;
-      const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/variables.json`;
-      const shaRes = await fetch(`${url}?ref=${cfg.branch}&_t=${Date.now()}`, {
-        headers: { "Authorization": `Bearer ${cfg.token}`, "Accept": "application/vnd.github.v3+json" }
-      }).catch(()=>null);
-      let sha = null;
-      if (shaRes && shaRes.ok) { const d = await shaRes.json(); sha = d.sha; }
+      if (!cfg || !cfg.token || !cfg.owner || !cfg.repo) return;
 
-      await fetch(url, {
+      const url = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/variables.json`;
+      const shaRes = await fetch(`${url}?ref=${encodeURIComponent(cfg.branch || 'main')}&_t=${Date.now()}`, {
+        headers: {
+          "Authorization": `Bearer ${cfg.token}`,
+          "Accept": "application/vnd.github.v3+json"
+        }
+      }).catch(()=>null);
+
+      let sha = null;
+      if (shaRes && shaRes.ok) {
+        const d = await shaRes.json();
+        sha = d.sha;
+      }
+
+      const res = await fetch(url, {
         method: "PUT",
-        headers: { "Authorization": `Bearer ${cfg.token}`, "Content-Type": "application/json" },
+        headers: {
+          "Authorization": `Bearer ${cfg.token}`,
+          "Content-Type": "application/json",
+          "Accept": "application/vnd.github.v3+json"
+        },
         body: JSON.stringify({
-          message: "Update variables.json",
+          message: `Update variables.json (${new Date().toISOString()})`,
           content: window.btoa(unescape(encodeURIComponent(JSON.stringify(window.state.variables, null, 2)))),
           branch: cfg.branch || "main",
           ...(sha ? { sha } : {})
         })
       });
+
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+      }
     }
 
     async function loadVariablesAndSync() {
+      // 1. Recupero prioritario configurazione GitHub da localStorage
+      const localOwner = localStorage.getItem("TM_GH_OWNER");
+      const localRepo = localStorage.getItem("TM_GH_REPO");
+      const localToken = localStorage.getItem("TM_GH_TOKEN");
+      const localBranch = localStorage.getItem("TM_GH_BRANCH") || "main";
+
+      if (!window.state.variables.github_config) window.state.variables.github_config = {};
+      if (localOwner) window.state.variables.github_config.owner = localOwner;
+      if (localRepo) window.state.variables.github_config.repo = localRepo;
+      if (localToken) window.state.variables.github_config.token = localToken;
+      if (localBranch) window.state.variables.github_config.branch = localBranch;
+
+      // 2. Carica da localStorage eventuali variabili salvate in precedenza
+      const cachedVars = localStorage.getItem("TM_LOCAL_VARIABLES");
+      if (cachedVars) {
+        try {
+          const parsed = JSON.parse(cachedVars);
+          if (parsed && parsed.personale) {
+            window.state.variables = { ...window.state.variables, ...parsed };
+          }
+        } catch(e){}
+      }
+
+      // 3. Carica eventuali prenotazioni memorizzate in locale
+      const cachedBookings = localStorage.getItem("TM_LOCAL_BOOKINGS");
+      if (cachedBookings) {
+        try {
+          const parsedB = JSON.parse(cachedBookings);
+          if (Array.isArray(parsedB)) window.state.bookings = parsedB;
+        } catch(e){}
+      }
+
       populateDropdowns();
       renderQuickRecent();
       renderReportList();
 
+      // 4. Prova a caricare variables.json dal web server locale
       try {
         const res = await fetch(`./variables.json?_t=${Date.now()}`, { cache: 'no-store' });
         if (res.ok) {
           const data = await res.json();
           if (data && data.personale) {
+            // Unisci mantenendo la config se presente
+            const ghCfg = window.state.variables.github_config;
             window.state.variables = data;
+            if (ghCfg.token) window.state.variables.github_config = ghCfg;
             populateDropdowns();
             renderVariableManagement();
           }
         }
       } catch(e){}
 
+      // 5. Se GitHub è configurato, sincronizza subito con il repo remoto
       const cfg = window.state.variables.github_config;
-      if (cfg && cfg.token && cfg.owner) {
+      if (cfg && cfg.token && cfg.owner && cfg.repo) {
         try {
-          const res = await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/bookings.json?ref=${cfg.branch}&_t=${Date.now()}`, {
-            headers: { "Authorization": `Bearer ${cfg.token}`, "Accept": "application/vnd.github.v3+json" }
+          // Sync variables da GitHub se disponibili
+          const vRes = await fetch(`https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/variables.json?ref=${encodeURIComponent(cfg.branch || 'main')}&_t=${Date.now()}`, {
+            headers: {
+              "Authorization": `Bearer ${cfg.token}`,
+              "Accept": "application/vnd.github.v3+json"
+            }
           });
-          if (res.ok) {
-            const file = await res.json();
+          if (vRes.ok) {
+            const vFile = await vRes.json();
+            const vContent = JSON.parse(decodeURIComponent(escape(window.atob(vFile.content.replace(/\n/g, '')))));
+            if (vContent && vContent.personale) {
+              const currentCfg = window.state.variables.github_config;
+              window.state.variables = vContent;
+              window.state.variables.github_config = currentCfg;
+              populateDropdowns();
+              renderVariableManagement();
+            }
+          }
+
+          // Sync prenotazioni da GitHub
+          const bRes = await fetch(`https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/bookings.json?ref=${encodeURIComponent(cfg.branch || 'main')}&_t=${Date.now()}`, {
+            headers: {
+              "Authorization": `Bearer ${cfg.token}`,
+              "Accept": "application/vnd.github.v3+json"
+            }
+          });
+          if (bRes.ok) {
+            const file = await bRes.json();
             window.state.bookings = JSON.parse(decodeURIComponent(escape(window.atob(file.content.replace(/\n/g, '')))));
+            localStorage.setItem("TM_LOCAL_BOOKINGS", JSON.stringify(window.state.bookings));
             renderQuickRecent();
             renderReportList();
             updateSyncBadge("Sync GitHub Attivo", "text-emerald-400");
             return;
+          } else if (bRes.status === 404) {
+            // Se il file non esiste ancora sul repo, lo crea
+            await pushBookingsToGitHub();
+            updateSyncBadge("Sync GitHub Attivo", "text-emerald-400");
+            return;
           }
-        } catch(e){}
+        } catch(e){
+          console.warn("Errore sync GitHub:", e);
+        }
       }
-      updateSyncBadge("Attivo Locale", "text-blue-400");
+
+      if (cfg && cfg.token && cfg.owner) {
+        updateSyncBadge("Sync GitHub Attivo", "text-emerald-400");
+      } else {
+        updateSyncBadge("Attivo Locale (Token mancante)", "text-blue-400");
+      }
     }
 
     function init() {
-      document.getElementById("displaySelectedDate").innerText = formatDateDisplay(window.state.selectedDate);
-      document.getElementById("reportCurrentDateFormatted").innerText = formatDateDisplay(window.state.reportFilterDate);
+      const today = getTodayDateString();
+      window.state.selectedDate = today;
+      window.state.reportFilterDate = today;
+
+      const disp = document.getElementById("displaySelectedDate");
+      if (disp) disp.innerText = formatDateDisplay(window.state.selectedDate);
+
+      const rDisp = document.getElementById("reportCurrentDateFormatted");
+      if (rDisp) rDisp.innerText = formatDateDisplay(window.state.reportFilterDate);
+
       selectDateShortcut('oggi');
       setBookingType('ANDATA');
       loadVariablesAndSync();
       triggerLucideIcons();
     }
 
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-    else init();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
   </script>
-</body>
-</html>
+</body></html>
