@@ -34,4 +34,10 @@
     "21:00",
     "22:00"
   ]
+  "github_config": {
+    "owner": "IL_TUO_USERNAME_GITHUB",
+    "repo": "transportmanage",
+    "token": "IL_TUO_TOKEN_GHP",
+    "branch": "main"
+  }
 }
