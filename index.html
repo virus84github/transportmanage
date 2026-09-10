@@ -1,439 +1,862 @@
 <!DOCTYPE html>
-
-<html lang="it"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
-<title>Transport Manage</title>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Lucide Icons -->
-<script src="https://unpkg.com/lucide@latest"></script>
-<link href="./manifest.json" rel="manifest"/>
-<style>
+<html lang="it">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Transport Manage</title>
+  <!-- Tailwind CSS CDN -->
+  <script type='text/javascript' nonce='6G2IFZ0zi9kjIe30Pa6Clg==' src='https://contribution.usercontent.google.com/bzuJIeCRCB2eXT198CaK1VR4OqE6aTDIxfqUdlfH49jMD7vfcjYfN1X1VOfISWtf39pa1qwHi0kLJq1sO8Be42sQcWcAid8ddT8Vs4TFMbOVFCmC4QaryjFGGVaPecZcf3249_T3-I7AcXSRofNq8KE10Qf-DQCHkM9LVRz0TCmjWf3WoZwr0En0OK56SqwGReMzViT6-6UZpKvnjEn7h9j2ksJHR4pBp8x8vC9kZ7fJjiUevkyLmp36XYV5gkLAOghovfV19VKms4HoFMrrd9_7Kg1oEURoZ5-0iMIS0dN1OVrEMBc7W58dVWNMhl84A703qe-2Iq7tL_pRt3296dMeLhwx7ApJm9geOzRXQPVcid-ycd9igyQxMjEahNhujBhwPnfjW-v_wxUWaLC0KulQnLZrvo5WbxWlHZmnAJU6w64eb-rmCE2Eva8G0EbDllMV2RA03EdyWkhCOjUe2OdtmRZB7S9bfuLk_iZisdVhlHevWfe0PdcbJ3PgVUQZK98UbNTGhiTkP0-qrqrbU_RKryi1YHOdpCHdaSTY_WwlSZ1rpzPrp1xzte2dFDMtVQSd4E3zmKCDcmPZXf514oC-BLyQ26Qhavz-2h-h2Hf3D9_qbINNrZHVxf-kRbbmhtA2F5GhzUwPHXhdJfSQl-0CGcoq5_p_5bbny-pX4NHDtDq1HKX1BPifrwO2Tl049ON0DoiYcxM8i1DqAiZU9DAGIIyz8ghWgNivQD8q-K08k9ZpGOkrlT_okLaw4io33AcRwBDW9GqYhzJyYijBRhGry0-CgBYkJQ_j1adV'></script><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
     body {
-      touch-action: manipulation;
+      background-color: #070e1d;
+      color: #f1f5f9;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       -webkit-tap-highlight-color: transparent;
-      user-select: none;
     }
-    input, select, textarea {
-      user-select: text;
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+      cursor: pointer;
     }
-    .custom-scrollbar::-webkit-scrollbar {
-      width: 4px;
-      height: 4px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: rgba(148, 163, 184, 0.2);
-      border-radius: 4px;
-    }
+    /* Smooth custom scrollbars */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0c1322; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
   </style>
 </head>
-<body class="bg-[#0c1322] text-slate-100 min-h-screen flex flex-col font-sans antialiased selection:bg-blue-600 selection:text-white pb-20">
-<!-- ==================== HEADER ==================== -->
-<header class="sticky top-0 z-30 bg-[#0c1322]/90 backdrop-blur-md border-b border-slate-800/80 px-4 py-3 flex items-center justify-between shadow-sm">
-<div class="flex items-center gap-2.5">
-<div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-600/20">
-<i class="w-5 h-5" data-lucide="bus"></i>
-</div>
-<div>
-<div class="flex items-center gap-1.5">
-<h1 class="text-sm font-bold tracking-tight text-white leading-tight">Transport Manage</h1>
-<span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-800/60">Sheets DB</span>
-</div>
-<div class="text-[10px] tracking-wide font-mono uppercase text-slate-400 flex items-center gap-1" id="syncStatusBadge">
-<span class="w-1.5 h-1.5 rounded-full bg-slate-400 inline-block animate-pulse"></span> Sincronizzazione attiva
+<body class="min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white pb-20">
+
+  <!-- ==================== HEADER PRINCIPALE ==================== -->
+  <header class="sticky top-0 z-30 bg-[#0c1322]/95 backdrop-blur border-b border-slate-800/80 px-4 py-3">
+    <div class="max-w-md mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 shadow-sm">
+          <i data-lucide="bus" class="w-5 h-5"></i>
         </div>
-</div>
-</div>
-<!-- Refresh Manuale -->
-<button class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/60 transition active:scale-95" id="btnManualRefresh" onclick="manualRefresh()" title="Aggiorna dati da Google Sheets">
-<i class="w-4 h-4" data-lucide="refresh-cw"></i>
-</button>
-</header>
-<!-- ==================== MAIN CONTENT ==================== -->
-<main class="flex-1 max-w-md w-full mx-auto p-4 space-y-4">
-<!-- ==================== SCHEDA 1: PRENOTAZIONE ==================== -->
-<section class="space-y-4" id="page-prenotazione">
-<!-- SELETTORE DATA -->
-<div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-3.5 shadow-sm space-y-2.5">
-<div class="flex items-center justify-between text-xs">
-<span class="font-bold text-slate-300 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-<i class="w-3.5 h-3.5 text-blue-400" data-lucide="calendar"></i> Data Corsa
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-sm tracking-tight text-white">Transport Manage</span>
+            <span id="syncBadgeHeader" class="px-1.5 py-0.5 rounded text-[10px] font-mono font-medium tracking-wide bg-emerald-950/80 text-emerald-400 border border-emerald-800/50">
+              SHEETS DB
+            </span>
+          </div>
+          <div id="syncStatusSub" class="text-[10px] text-slate-400 font-mono flex items-center gap-1.5">
+            <span id="syncStatusDot" class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+            <span id="syncStatusText">Connesso a Google Sheets</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pulsante Refresh Manuale -->
+      <button id="btnManualRefresh" onclick="manualSyncTrigger()" title="Sincronizza ora con Google Sheets" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition active:scale-95">
+        <i id="refreshIcon" data-lucide="refresh-cw" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== CONTENUTO PAGINE ==================== -->
+  <main class="flex-1 max-w-md mx-auto w-full p-4 space-y-4">
+
+    <!-- ---------------------------------------------------- -->
+    <!-- SCHEDA 1: PRENOTAZIONE CORSE                         -->
+    <!-- ---------------------------------------------------- -->
+    <section id="page-prenotazione" class="space-y-4">
+      
+      <!-- Card Selezione Data Corsa -->
+      <div class="p-4 rounded-2xl bg-[#0c1322] border border-slate-800/80 shadow-lg space-y-3">
+        <div class="flex items-center justify-between text-xs font-semibold text-slate-300">
+          <div class="flex items-center gap-1.5">
+            <i data-lucide="calendar" class="w-4 h-4 text-blue-400"></i>
+            <span>DATA CORSA</span>
+          </div>
+          <span id="displaySelectedDate" class="font-mono text-blue-400 font-bold bg-blue-950/50 px-2.5 py-0.5 rounded-lg border border-blue-900/50">
+            --/--/----
           </span>
-<span class="font-mono font-bold text-blue-400 bg-blue-950/60 px-2 py-0.5 rounded-md border border-blue-900/60" id="displaySelectedDate">--/--/----</span>
-</div>
-<div class="grid grid-cols-2 gap-2">
-<!-- TASTO 1: DOMANI -->
-<button class="py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95" id="btnDateDomani" onclick="setBookingDateShortcut('domani')" type="button">
-<i class="w-4 h-4" data-lucide="chevrons-right"></i> Domani
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <!-- Tasto Rapido: Domani -->
+          <button id="btnDateDomani" onclick="selectDateShortcut(&#39;domani&#39;)" class="py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-md active:scale-95">
+            <i data-lucide="chevrons-right" class="w-4 h-4"></i> Domani
           </button>
-<!-- TASTO 2: CALENDARIO -->
-<label class="cursor-pointer relative py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95" id="btnDateCalendarWrapper">
-<i class="w-4 h-4 text-slate-400" data-lucide="calendar-days"></i> Calendario
-            <input class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" id="inputCustomDate" onchange="onCustomDatePicked(this.value)" type="date"/>
-</label>
-</div>
-</div>
-<!-- FORM PRENOTAZIONE -->
-<form class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-4 shadow-sm space-y-4" id="bookingForm" onsubmit="submitBooking(event)">
-<!-- 1. PERSONALE -->
-<div class="space-y-1.5">
-<label class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5 uppercase tracking-wide">
-<i class="w-3.5 h-3.5 text-slate-400" data-lucide="user"></i> 1. Operatore / Autista
+          
+          <!-- Selettore Calendario Nativo -->
+          <div class="relative">
+            <label for="nativeDateInput" class="w-full py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer bg-slate-800/90 text-slate-200 border-slate-700 hover:bg-slate-700/90 active:scale-95">
+              <i data-lucide="calendar-days" class="w-4 h-4 text-slate-400"></i> Calendario
+            </label>
+            <input id="nativeDateInput" type="date" onchange="onCustomDateChange(this.value)" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modulo Dati Prenotazione -->
+      <form onsubmit="handleBookingSubmit(event)" class="p-4 rounded-2xl bg-[#0c1322] border border-slate-800/80 shadow-lg space-y-4">
+        
+        <!-- 1. Operatore / Autista -->
+        <div class="space-y-1.5">
+          <label class="text-[11px] font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5">
+            <i data-lucide="user" class="w-3.5 h-3.5 text-blue-400"></i> 1. Operatore / Autista
           </label>
-<select class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition" id="selPersonale" required="">
-<option value="">Caricamento conducenti...</option>
-</select>
-</div>
-<!-- 2. MEZZO -->
-<div class="space-y-1.5">
-<label class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5 uppercase tracking-wide">
-<i class="w-3.5 h-3.5 text-slate-400" data-lucide="truck"></i> 2. Mezzo di Trasporto
+          <div class="relative">
+            <select id="selectPersonale" required="" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition appearance-none cursor-pointer">
+              <option value="">Seleziona operatore conducente...</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Mezzo di Trasporto -->
+        <div class="space-y-1.5">
+          <label class="text-[11px] font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5">
+            <i data-lucide="truck" class="w-3.5 h-3.5 text-blue-400"></i> 2. Mezzo di Trasporto
           </label>
-<select class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition" id="selMezzo" required="">
-<option value="">Caricamento flotta...</option>
-</select>
-</div>
-<!-- 3. FASCIA ORARIA -->
-<div class="space-y-1.5">
-<label class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5 uppercase tracking-wide">
-<i class="w-3.5 h-3.5 text-slate-400" data-lucide="clock"></i> 3. Fascia Oraria
+          <div class="relative">
+            <select id="selectMezzo" required="" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition appearance-none cursor-pointer">
+              <option value="">Assegna veicolo flotta...</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Fascia Oraria -->
+        <div class="space-y-1.5">
+          <label class="text-[11px] font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5">
+            <i data-lucide="clock" class="w-3.5 h-3.5 text-blue-400"></i> 3. Fascia Oraria
           </label>
-<select class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 font-mono focus:outline-none focus:border-blue-500 transition" id="selOrario" required="">
-<option value="">Caricamento orari autorizzati...</option>
-</select>
-</div>
-<!-- 4. TIPOLOGIA CORSA -->
-<div class="space-y-1.5">
-<label class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5 uppercase tracking-wide">
-<i class="w-3.5 h-3.5 text-slate-400" data-lucide="repeat"></i> 4. Tipologia Corsa
+          <div class="relative">
+            <select id="selectOrario" required="" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition appearance-none cursor-pointer font-mono">
+              <option value="">Fascia oraria autorizzata...</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Tipologia Corsa: Andata / Ritorno -->
+        <div class="space-y-1.5">
+          <label class="text-[11px] font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-1.5">
+            <i data-lucide="repeat" class="w-3.5 h-3.5 text-blue-400"></i> 4. Tipologia Corsa
           </label>
-<div class="grid grid-cols-2 gap-2">
-<button class="py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95" id="btnTypeAndata" onclick="setTripType('ANDATA')" type="button">
-<i class="w-4 h-4" data-lucide="arrow-up-right"></i> ANDATA
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" id="btnTypeAndata" onclick="setBookingType(&#39;ANDATA&#39;)" class="py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-md">
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i> ANDATA
             </button>
-<button class="py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600 active:scale-95" id="btnTypeRitorno" onclick="setTripType('RITORNO')" type="button">
-<i class="w-4 h-4" data-lucide="arrow-down-left"></i> RITORNO
+            <button type="button" id="btnTypeRitorno" onclick="setBookingType(&#39;RITORNO&#39;)" class="py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600">
+              <i data-lucide="arrow-down-left" class="w-4 h-4"></i> RITORNO
             </button>
-</div>
-</div>
-<!-- SALVATAGGIO -->
-<button class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs tracking-wider uppercase transition shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2 active:scale-[0.98]" id="btnSubmitTrip" type="submit">
-<i class="w-4 h-4" data-lucide="send"></i> Salva e Invia su Google Fogli
+          </div>
+        </div>
+
+        <!-- Tasto Invio -->
+        <button type="submit" id="btnSubmitBooking" class="w-full mt-2 py-3.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-lg shadow-blue-900/40 transition active:scale-98">
+          <i data-lucide="send" class="w-4 h-4"></i> SALVA E INVIA SU GOOGLE FOGLI
         </button>
-</form>
-<!-- ULTIME CORSE RECENTI REGISTRATE -->
-<div class="space-y-2">
-<div class="flex items-center justify-between text-xs px-1">
-<span class="font-bold text-slate-400 uppercase tracking-wider text-[11px]">Ultime Corse Registrate</span>
-<span class="text-[11px] font-mono text-slate-500" id="quickRecentCount">0 corse totali</span>
-</div>
-<div class="space-y-2" id="quickRecentList"></div>
-</div>
-</section>
-<!-- ==================== SCHEDA 2: REPORT CORSE ==================== -->
-<section class="space-y-4 hidden" id="page-report">
-<div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-3.5 shadow-sm space-y-3">
-<div class="flex items-center justify-between text-xs">
-<span class="font-bold text-slate-300 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-<i class="w-3.5 h-3.5 text-blue-400" data-lucide="filter"></i> Filtra per Data
+      </form>
+
+      <!-- Ultime Corse Registrate (Anteprima Rapida) -->
+      <div class="space-y-2 pt-1">
+        <div class="flex items-center justify-between text-xs text-slate-400 px-1">
+          <span class="font-semibold uppercase tracking-wider text-[10px]">Ultime corse registrate</span>
+          <span id="quickRecentCount" class="font-mono text-[10px]">0 corse salvate</span>
+        </div>
+        <div id="quickRecentBookings" class="space-y-2">
+          <div class="p-3 text-center text-xs text-slate-500 bg-[#0c1322] rounded-xl border border-slate-800">
+            Nessuna corsa registrata
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- SCHEDA 2: REPORT CORSE (FILTRO DATA & CODICE COLORE)  -->
+    <!-- ---------------------------------------------------- -->
+    <section id="page-report" class="hidden space-y-4">
+      
+      <!-- Selettore Filtro Data Report -->
+      <div class="p-4 rounded-2xl bg-[#0c1322] border border-slate-800/80 shadow-lg space-y-3">
+        <div class="flex items-center justify-between text-xs font-semibold text-slate-300">
+          <div class="flex items-center gap-1.5">
+            <i data-lucide="filter" class="w-4 h-4 text-blue-400"></i>
+            <span>FILTRO DATA REPORT</span>
+          </div>
+          <span id="reportCurrentDateFormatted" class="font-mono text-blue-400 font-bold bg-blue-950/50 px-2.5 py-0.5 rounded-lg border border-blue-900/50">
+            --/--/----
           </span>
-<span class="font-mono font-bold text-blue-400 bg-blue-950/60 px-2 py-0.5 rounded-md border border-blue-900/60" id="reportFilterDateDisplay">--/--/----</span>
-</div>
-<div class="grid grid-cols-2 gap-2">
-<button class="py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95" id="btnReportDateDomani" onclick="setReportDateShortcut('domani')" type="button">
-<i class="w-4 h-4" data-lucide="chevrons-right"></i> Domani
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <!-- Tasto Rapido: Domani per Report -->
+          <button id="btnReportDomani" onclick="setReportDateShortcut(&#39;domani&#39;)" class="py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-md active:scale-95">
+            <i data-lucide="chevrons-right" class="w-4 h-4"></i> Domani
           </button>
-<label class="cursor-pointer relative py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95" id="btnReportCalendarWrapper">
-<i class="w-4 h-4 text-slate-400" data-lucide="calendar-days"></i> Calendario
-            <input class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" id="inputReportDate" onchange="onReportCustomDatePicked(this.value)" type="date"/>
-</label>
-</div>
-<button class="w-full py-2 px-3 rounded-xl bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-center gap-2 transition active:scale-95" onclick="exportToCsv()">
-<i class="w-3.5 h-3.5 text-slate-400" data-lucide="download"></i> Esporta Report in CSV
-        </button>
-</div>
-<div class="px-2 text-[11px] text-slate-400 flex items-center justify-between">
-<span class="flex items-center gap-1.5">
-<span class="w-2 h-2 rounded-full bg-blue-500 inline-block"></span>
-          Corse con stesso orario, tipo e mezzo condividono lo stesso colore
+          
+          <!-- Selettore Calendario Nativo per Report -->
+          <div class="relative">
+            <label for="reportNativeDateInput" class="w-full py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer bg-slate-800/90 text-slate-200 border-slate-700 hover:bg-slate-700/90 active:scale-95">
+              <i data-lucide="calendar-days" class="w-4 h-4 text-slate-400"></i> Calendario
+            </label>
+            <input id="reportNativeDateInput" type="date" onchange="onReportCustomDateChange(this.value)" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full"/>
+          </div>
+        </div>
+
+        <!-- Bottoni Navigazione Veloce Giorni (-1 / +1) -->
+        <div class="flex items-center justify-between pt-1 border-t border-slate-800/60 text-xs">
+          <button onclick="shiftReportDate(-1)" class="px-2.5 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 flex items-center gap-1 transition">
+            <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i> Giorno prima
+          </button>
+          <button onclick="setReportDateShortcut(&#39;oggi&#39;)" class="px-2.5 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 transition">
+            Oggi
+          </button>
+          <button onclick="shiftReportDate(1)" class="px-2.5 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 flex items-center gap-1 transition">
+            Giorno dopo <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Azioni e Conteggio Report -->
+      <div class="flex items-center justify-between px-1">
+        <span id="reportTotalBadge" class="text-xs font-mono font-medium text-slate-400">
+          0 corse per la data
         </span>
-<span class="font-mono font-bold text-slate-300" id="reportRowCountBadge">0 corse</span>
-</div>
-<div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl overflow-hidden shadow-sm">
-<div class="grid grid-cols-12 px-3 py-2.5 text-[10px] font-mono uppercase tracking-wider text-slate-400 border-b border-slate-800 bg-slate-950/60 font-bold">
-<div class="col-span-4">Personale</div>
-<div class="col-span-3 text-center">Orario</div>
-<div class="col-span-2 text-center">Tipo</div>
-<div class="col-span-3 text-right">Mezzo</div>
-</div>
-<div class="divide-y divide-slate-800/50 custom-scrollbar max-h-[55vh] overflow-y-auto" id="reportListRows"></div>
-</div>
-</section>
-<!-- ==================== SCHEDA 3: MANAGE ==================== -->
-<section class="space-y-4 hidden" id="page-manage">
-<div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-5 shadow-sm space-y-3.5 text-center" id="manageAuthGate">
-<div class="w-12 h-12 mx-auto rounded-2xl bg-blue-950/80 border border-blue-800/50 flex items-center justify-center text-blue-400 shadow-md">
-<i class="w-6 h-6" data-lucide="shield-lock"></i>
-</div>
-<div>
-<h2 class="text-sm font-bold text-white">Area Riservata Amministratore</h2>
-<p class="text-xs text-slate-400 mt-1">Inserisci la password per gestire il backend Google Sheets e la flotta.</p>
-</div>
-<form class="space-y-2.5 max-w-xs mx-auto" onsubmit="handleAuth(event)">
-<input class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-center text-slate-200 focus:outline-none focus:border-blue-500 transition" id="inputManagePassword" placeholder="Password (predefinita: strongroom)" required="" type="password"/>
-<button class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs transition shadow-md shadow-blue-600/20 active:scale-95" type="submit">
-            Sblocca Area Manage
+        <button onclick="exportReportToCsv()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700/80 flex items-center gap-1.5 shadow-sm transition active:scale-95">
+          <i data-lucide="download" class="w-3.5 h-3.5 text-blue-400"></i> Esporta CSV
+        </button>
+      </div>
+
+      <!-- Tabella / Elenco Corse Raggruppate per Colore -->
+      <div class="rounded-2xl bg-[#0c1322] border border-slate-800/80 shadow-lg overflow-hidden">
+        <!-- Intestazione Tabella fissa a 4 colonne -->
+        <div class="grid grid-cols-12 px-3 py-2.5 bg-slate-900/90 border-b border-slate-800 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+          <div class="col-span-4">Autista</div>
+          <div class="col-span-3 text-center">Orario</div>
+          <div class="col-span-2 text-center">Tipo</div>
+          <div class="col-span-3 text-right">Mezzo</div>
+        </div>
+
+        <!-- Righe Dati -->
+        <div id="reportListRows" class="divide-y divide-slate-800/60">
+          <div class="py-10 text-center text-xs text-slate-500">
+            Caricamento o nessuna corsa registrata per questa data...
+          </div>
+        </div>
+      </div>
+
+      <!-- Legenda Raggruppamento Colori -->
+      <div class="p-3 rounded-xl bg-[#0c1322]/60 border border-slate-800/60 text-[11px] text-slate-400 flex items-start gap-2">
+        <i data-lucide="info" class="w-4 h-4 text-blue-400 shrink-0 mt-0.5"></i>
+        <span><strong>Codice Colore Automatico:</strong> le corse che hanno lo stesso orario, stesso tipo (AND/RIT) e stesso veicolo sono contrassegnate dalla medesima barra di colore a sinistra per identificare istantaneamente il gruppo di trasporto.</span>
+      </div>
+    </section>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- SCHEDA 3: MANAGE (PASSWORD "strongroom")              -->
+    <!-- ---------------------------------------------------- -->
+    <section id="page-manage" class="hidden space-y-4">
+      
+      <!-- Gate Autenticazione Password -->
+      <div id="manageAuthGate" class="p-6 rounded-2xl bg-[#0c1322] border border-slate-800/80 shadow-lg text-center space-y-4">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
+          <i data-lucide="lock" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h2 class="text-base font-bold text-white">Area Riservata Gestione</h2>
+          <p class="text-xs text-slate-400 mt-1">Inserisci la password amministratore per gestire autisti, mezzi, fasce orarie e configurazione.</p>
+        </div>
+        <form onsubmit="handleManageAuth(event)" class="space-y-3 max-w-xs mx-auto">
+          <input id="managePasswordInput" type="password" placeholder="Password (default: strongroom)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-center text-white focus:outline-none focus:border-blue-500 transition"/>
+          <button type="submit" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs tracking-wider uppercase transition shadow-md">
+            Sblocca Gestione
           </button>
-</form>
-</div>
-<div class="space-y-4 hidden" id="manageDashboard">
-<div class="flex items-center justify-between bg-slate-900/80 border border-slate-800/90 rounded-2xl p-3.5">
-<div class="flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-<span class="text-xs font-bold text-white uppercase tracking-wider">Pannello Admin Attivo</span>
-</div>
-<button class="text-xs text-slate-400 hover:text-rose-400 flex items-center gap-1 transition" onclick="lockManage()">
-<i class="w-3.5 h-3.5" data-lucide="lock"></i> Blocca
+        </form>
+      </div>
+
+      <!-- Dashboard Manage (Sbloccata) -->
+      <div id="manageDashboard" class="hidden space-y-4">
+        
+        <!-- Header Dashboard Amministratore -->
+        <div class="flex items-center justify-between px-1">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span class="text-xs font-bold text-slate-200">Admin Sbloccato</span>
+          </div>
+          <button onclick="lockManageArea()" class="text-xs text-rose-400 hover:text-rose-300 flex items-center gap-1 transition">
+            <i data-lucide="lock" class="w-3.5 h-3.5"></i> Blocca
           </button>
-</div>
-<div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-4 shadow-sm space-y-3">
-<div class="flex items-center justify-between">
-<h3 class="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
-<i class="w-3.5 h-3.5 text-blue-400" data-lucide="link-2"></i> Backend Google Sheets API
-            </h3>
-<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-900">Google Drive</span>
-</div>
-<p class="text-[11px] text-slate-400 leading-relaxed">
-            Incolla l'URL dell'Applicazione Web Google Apps Script terminante con <code class="text-blue-300 font-mono">/exec</code>.
-          </p>
-<div class="space-y-2">
-<input class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs font-mono text-slate-200 focus:outline-none focus:border-blue-500 transition" id="inputSheetsUrl" placeholder="https://script.google.com/macros/s/.../exec" type="url"/>
-<div class="grid grid-cols-2 gap-2">
-<button class="py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95" id="btnTestGoogle" onclick="testGoogleConnection()">
-<i class="w-3.5 h-3.5 text-slate-400" data-lucide="activity"></i> Test Connessione
+        </div>
+
+        <!-- Box Configurazione Google Sheets API -->
+        <div class="p-4 rounded-2xl bg-[#0c1322] border border-slate-800 shadow-lg space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i data-lucide="sheet" class="w-4 h-4 text-emerald-400"></i>
+              <span class="text-xs font-bold text-white">URL Google Apps Script Web App</span>
+            </div>
+            <span id="manageSyncStatusText" class="text-[10px] font-mono text-emerald-400">Connesso</span>
+          </div>
+          <div class="space-y-1.5">
+            <input id="inputSheetsUrl" type="url" placeholder="https://script.google.com/macros/s/.../exec" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs font-mono text-slate-100 focus:outline-none focus:border-blue-500"/>
+            <p class="text-[10px] text-slate-400">Incolla l'URL della Web App di Apps Script terminante con <code>/exec</code>.</p>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <button onclick="saveSheetsUrlFromInput()" class="py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-1 transition">
+              <i data-lucide="save" class="w-3.5 h-3.5"></i> Salva URL
+            </button>
+            <button onclick="testSheetsConnectionFromInput()" class="py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs border border-slate-700 flex items-center justify-center gap-1 transition">
+              <i data-lucide="activity" class="w-3.5 h-3.5 text-blue-400"></i> Test Connessione
+            </button>
+          </div>
+        </div>
+
+        <!-- Gestione CRUD Variabili (Autisti, Mezzi, Orari) -->
+        <div class="p-4 rounded-2xl bg-[#0c1322] border border-slate-800 shadow-lg space-y-3">
+          
+          <!-- Selettore Tab Variabile -->
+          <div class="grid grid-cols-3 gap-1 p-1 bg-slate-900/90 rounded-xl border border-slate-800/80">
+            <button id="tabVarPersonale" onclick="switchVariableTab(&#39;personale&#39;)" class="py-2 text-[11px] font-bold rounded-lg bg-blue-600 text-white transition shadow-sm">
+              Autisti
+            </button>
+            <button id="tabVarMezzi" onclick="switchVariableTab(&#39;mezzi&#39;)" class="py-2 text-[11px] font-bold rounded-lg text-slate-400 hover:text-white transition">
+              Mezzi
+            </button>
+            <button id="tabVarFasce" onclick="switchVariableTab(&#39;fasce&#39;)" class="py-2 text-[11px] font-bold rounded-lg text-slate-400 hover:text-white transition">
+              Orari
+            </button>
+          </div>
+
+          <!-- Form Aggiunta / Modifica Elemento -->
+          <form onsubmit="handleVariableSave(event)" class="space-y-2 pt-1">
+            <div class="flex items-center justify-between text-xs">
+              <span id="variableFormTitle" class="font-semibold text-slate-200">Nuovo Autista/Operatore</span>
+              <span id="variableFormHint" class="text-[10px] text-slate-500">Variabile 1</span>
+            </div>
+            <input type="hidden" id="variableEditIndex" value="-1"/>
+            <div class="flex gap-2">
+              <input id="variableTextInput" type="text" required="" placeholder="Nome e Cognome..." class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500"/>
+              <button type="submit" id="btnSaveVariable" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1 shadow-sm transition">
+                <i data-lucide="plus" class="w-3.5 h-3.5"></i> Salva
               </button>
-<button class="py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition shadow-sm shadow-blue-600/20 active:scale-95" onclick="saveGoogleUrl()">
-<i class="w-3.5 h-3.5" data-lucide="save"></i> Salva URL
-              </button>
-</div>
-<div class="hidden p-2.5 rounded-xl text-xs font-mono" id="testFeedback"></div>
-</div>
-</div>
-<div class="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-4 shadow-sm space-y-4">
-<div class="flex items-center justify-between">
-<h3 class="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
-<i class="w-3.5 h-3.5 text-blue-400" data-lucide="sliders"></i> Gestione Variabili Flotta
-            </h3>
-<span class="text-[10px] text-slate-500 font-mono">Sincronizzazione su Sheet</span>
-</div>
-<div class="grid grid-cols-3 gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
-<button class="py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition" id="tabVarPersonale" onclick="selectVarTab('personale')">Autisti</button>
-<button class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition" id="tabVarMezzi" onclick="selectVarTab('mezzi')">Mezzi</button>
-<button class="py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition" id="tabVarFasce" onclick="selectVarTab('fasce')">Orari</button>
-</div>
-<form class="space-y-2" onsubmit="handleVariableFormSubmit(event)">
-<div class="flex items-center justify-between text-[11px] font-semibold text-slate-400">
-<span id="varFormTitle">Nuovo Autista/Operatore</span>
-<span class="text-slate-500 font-mono" id="varFormHint">Variabile 1</span>
-</div>
-<input id="varEditIndex" type="hidden" value="-1"/>
-<div class="flex gap-2">
-<input class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition" id="inputVarText" placeholder="Nome e Cognome..." required="" type="text"/>
-<button class="py-2 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition active:scale-95" id="btnSaveVar" type="submit">
-                Salva
-              </button>
-</div>
-</form>
-<div class="space-y-2 pt-1">
-<span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider" id="varListLabel">Elenco Conducenti</span>
-<div class="space-y-1.5 custom-scrollbar max-h-60 overflow-y-auto" id="varItemsList"></div>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- ==================== BOTTOM NAV ==================== -->
-<nav class="fixed bottom-0 inset-x-0 z-30 bg-[#0c1322]/95 backdrop-blur-md border-t border-slate-800/80 px-6 py-1.5 flex justify-around items-center">
-<button class="flex flex-col items-center gap-1 py-1 text-blue-400 transition" id="navPrenotazione" onclick="switchTab('prenotazione')">
-<i class="w-5 h-5" data-lucide="calendar-plus"></i>
-<span class="text-[10px] font-semibold">Prenotazione</span>
-</button>
-<button class="flex flex-col items-center gap-1 py-1 text-slate-400 hover:text-slate-200 transition" id="navReport" onclick="switchTab('report')">
-<i class="w-5 h-5" data-lucide="bar-chart-3"></i>
-<span class="text-[10px] font-semibold">Report</span>
-</button>
-<button class="flex flex-col items-center gap-1 py-1 text-slate-400 hover:text-slate-200 transition" id="navManage" onclick="switchTab('manage')">
-<i class="w-5 h-5" data-lucide="settings"></i>
-<span class="text-[10px] font-semibold">Manage</span>
-</button>
-</nav>
-<!-- ==================== LOGICA JAVASCRIPT ==================== -->
-<script>
-    const DEFAULT_DATA = {
-      variables: {
-        personale: ["Marco Rossi", "Luca Bianchi", "Alessandro Verdi", "Giulia Neri", "Roberto Ferrari"],
-        mezzi: ["Navetta Van 01 (Cap. 8p)", "Minibus B2 (Cap. 16p)", "Auto 04 (Cap. 4p)", "Bus GT (Cap. 50p)", "Van Cargo 02"],
-        fasce_orarie: ["06:30", "08:00", "14:00", "17:30", "19:15", "21:00"]
-      },
-      bookings: []
+            </div>
+          </form>
+
+          <!-- Elenco Elementi Configurati -->
+          <div class="space-y-2 pt-2">
+            <div id="variableListLabel" class="text-[10px] uppercase tracking-wider font-semibold text-slate-400">
+              Elenco Autisti
+            </div>
+            <div id="variableItemsList" class="space-y-1.5 max-h-60 overflow-y-auto pr-1">
+              <!-- Renderizzato via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== BOTTOM NAVIGATION (3 TAB) ==================== -->
+  <nav class="fixed bottom-0 inset-x-0 z-30 bg-[#0c1322]/95 backdrop-blur border-t border-slate-800/80 px-4 py-2">
+    <div class="max-w-md mx-auto grid grid-cols-3 gap-2">
+      <!-- Tab 1: Prenotazione -->
+      <button id="navBtnPrenotazione" onclick="navigateToPage(&#39;prenotazione&#39;)" class="py-1.5 flex flex-col items-center gap-1 text-blue-400 transition">
+        <i data-lucide="calendar-plus" class="w-5 h-5"></i>
+        <span class="text-[10px] font-semibold">Prenotazione</span>
+      </button>
+
+      <!-- Tab 2: Report -->
+      <button id="navBtnReport" onclick="navigateToPage(&#39;report&#39;)" class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition">
+        <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
+        <span class="text-[10px] font-semibold">Report</span>
+      </button>
+
+      <!-- Tab 3: Manage -->
+      <button id="navBtnManage" onclick="navigateToPage(&#39;manage&#39;)" class="py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition">
+        <i data-lucide="settings" class="w-5 h-5"></i>
+        <span class="text-[10px] font-semibold">Manage</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== LOGICA JAVASCRIPT CORRETTA ==================== -->
+  <script>
+    /**
+     * Transport Manage - Architettura Robusta Google Sheets + Anti-CORS & Normalizzazione Data Report
+     */
+
+    // 1. Variabili di Default
+    const DEFAULT_VARIABLES = {
+      personale: ["Marco Rossi", "Luca Bianchi", "Alessandro Verdi", "Giulia Neri", "Roberto Ferrari"],
+      mezzi: ["Navetta Van 01 (Cap. 8p)", "Minibus B2 (Cap. 16p)", "Auto 04 (Cap. 4p)", "Bus GT (Cap. 50p)", "Van Cargo 02"],
+      fasce_orarie: ["06:30", "08:00", "14:00", "17:30", "19:15", "21:00"]
     };
 
-    const PALETTE = [
-      { border: 'border-l-blue-400', tag: 'text-blue-400', badge: 'bg-blue-950/80 text-blue-300' },
-      { border: 'border-l-emerald-400', tag: 'text-emerald-400', badge: 'bg-emerald-950/80 text-emerald-300' },
-      { border: 'border-l-amber-400', tag: 'text-amber-400', badge: 'bg-amber-950/80 text-amber-300' },
-      { border: 'border-l-purple-400', tag: 'text-purple-400', badge: 'bg-purple-950/80 text-purple-300' },
-      { border: 'border-l-cyan-400', tag: 'text-cyan-400', badge: 'bg-cyan-950/80 text-cyan-300' },
-      { border: 'border-l-rose-400', tag: 'text-rose-400', badge: 'bg-rose-950/80 text-rose-300' },
-      { border: 'border-l-indigo-400', tag: 'text-indigo-400', badge: 'bg-indigo-950/80 text-indigo-300' },
-      { border: 'border-l-teal-400', tag: 'text-teal-400', badge: 'bg-teal-950/80 text-teal-300' }
+    // 2. Palette Colori per raggruppamento automatico nel Report
+    const REPORT_PALETTE = [
+      { border: 'border-l-blue-400', tag: 'text-blue-400' },
+      { border: 'border-l-emerald-400', tag: 'text-emerald-400' },
+      { border: 'border-l-amber-400', tag: 'text-amber-400' },
+      { border: 'border-l-purple-400', tag: 'text-purple-400' },
+      { border: 'border-l-rose-400', tag: 'text-rose-400' },
+      { border: 'border-l-cyan-400', tag: 'text-cyan-400' },
+      { border: 'border-l-indigo-400', tag: 'text-indigo-400' },
+      { border: 'border-l-teal-400', tag: 'text-teal-400' }
     ];
 
-    window.AppState = {
+    // 3. Stato Globale Applicazione
+    window.state = {
       activeTab: 'prenotazione',
-      selectedDate: getTomorrowDateString(),
-      reportFilterDate: getTomorrowDateString(),
-      tripType: 'ANDATA',
-      sheetsUrl: localStorage.getItem('TM_GOOGLE_SHEETS_URL') || '',
-      variables: JSON.parse(JSON.stringify(DEFAULT_DATA.variables)),
+      selectedDate: getTomorrowDateString(), // Default Domani come richiesto
+      reportFilterDate: getTomorrowDateString(), // Default Domani anche per il Report
+      bookingType: 'ANDATA',
+      variables: JSON.parse(JSON.stringify(DEFAULT_VARIABLES)),
       bookings: [],
-      currentVarTab: 'personale',
-      isManageUnlocked: false
+      isManageAuthenticated: false,
+      activeVariableTab: 'personale',
+      sheetsUrl: localStorage.getItem("TM_SHEETS_URL") || "",
+      isSyncing: false
     };
 
+    // ---------------- UTILITÀ DATE ROBUSTE ----------------
     function getTodayDateString() {
       const d = new Date();
-      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      return formatDateISO(d);
     }
 
     function getTomorrowDateString() {
       const d = new Date();
       d.setDate(d.getDate() + 1);
-      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      return formatDateISO(d);
     }
 
-    function formatDateDisplay(dateStr) {
-      if (!dateStr) return '--/--/----';
-      const parts = dateStr.split('-');
-      if (parts.length !== 3) return dateStr;
-      return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    function formatDateISO(d) {
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    /**
+     * Normalizza QUALSIASI formato data proveniente da Google Sheets o input
+     * Supporta:
+     * - "2026-09-10" (ISO standard)
+     * - "10/09/2026" o "10-09-2026" (Formato IT)
+     * - "Thu Sep 10 2026..." (Date string di Google Sheets se formattato come data)
+     * - "2026-09-10T08:00:00.000Z" (ISO timestamp)
+     * Restituisce sempre "YYYY-MM-DD" per confronti perfetti
+     */
+    function normalizeDateToISO(raw) {
+      if (!raw) return "";
+      let str = String(raw).trim();
+      
+      // Se è già YYYY-MM-DD (con o senza orario)
+      const isoMatch = str.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);
+      if (isoMatch) {
+        return `${isoMatch[1]}-${isoMatch[2].padStart(2, '0')}-${isoMatch[3].padStart(2, '0')}`;
+      }
+
+      // Se è in formato GG/MM/AAAA o GG-MM-AAAA
+      const itMatch = str.match(/^(\d{1,2})[-/.](\d{1,2})[-/.](\d{4})/);
+      if (itMatch) {
+        return `${itMatch[3]}-${itMatch[2].padStart(2, '0')}-${itMatch[1].padStart(2, '0')}`;
+      }
+
+      // Tentativo con oggetto Date
+      const parsedDate = new Date(str);
+      if (!isNaN(parsedDate.getTime())) {
+        return formatDateISO(parsedDate);
+      }
+
+      return str;
+    }
+
+    function formatDateDisplay(raw) {
+      const iso = normalizeDateToISO(raw);
+      if (!iso || !iso.includes('-')) return raw || "--/--/----";
+      const parts = iso.split('-');
+      if (parts.length === 3) {
+        return `${parts[2]}/${parts[1]}/${parts[0]}`;
+      }
+      return iso;
     }
 
     function escapeHtml(str) {
       if (!str) return '';
-      return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
+      const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+      return String(str).replace(/[&<>"']/g, m => map[m]);
     }
 
-    function refreshIcons() {
+    function triggerLucideIcons() {
       if (window.lucide && typeof window.lucide.createIcons === 'function') {
-        window.lucide.createIcons();
+        try { window.lucide.createIcons(); } catch (e) {}
       }
     }
 
-    function switchTab(tabId) {
-      AppState.activeTab = tabId;
+    // ---------------- GESTIONE SINCRONIZZAZIONE BADGE ----------------
+    function updateSyncStatus(status, message) {
+      const text = document.getElementById("syncStatusText");
+      const dot = document.getElementById("syncStatusDot");
+      const sub = document.getElementById("syncStatusSub");
+      const manageTxt = document.getElementById("manageSyncStatusText");
 
-      document.getElementById('page-prenotazione').classList.toggle('hidden', tabId !== 'prenotazione');
-      document.getElementById('page-report').classList.toggle('hidden', tabId !== 'report');
-      document.getElementById('page-manage').classList.toggle('hidden', tabId !== 'manage');
+      if (text) text.innerText = message;
+      if (manageTxt) manageTxt.innerText = message;
 
-      ['prenotazione', 'report', 'manage'].forEach(t => {
-        const btn = document.getElementById(`nav${t.charAt(0).toUpperCase() + t.slice(1)}`);
+      if (status === 'connected') {
+        if (dot) dot.className = "w-2 h-2 rounded-full bg-emerald-400 inline-block";
+        if (text) text.className = "text-[10px] text-emerald-400 font-mono";
+      } else if (status === 'syncing') {
+        if (dot) dot.className = "w-2 h-2 rounded-full bg-amber-400 inline-block animate-pulse";
+        if (text) text.className = "text-[10px] text-amber-400 font-mono";
+      } else if (status === 'error') {
+        if (dot) dot.className = "w-2 h-2 rounded-full bg-rose-400 inline-block";
+        if (text) text.className = "text-[10px] text-rose-400 font-mono";
+      } else {
+        if (dot) dot.className = "w-2 h-2 rounded-full bg-slate-500 inline-block";
+        if (text) text.className = "text-[10px] text-slate-400 font-mono";
+      }
+    }
+
+    // ---------------- COMUNICAZIONE GOOGLE SHEETS ----------------
+    async function syncFromGoogleSheets() {
+      if (!state.sheetsUrl) {
+        updateSyncStatus('offline', 'Inserisci URL Sheets in Manage');
+        loadLocalDataFallback();
+        renderAllViews();
+        return;
+      }
+
+      state.isSyncing = true;
+      updateSyncStatus('syncing', 'Sincronizzazione in corso...');
+
+      const refreshIcon = document.getElementById("refreshIcon");
+      if (refreshIcon) refreshIcon.classList.add("animate-spin");
+
+      try {
+        const queryUrl = `${state.sheetsUrl}${state.sheetsUrl.includes('?') ? '&' : '?'}action=getAll&_t=${Date.now()}`;
+        const res = await fetch(queryUrl, {
+          method: 'GET',
+          redirect: 'follow',
+          cache: 'no-store'
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.status === 'success') {
+            
+            // 1. Aggiorna Variabili
+            if (data.variables) {
+              if (Array.isArray(data.variables.personale) && data.variables.personale.length > 0) {
+                state.variables.personale = data.variables.personale;
+              }
+              if (Array.isArray(data.variables.mezzi) && data.variables.mezzi.length > 0) {
+                state.variables.mezzi = data.variables.mezzi;
+              }
+              if (Array.isArray(data.variables.fasce_orarie) && data.variables.fasce_orarie.length > 0) {
+                state.variables.fasce_orarie = [...data.variables.fasce_orarie].sort((a,b) => a.localeCompare(b));
+              }
+              localStorage.setItem("TM_LOCAL_VARS", JSON.stringify(state.variables));
+            }
+
+            // 2. Aggiorna Corse Prenotate Normalizzando le Date
+            if (Array.isArray(data.bookings)) {
+              state.bookings = data.bookings.map(b => ({
+                id: b.id || 'bk_' + Math.random().toString(36).substr(2, 9),
+                date: normalizeDateToISO(b.date),
+                personale: b.personale || '',
+                mezzo: b.mezzo || '',
+                orario: b.orario || '',
+                type: (b.type || 'ANDATA').toUpperCase(),
+                createdAt: b.createdAt || ''
+              }));
+              localStorage.setItem("TM_LOCAL_BOOKINGS", JSON.stringify(state.bookings));
+            }
+
+            updateSyncStatus('connected', `Sheets Sincronizzato (${state.bookings.length} corse)`);
+          } else {
+            throw new Error(data.message || "Risposta non valida da Sheets");
+          }
+        } else {
+          throw new Error(`HTTP ${res.status}`);
+        }
+      } catch (err) {
+        console.warn("Sincronizzazione GET con Sheets fallita, fallback su locale:", err);
+        loadLocalDataFallback();
+        updateSyncStatus('error', 'Sync temporaneamente non disponibile');
+      } finally {
+        state.isSyncing = false;
+        if (refreshIcon) refreshIcon.classList.remove("animate-spin");
+        renderAllViews();
+      }
+    }
+
+    function loadLocalDataFallback() {
+      try {
+        const savedVars = localStorage.getItem("TM_LOCAL_VARS");
+        if (savedVars) {
+          state.variables = JSON.parse(savedVars);
+        }
+        const savedBooks = localStorage.getItem("TM_LOCAL_BOOKINGS");
+        if (savedBooks) {
+          const parsed = JSON.parse(savedBooks);
+          state.bookings = parsed.map(b => ({
+            ...b,
+            date: normalizeDateToISO(b.date)
+          }));
+        }
+      } catch (e) {
+        console.error("Errore lettura cache locale:", e);
+      }
+    }
+
+    async function pushBookingToGoogleSheets(newBooking) {
+      // Salva sempre subito in locale
+      state.bookings.unshift(newBooking);
+      localStorage.setItem("TM_LOCAL_BOOKINGS", JSON.stringify(state.bookings));
+      renderQuickRecent();
+      renderReportList();
+
+      if (!state.sheetsUrl) return;
+
+      try {
+        updateSyncStatus('syncing', 'Invio prenotazione a Sheets...');
+        const payload = {
+          action: 'addBooking',
+          booking: newBooking
+        };
+
+        await fetch(state.sheetsUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload),
+          redirect: 'follow'
+        });
+
+        updateSyncStatus('connected', 'Prenotazione salvata su Sheets');
+      } catch (err) {
+        console.error("Errore push booking a Google Sheets:", err);
+        updateSyncStatus('error', 'Salvataggio remoto pendente');
+      }
+    }
+
+    async function pushVariablesToGoogleSheets() {
+      localStorage.setItem("TM_LOCAL_VARS", JSON.stringify(state.variables));
+      populateDropdowns();
+      renderVariableManagement();
+
+      if (!state.sheetsUrl) return;
+
+      try {
+        updateSyncStatus('syncing', 'Salvataggio variabili su Sheets...');
+        const payload = {
+          action: 'saveVariables',
+          variables: state.variables
+        };
+
+        await fetch(state.sheetsUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload),
+          redirect: 'follow'
+        });
+
+        updateSyncStatus('connected', 'Variabili aggiornate su Sheets');
+      } catch (err) {
+        console.error("Errore salvataggio variabili:", err);
+        updateSyncStatus('error', 'Errore salvataggio variabili');
+      }
+    }
+
+    function manualSyncTrigger() {
+      syncFromGoogleSheets();
+    }
+
+    // ---------------- NAVIGAZIONE SCHEDE ----------------
+    function navigateToPage(pageId) {
+      state.activeTab = pageId;
+
+      const pagePrenotazione = document.getElementById("page-prenotazione");
+      const pageReport = document.getElementById("page-report");
+      const pageManage = document.getElementById("page-manage");
+
+      if (pagePrenotazione) pagePrenotazione.classList.toggle("hidden", pageId !== 'prenotazione');
+      if (pageReport) pageReport.classList.toggle("hidden", pageId !== 'report');
+      if (pageManage) pageManage.classList.toggle("hidden", pageId !== 'manage');
+
+      ['prenotazione', 'report', 'manage'].forEach(tab => {
+        const btn = document.getElementById(`navBtn${tab.charAt(0).toUpperCase() + tab.slice(1)}`);
         if (btn) {
-          btn.className = (t === tabId)
-            ? "flex flex-col items-center gap-1 py-1 text-blue-400 transition"
-            : "flex flex-col items-center gap-1 py-1 text-slate-400 hover:text-slate-200 transition";
+          if (tab === pageId) {
+            btn.className = "py-1.5 flex flex-col items-center gap-1 text-blue-400 transition";
+          } else {
+            btn.className = "py-1.5 flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition";
+          }
         }
       });
 
-      if (tabId === 'report') renderReportView();
-      if (tabId === 'manage') renderManageView();
-      refreshIcons();
+      if (pageId === 'report') {
+        renderReportList();
+      }
+      if (pageId === 'manage') {
+        checkManageAuthState();
+      }
+
+      triggerLucideIcons();
     }
 
-    function setBookingDateShortcut(type) {
+    // ---------------- SCHEDA 1: PRENOTAZIONE ----------------
+    function selectDateShortcut(type) {
       if (type === 'domani') {
-        AppState.selectedDate = getTomorrowDateString();
-        document.getElementById('displaySelectedDate').innerText = formatDateDisplay(AppState.selectedDate);
-        document.getElementById('btnDateDomani').className = "py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95";
-        document.getElementById('btnDateCalendarWrapper').className = "cursor-pointer relative py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95";
-      }
-      refreshIcons();
-    }
-
-    function onCustomDatePicked(val) {
-      if (!val) return;
-      AppState.selectedDate = val;
-      document.getElementById('displaySelectedDate').innerText = formatDateDisplay(val);
-      document.getElementById('btnDateDomani').className = "py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95";
-      document.getElementById('btnDateCalendarWrapper').className = "cursor-pointer relative py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95";
-      refreshIcons();
-    }
-
-    function setTripType(type) {
-      AppState.tripType = type;
-      const btnAndata = document.getElementById('btnTypeAndata');
-      const btnRitorno = document.getElementById('btnTypeRitorno');
-
-      if (type === 'ANDATA') {
-        btnAndata.className = "py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95";
-        btnRitorno.className = "py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600 active:scale-95";
+        state.selectedDate = getTomorrowDateString();
       } else {
-        btnRitorno.className = "py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition bg-indigo-600 text-white border-indigo-500 shadow-sm shadow-indigo-600/20 active:scale-95";
-        btnAndata.className = "py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600 active:scale-95";
+        state.selectedDate = getTodayDateString();
       }
-      refreshIcons();
+
+      const display = document.getElementById("displaySelectedDate");
+      if (display) display.innerText = formatDateDisplay(state.selectedDate);
+
+      const btnDomani = document.getElementById("btnDateDomani");
+      if (btnDomani) {
+        btnDomani.className = "py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-md active:scale-95";
+      }
+    }
+
+    function onCustomDateChange(val) {
+      if (!val) return;
+      state.selectedDate = normalizeDateToISO(val);
+      const display = document.getElementById("displaySelectedDate");
+      if (display) display.innerText = formatDateDisplay(state.selectedDate);
+
+      const btnDomani = document.getElementById("btnDateDomani");
+      if (btnDomani) {
+        btnDomani.className = "py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95";
+      }
+    }
+
+    function setBookingType(type) {
+      state.bookingType = type;
+      const btnAndata = document.getElementById("btnTypeAndata");
+      const btnRitorno = document.getElementById("btnTypeRitorno");
+
+      if (btnAndata && btnRitorno) {
+        if (type === 'ANDATA') {
+          btnAndata.className = "py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-md";
+          btnRitorno.className = "py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600";
+        } else {
+          btnRitorno.className = "py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition bg-indigo-600 text-white border-indigo-500 shadow-md";
+          btnAndata.className = "py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600";
+        }
+      }
+      triggerLucideIcons();
     }
 
     function populateDropdowns() {
-      const p = document.getElementById('selPersonale');
-      const m = document.getElementById('selMezzo');
-      const o = document.getElementById('selOrario');
+      const selP = document.getElementById("selectPersonale");
+      const selM = document.getElementById("selectMezzo");
+      const selO = document.getElementById("selectOrario");
 
-      if (p) {
-        const cur = p.value;
-        p.innerHTML = '<option value="">Seleziona operatore conducente...</option>' +
-          AppState.variables.personale.map(x => `<option value="${escapeHtml(x)}">${escapeHtml(x)}</option>`).join('');
-        if (cur) p.value = cur;
+      if (selP) {
+        const cur = selP.value;
+        selP.innerHTML = '<option value="">Seleziona operatore conducente...</option>' +
+          state.variables.personale.map(p => `<option value="${escapeHtml(p)}">${escapeHtml(p)}</option>`).join("");
+        if (cur) selP.value = cur;
       }
 
-      if (m) {
-        const cur = m.value;
-        m.innerHTML = '<option value="">Assegna veicolo flotta...</option>' +
-          AppState.variables.mezzi.map(x => `<option value="${escapeHtml(x)}">${escapeHtml(x)}</option>`).join('');
-        if (cur) m.value = cur;
+      if (selM) {
+        const cur = selM.value;
+        selM.innerHTML = '<option value="">Assegna veicolo flotta...</option>' +
+          state.variables.mezzi.map(m => `<option value="${escapeHtml(m)}">${escapeHtml(m)}</option>`).join("");
+        if (cur) selM.value = cur;
       }
 
-      if (o) {
-        const cur = o.value;
-        const sorted = [...AppState.variables.fasce_orarie].sort((a, b) => a.localeCompare(b));
-        o.innerHTML = '<option value="">Fascia oraria autorizzata...</option>' +
-          sorted.map(x => `<option value="${escapeHtml(x)}">${escapeHtml(x)}</option>`).join('');
-        if (cur) o.value = cur;
+      if (selO) {
+        const cur = selO.value;
+        const sortedTimes = [...state.variables.fasce_orarie].sort((a,b) => a.localeCompare(b));
+        selO.innerHTML = '<option value="">Fascia oraria autorizzata...</option>' +
+          sortedTimes.map(t => `<option value="${escapeHtml(t)}">${escapeHtml(t)}</option>`).join("");
+        if (cur) selO.value = cur;
       }
     }
 
-    function renderRecentList() {
-      const container = document.getElementById('quickRecentList');
-      const countBadge = document.getElementById('quickRecentCount');
+    async function handleBookingSubmit(e) {
+      if (e && e.preventDefault) e.preventDefault();
+
+      const selP = document.getElementById("selectPersonale");
+      const selM = document.getElementById("selectMezzo");
+      const selO = document.getElementById("selectOrario");
+
+      const personale = selP ? selP.value.trim() : "";
+      const mezzo = selM ? selM.value.trim() : "";
+      const orario = selO ? selO.value.trim() : "";
+
+      if (!personale || !mezzo || !orario) {
+        alert("Seleziona tutti i campi obbligatori: Autista, Mezzo e Fascia Oraria.");
+        return;
+      }
+
+      const newBooking = {
+        id: "bk_" + Date.now(),
+        date: state.selectedDate,
+        personale: personale,
+        mezzo: mezzo,
+        orario: orario,
+        type: state.bookingType,
+        createdAt: new Date().toISOString()
+      };
+
+      // Reset selettore personale per rapido inserimento successivo
+      if (selP) selP.value = "";
+
+      // Feedback visivo pulsante
+      const submitBtn = document.getElementById("btnSubmitBooking");
+      if (submitBtn) {
+        const origText = submitBtn.innerHTML;
+        submitBtn.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i> CORSA REGISTRATA!`;
+        submitBtn.classList.replace("from-blue-600", "from-emerald-600");
+        submitBtn.classList.replace("to-indigo-600", "to-teal-600");
+        triggerLucideIcons();
+
+        setTimeout(() => {
+          submitBtn.innerHTML = origText;
+          submitBtn.classList.replace("from-emerald-600", "from-blue-600");
+          submitBtn.classList.replace("to-teal-600", "to-indigo-600");
+          triggerLucideIcons();
+        }, 1500);
+      }
+
+      // Se la data della prenotazione coincide o differisce, sincronizza anche il report
+      await pushBookingToGoogleSheets(newBooking);
+    }
+
+    function renderQuickRecent() {
+      const container = document.getElementById("quickRecentBookings");
+      const countBadge = document.getElementById("quickRecentCount");
       if (!container) return;
 
-      const recent = AppState.bookings.slice(0, 4);
-      if (countBadge) countBadge.innerText = `${AppState.bookings.length} corse totali`;
+      if (countBadge) {
+        countBadge.innerText = `${state.bookings.length} corse salvate`;
+      }
 
+      const recent = state.bookings.slice(0, 4);
       if (recent.length === 0) {
-        container.innerHTML = `<div class="p-3 text-center text-xs text-slate-500 bg-slate-900/60 rounded-xl border border-slate-800">Nessuna corsa registrata</div>`;
+        container.innerHTML = `<div class="p-3 text-center text-xs text-slate-500 bg-[#0c1322] rounded-xl border border-slate-800">Nessuna corsa registrata</div>`;
         return;
       }
 
       container.innerHTML = recent.map(b => {
-        const isAndata = b.type === 'ANDATA';
+        const isAndata = (b.type || 'ANDATA').toUpperCase() === 'ANDATA';
         return `
-          <div class="p-3 rounded-xl bg-slate-900/70 border border-slate-800 flex items-center justify-between shadow-sm">
+          <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between shadow-sm">
             <div class="space-y-0.5">
               <div class="flex items-center gap-2">
-                <span class="px-1.5 py-0.5 rounded text-[9px] font-bold font-mono uppercase ${isAndata ? 'bg-blue-900/60 text-blue-300 border border-blue-700/50' : 'bg-indigo-900/60 text-indigo-300 border border-indigo-700/50'}">${b.type}</span>
+                <span class="px-1.5 py-0.5 rounded text-[9px] font-bold font-mono uppercase ${isAndata ? 'bg-blue-900/60 text-blue-300 border border-blue-700/50' : 'bg-indigo-900/60 text-indigo-300 border border-indigo-700/50'}">
+                  ${b.type}
+                </span>
                 <span class="text-xs font-semibold text-slate-100">${escapeHtml(b.personale)}</span>
               </div>
               <div class="text-[11px] text-slate-400 flex items-center gap-1.5">
@@ -442,506 +865,332 @@
             </div>
             <div class="text-right">
               <span class="text-xs font-mono font-bold text-white">${b.orario}</span>
-              <div class="text-[10px] text-blue-400 font-mono flex items-center justify-end gap-1">
-                ${formatDateDisplay(b.date)}
+              <div class="text-[10px] text-emerald-400 font-mono flex items-center justify-end gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> ${formatDateDisplay(b.date)}
               </div>
             </div>
           </div>
         `;
-      }).join('');
-      refreshIcons();
+      }).join("");
+
+      triggerLucideIcons();
+    }
+
+    // ---------------- SCHEDA 2: REPORT CORSE (CORRETTO E POTENZIATO) ----------------
+    function getReportGroupColor(orario, tipo, mezzo) {
+      const key = `${(orario||'').trim()}_${(tipo||'').trim()}_${(mezzo||'').trim()}`.toLowerCase();
+      let hash = 0;
+      for (let i = 0; i < key.length; i++) {
+        hash = key.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      const index = Math.abs(hash) % REPORT_PALETTE.length;
+      return REPORT_PALETTE[index];
     }
 
     function setReportDateShortcut(type) {
       if (type === 'domani') {
-        AppState.reportFilterDate = getTomorrowDateString();
-        document.getElementById('reportFilterDateDisplay').innerText = formatDateDisplay(AppState.reportFilterDate);
-        document.getElementById('btnReportDateDomani').className = "py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95";
-        document.getElementById('btnReportCalendarWrapper').className = "cursor-pointer relative py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95";
+        state.reportFilterDate = getTomorrowDateString();
+      } else {
+        state.reportFilterDate = getTodayDateString();
       }
-      renderReportView();
+
+      const display = document.getElementById("reportCurrentDateFormatted");
+      if (display) display.innerText = formatDateDisplay(state.reportFilterDate);
+
+      const btnDomani = document.getElementById("btnReportDomani");
+      if (btnDomani) {
+        if (type === 'domani') {
+          btnDomani.className = "py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-md active:scale-95";
+        } else {
+          btnDomani.className = "py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95";
+        }
+      }
+
+      renderReportList();
     }
 
-    function onReportCustomDatePicked(val) {
+    function onReportCustomDateChange(val) {
       if (!val) return;
-      AppState.reportFilterDate = val;
-      document.getElementById('reportFilterDateDisplay').innerText = formatDateDisplay(val);
-      document.getElementById('btnReportDateDomani').className = "py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95";
-      document.getElementById('btnReportCalendarWrapper').className = "cursor-pointer relative py-2.5 px-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-blue-600 text-white border-blue-500 shadow-sm shadow-blue-600/20 active:scale-95";
-      renderReportView();
+      state.reportFilterDate = normalizeDateToISO(val);
+      const display = document.getElementById("reportCurrentDateFormatted");
+      if (display) display.innerText = formatDateDisplay(state.reportFilterDate);
+
+      const btnDomani = document.getElementById("btnReportDomani");
+      if (btnDomani) {
+        btnDomani.className = "py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 active:scale-95";
+      }
+
+      renderReportList();
     }
 
-    function getGroupingColor(orario, tipo, mezzo) {
-      const key = `${(orario||'').trim()}_${(tipo||'').trim()}_${(mezzo||'').trim()}`.toLowerCase();
-      let hash = 0;
-      for (let i = 0; i < key.length; i++) hash = key.charCodeAt(i) + ((hash << 5) - hash);
-      return PALETTE[Math.abs(hash) % PALETTE.length];
+    function shiftReportDate(deltaDays) {
+      // Usa data ISO normalizzata per calcolare lo shift esatto
+      const parts = state.reportFilterDate.split('-');
+      let cur;
+      if (parts.length === 3) {
+        cur = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+      } else {
+        cur = new Date();
+      }
+
+      cur.setDate(cur.getDate() + deltaDays);
+      state.reportFilterDate = formatDateISO(cur);
+
+      const display = document.getElementById("reportCurrentDateFormatted");
+      if (display) display.innerText = formatDateDisplay(state.reportFilterDate);
+
+      renderReportList();
     }
 
-    function renderReportView() {
-      const container = document.getElementById('reportListRows');
-      const badge = document.getElementById('reportRowCountBadge');
+    function renderReportList() {
+      const container = document.getElementById("reportListRows");
+      const totalBadge = document.getElementById("reportTotalBadge");
       if (!container) return;
 
-      const filtered = AppState.bookings.filter(b => b.date === AppState.reportFilterDate);
+      const filterISO = normalizeDateToISO(state.reportFilterDate);
+
+      // Confronto data normalizzato: garantisce match perfetto anche se salvato come "2026-09-10" o "10/09/2026"
+      const filtered = state.bookings.filter(b => {
+        const bookingDateISO = normalizeDateToISO(b.date);
+        return bookingDateISO === filterISO;
+      });
+
+      // Ordinamento cronologico per orario di partenza
       filtered.sort((a, b) => (a.orario || '').localeCompare(b.orario || ''));
 
-      if (badge) badge.innerText = `${filtered.length} corse`;
+      if (totalBadge) {
+        totalBadge.innerText = `${filtered.length} ${filtered.length === 1 ? 'corsa registrata' : 'corse registrate'} per il ${formatDateDisplay(filterISO)}`;
+      }
 
       if (filtered.length === 0) {
         container.innerHTML = `
-          <div class="py-8 text-center text-xs text-slate-500">
-            Nessuna corsa registrata per il ${formatDateDisplay(AppState.reportFilterDate)}
+          <div class="py-12 px-4 text-center space-y-2">
+            <div class="w-10 h-10 mx-auto rounded-full bg-slate-800/80 flex items-center justify-center text-slate-500">
+              <i data-lucide="calendar-x" class="w-5 h-5"></i>
+            </div>
+            <p class="text-xs font-semibold text-slate-300">Nessuna corsa registrata per il ${formatDateDisplay(filterISO)}</p>
+            <p class="text-[11px] text-slate-500">Usa i tasti sopra per cambiare data o registrare una nuova corsa.</p>
           </div>
         `;
+        triggerLucideIcons();
         return;
       }
 
       container.innerHTML = filtered.map(b => {
-        const style = getGroupingColor(b.orario, b.type, b.mezzo);
-        const isAndata = b.type === 'ANDATA';
+        const style = getReportGroupColor(b.orario, b.type, b.mezzo);
+        const isAndata = (b.type || 'ANDATA').toUpperCase() === 'ANDATA';
+
         return `
           <div class="grid grid-cols-12 items-center px-3 py-3 text-xs border-l-4 ${style.border} hover:bg-slate-800/40 transition">
+            <!-- 1. Autista -->
             <div class="col-span-4 font-semibold text-slate-100 truncate pr-1">
               ${escapeHtml(b.personale)}
             </div>
+
+            <!-- 2. Orario -->
             <div class="col-span-3 text-center font-mono font-bold text-slate-200">
-              ${b.orario}
+              ${escapeHtml(b.orario)}
             </div>
+
+            <!-- 3. Tipo (AND / RIT) -->
             <div class="col-span-2 text-center">
               <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase ${isAndata ? 'bg-blue-900/60 text-blue-300 border border-blue-700/50' : 'bg-indigo-900/60 text-indigo-300 border border-indigo-700/50'}">
                 ${isAndata ? 'AND' : 'RIT'}
               </span>
             </div>
+
+            <!-- 4. Mezzo -->
             <div class="col-span-3 text-right font-medium text-[11px] truncate ${style.tag}">
               ${escapeHtml(b.mezzo)}
             </div>
           </div>
         `;
-      }).join('');
+      }).join("");
+
+      triggerLucideIcons();
     }
 
-    function exportToCsv() {
-      const filtered = AppState.bookings.filter(b => b.date === AppState.reportFilterDate);
+    function exportReportToCsv() {
+      const filterISO = normalizeDateToISO(state.reportFilterDate);
+      const filtered = state.bookings.filter(b => normalizeDateToISO(b.date) === filterISO);
+
       if (filtered.length === 0) {
         alert("Nessuna corsa da esportare per la data selezionata.");
         return;
       }
 
-      let csv = "DATA,PERSONALE,ORARIO,TIPO,MEZZO\n";
+      let csv = "DATA,AUTISTA,ORARIO,TIPO,MEZZO,CREATO_IL\n";
       filtered.forEach(b => {
-        csv += `"${b.date}","${(b.personale||'').replace(/"/g, '""')}","${b.orario}","${b.type}","${(b.mezzo||'').replace(/"/g, '""')}"\n`;
+        csv += `"${b.date}","${(b.personale||'').replace(/"/g, '""')}","${b.orario}","${b.type}","${(b.mezzo||'').replace(/"/g, '""')}","${b.createdAt||''}"\n`;
       });
 
       const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `report_corse_${AppState.reportFilterDate}.csv`;
+      a.download = `report_corse_${filterISO}.csv`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     }
 
-    // ==================== ROBUST GOOGLE APPS SCRIPT NETWORKING ====================
-    // 1. JSONP Fallback Loader
-    function fetchJsonp(url, timeout = 10000) {
-      return new Promise((resolve, reject) => {
-        const callbackName = '__tm_jsonp_callback_' + Math.round(100000 * Math.random());
-        let timer = null;
-
-        const script = document.createElement('script');
-        const sep = url.includes('?') ? '&' : '?';
-        script.src = `${url}${sep}callback=${callbackName}`;
-        script.async = true;
-
-        const cleanup = () => {
-          if (timer) clearTimeout(timer);
-          delete window[callbackName];
-          if (script.parentNode) script.parentNode.removeChild(script);
-        };
-
-        window[callbackName] = function(data) {
-          cleanup();
-          resolve(data);
-        };
-
-        script.onerror = function() {
-          cleanup();
-          reject(new Error("Errore nel caricamento dello script JSONP (Verifica che l'accesso ad Apps Script sia impostato su 'Chiunque')"));
-        };
-
-        timer = setTimeout(() => {
-          cleanup();
-          reject(new Error("Timeout richiesta JSONP (10s)"));
-        }, timeout);
-
-        document.body.appendChild(script);
-      });
-    }
-
-    // 2. Fetch robusta: Fetch diretta (redirect: follow, no-store) con fallback JSONP trasparente
-    async function requestGoogleScriptGet(baseUrl, params = {}) {
-      const urlObj = new URL(baseUrl);
-      Object.entries(params).forEach(([k, v]) => urlObj.searchParams.set(k, v));
-      urlObj.searchParams.set('_t', Date.now());
-      const fetchUrl = urlObj.toString();
-
-      try {
-        const res = await fetch(fetchUrl, {
-          method: 'GET',
-          redirect: 'follow',
-          cache: 'no-store',
-          headers: { 'Accept': 'application/json, text/javascript, */*' }
-        });
-
-        // Se Google restituisce redirect verso pagina HTML di login o risponde 401/403
-        const contentType = res.headers.get('content-type') || '';
-        if (contentType.includes('text/html') || res.status === 401 || res.status === 403) {
-          throw new Error("AUTH_REQUIRED");
-        }
-
-        if (!res.ok) throw new Error(`HTTP_${res.status}`);
-        const text = await res.text();
-
-        try {
-          return JSON.parse(text);
-        } catch(pe) {
-          // Se la risposta è wrappata o simile a script HTML
-          if (text.includes('accounts.google.com') || text.includes('ServiceLogin')) {
-            throw new Error("AUTH_REQUIRED");
-          }
-          throw new Error("Invalid JSON response");
-        }
-      } catch (err) {
-        if (err && err.message === "AUTH_REQUIRED") {
-          throw err;
-        }
-        // Tentativo Fallback con JSONP per aggirare i blocchi CORS del browser
-        return await fetchJsonp(baseUrl + (baseUrl.includes('?') ? '&' : '?') + new URLSearchParams(params).toString());
-      }
-    }
-
-    // 3. Invio POST robusto (Standard Fetch -> Fallback x-www-form-urlencoded / no-cors)
-    async function requestGoogleScriptPost(baseUrl, payload) {
-      const bodyStr = JSON.stringify(payload);
-
-      try {
-        // Tentativo 1: POST text/plain standard (non attiva pre-flight CORS invasivi in Apps Script)
-        await fetch(baseUrl, {
-          method: 'POST',
-          redirect: 'follow',
-          cache: 'no-store',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: bodyStr
-        });
-      } catch (err) {
-        // Tentativo 2: no-cors con text/plain o application/x-www-form-urlencoded
-        try {
-          await fetch(baseUrl, {
-            method: 'POST',
-            mode: 'no-cors',
-            cache: 'no-store',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: 'payload=' + encodeURIComponent(bodyStr)
-          });
-        } catch (subErr) {
-          console.error("Errore salvataggio remoto:", subErr);
-          throw subErr;
-        }
-      }
-    }
-
-    async function syncFromGoogleSheets() {
-      if (!AppState.sheetsUrl) {
-        updateBadge("Incolla URL Sheets in Manage", "text-amber-400");
-        return;
-      }
-
-      updateBadge("Sincronizzazione in corso...", "text-blue-400");
-
-      try {
-        const data = await requestGoogleScriptGet(AppState.sheetsUrl, { action: 'getAll' });
-
-        if (data && (data.status === 'success' || data.variables || data.bookings)) {
-          if (data.variables && Array.isArray(data.variables.personale)) {
-            AppState.variables = data.variables;
-            localStorage.setItem('TM_VARS_CACHE', JSON.stringify(AppState.variables));
-          }
-          if (Array.isArray(data.bookings)) {
-            AppState.bookings = data.bookings;
-            localStorage.setItem('TM_BOOKINGS_CACHE', JSON.stringify(AppState.bookings));
-          }
-          updateBadge("Sheets Connesso • Live", "text-emerald-400");
-          populateDropdowns();
-          renderRecentList();
-          renderReportView();
-          renderVariableList();
-        } else {
-          throw new Error(data.message || 'Risposta non valida dal foglio');
-        }
-      } catch (err) {
-        console.warn("Errore sync Google Sheets:", err);
-        if (err.message === "AUTH_REQUIRED") {
-          updateBadge("Autorizzazione Google Richiesta", "text-rose-400");
-        } else {
-          updateBadge("Offline • Dati Locali", "text-rose-400");
-        }
-      }
-    }
-
-    async function submitBooking(e) {
+    // ---------------- SCHEDA 3: MANAGE ----------------
+    function handleManageAuth(e) {
       if (e && e.preventDefault) e.preventDefault();
-
-      const p = document.getElementById('selPersonale').value.trim();
-      const m = document.getElementById('selMezzo').value.trim();
-      const o = document.getElementById('selOrario').value.trim();
-
-      if (!p || !m || !o) {
-        alert("Seleziona tutti i campi obbligatori (Personale, Mezzo, Orario).");
-        return;
-      }
-
-      const newBooking = {
-        id: 'bk_' + Date.now(),
-        date: AppState.selectedDate,
-        personale: p,
-        mezzo: m,
-        orario: o,
-        type: AppState.tripType,
-        createdAt: new Date().toISOString()
-      };
-
-      AppState.bookings.unshift(newBooking);
-      localStorage.setItem('TM_BOOKINGS_CACHE', JSON.stringify(AppState.bookings));
-      renderRecentList();
-      renderReportView();
-
-      document.getElementById('selPersonale').value = '';
-
-      const btn = document.getElementById('btnSubmitTrip');
-      const origHtml = btn.innerHTML;
-      btn.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i> PRENOTAZIONE SALVATA!`;
-      btn.classList.replace('from-blue-600', 'from-emerald-600');
-      btn.classList.replace('to-indigo-600', 'to-teal-600');
-      refreshIcons();
-
-      setTimeout(() => {
-        btn.innerHTML = origHtml;
-        btn.classList.replace('from-emerald-600', 'from-blue-600');
-        btn.classList.replace('to-teal-600', 'to-indigo-600');
-        refreshIcons();
-      }, 1400);
-
-      if (AppState.sheetsUrl) {
-        requestGoogleScriptPost(AppState.sheetsUrl, {
-          action: 'addBooking',
-          booking: newBooking
-        }).catch(err => console.error("Errore salvataggio remoto su Sheet:", err));
-      }
-    }
-
-    async function pushVariablesToSheets() {
-      if (!AppState.sheetsUrl) return;
-      try {
-        updateBadge("Salvataggio variabili...", "text-blue-400");
-        await requestGoogleScriptPost(AppState.sheetsUrl, {
-          action: 'saveVariables',
-          variables: AppState.variables
-        });
-        updateBadge("Sheets Connesso • Live", "text-emerald-400");
-      } catch (err) {
-        console.error("Errore salvataggio variabili su Sheet:", err);
-        updateBadge("Errore Salvataggio Variabili", "text-rose-400");
-      }
-    }
-
-    function updateBadge(text, colorClass) {
-      const badge = document.getElementById('syncStatusBadge');
-      if (badge) {
-        badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full inline-block ${colorClass.includes('emerald') ? 'bg-emerald-400' : colorClass.includes('rose') ? 'bg-rose-400' : 'bg-amber-400 animate-pulse'}"></span> ${text}`;
-        badge.className = `text-[10px] tracking-wide font-mono uppercase ${colorClass} flex items-center gap-1`;
-      }
-    }
-
-    function manualRefresh() {
-      const btn = document.getElementById('btnManualRefresh');
-      if (btn) btn.classList.add('animate-spin');
-      syncFromGoogleSheets().finally(() => {
-        if (btn) btn.classList.remove('animate-spin');
-      });
-    }
-
-    function handleAuth(e) {
-      if (e && e.preventDefault) e.preventDefault();
-      const pwd = document.getElementById('inputManagePassword').value;
+      const pwd = document.getElementById("managePasswordInput")?.value;
       if (pwd === 'strongroom') {
-        AppState.isManageUnlocked = true;
-        renderManageView();
+        state.isManageAuthenticated = true;
+        sessionStorage.setItem("TM_AUTH", "true");
+        checkManageAuthState();
       } else {
-        alert("Password errata (Predefinita: strongroom)");
+        alert("Password non corretta (predefinita: strongroom).");
       }
     }
 
-    function lockManage() {
-      AppState.isManageUnlocked = false;
-      renderManageView();
+    function lockManageArea() {
+      state.isManageAuthenticated = false;
+      sessionStorage.removeItem("TM_AUTH");
+      checkManageAuthState();
     }
 
-    function renderManageView() {
-      const gate = document.getElementById('manageAuthGate');
-      const dash = document.getElementById('manageDashboard');
-      if (AppState.isManageUnlocked) {
-        gate.classList.add('hidden');
-        dash.classList.remove('hidden');
-        const urlInput = document.getElementById('inputSheetsUrl');
-        if (urlInput && AppState.sheetsUrl) urlInput.value = AppState.sheetsUrl;
-        renderVariableList();
-      } else {
-        gate.classList.remove('hidden');
-        dash.classList.add('hidden');
+    function checkManageAuthState() {
+      if (sessionStorage.getItem("TM_AUTH") === "true") {
+        state.isManageAuthenticated = true;
       }
-      refreshIcons();
+
+      const gate = document.getElementById("manageAuthGate");
+      const dash = document.getElementById("manageDashboard");
+      const urlInput = document.getElementById("inputSheetsUrl");
+
+      if (urlInput && state.sheetsUrl) {
+        urlInput.value = state.sheetsUrl;
+      }
+
+      if (gate && dash) {
+        if (state.isManageAuthenticated) {
+          gate.classList.add("hidden");
+          dash.classList.remove("hidden");
+          renderVariableManagement();
+        } else {
+          gate.classList.remove("hidden");
+          dash.classList.add("hidden");
+        }
+      }
+      triggerLucideIcons();
     }
 
-    function saveGoogleUrl() {
-      const val = document.getElementById('inputSheetsUrl').value.trim();
-      AppState.sheetsUrl = val;
-      localStorage.setItem('TM_GOOGLE_SHEETS_URL', val);
+    function saveSheetsUrlFromInput() {
+      const val = document.getElementById("inputSheetsUrl")?.value.trim() || "";
+      state.sheetsUrl = val;
+      localStorage.setItem("TM_SHEETS_URL", val);
       alert("URL Google Apps Script salvato con successo!");
       syncFromGoogleSheets();
     }
 
-    async function testGoogleConnection() {
-      const val = document.getElementById('inputSheetsUrl').value.trim();
-      const fb = document.getElementById('testFeedback');
-      if (!val) {
-        alert("Inserisci prima l'URL della Web App terminante con /exec");
-        return;
-      }
-
-      fb.classList.remove('hidden');
-      fb.className = "p-2.5 rounded-xl text-xs font-mono bg-blue-950/60 border border-blue-800 text-blue-300";
-      fb.innerText = "Verifica connessione in corso con Google Apps Script...";
-
-      try {
-        const data = await requestGoogleScriptGet(val, { action: 'getAll' });
-
-        if (data && (data.status === 'success' || data.variables || data.bookings)) {
-          const persCount = data.variables?.personale?.length || 0;
-          const mezziCount = data.variables?.mezzi?.length || 0;
-          const fasceCount = data.variables?.fasce_orarie?.length || 0;
-          const bookCount = data.bookings?.length || 0;
-          const totalRecords = persCount + mezziCount + fasceCount + bookCount;
-
-          fb.className = "p-2.5 rounded-xl text-xs font-mono bg-emerald-950/60 border border-emerald-800 text-emerald-300";
-          fb.innerHTML = `✅ Connessione Google Sheets Riuscita! Trovati ${totalRecords} record.<br/>• Autisti: ${persCount}<br/>• Mezzi: ${mezziCount}<br/>• Orari: ${fasceCount}<br/>• Corse nel DB: ${bookCount}`;
-          
-          AppState.sheetsUrl = val;
-          localStorage.setItem('TM_GOOGLE_SHEETS_URL', val);
-          syncFromGoogleSheets();
-        } else {
-          throw new Error(data.message || 'Risposta inattesa da Google');
-        }
-      } catch (err) {
-        fb.className = "p-2.5 rounded-xl text-xs font-mono bg-rose-950/60 border border-rose-800 text-rose-300";
-        if (err && err.message === "AUTH_REQUIRED") {
-          fb.innerHTML = `❌ Errore Autorizzazione Google:<br/>Google richiede l'accesso con account.<br/><br/>👉 <b>Risoluzione:</b> In Google Apps Script apri <i>Distribuisci &gt; Gestisci distribuzioni</i>, modifica la versione e imposta <b>"Chi può accedere: Chiunque" (Anyone)</b>.`;
-        } else {
-          fb.innerHTML = `❌ Errore Connessione:<br/>${escapeHtml(err.message || 'Errore di rete o CORS')}<br/><br/>Verifica che:<br/>1. L'URL termini esattamente con <b>/exec</b><br/>2. In Apps Script la distribuzione abbia <b>"Chi può accedere: Chiunque" (Anyone)</b>.`;
-        }
-      }
+    async function testSheetsConnectionFromInput() {
+      saveSheetsUrlFromInput();
+      syncFromGoogleSheets();
     }
 
-    function selectVarTab(tabKey) {
-      AppState.currentVarTab = tabKey;
-      ['personale', 'mezzi', 'fasce'].forEach(k => {
-        const btn = document.getElementById(`tabVar${k.charAt(0).toUpperCase() + k.slice(1)}`);
+    function switchVariableTab(tabKey) {
+      state.activeVariableTab = tabKey;
+      ['personale', 'mezzi', 'fasce'].forEach(t => {
+        const btn = document.getElementById(`tabVar${t.charAt(0).toUpperCase() + t.slice(1)}`);
         if (btn) {
-          btn.className = (k === tabKey)
-            ? "py-2 text-[11px] font-semibold rounded-lg bg-blue-600 text-white transition"
-            : "py-2 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white transition";
+          btn.className = t === tabKey
+            ? "py-2 text-[11px] font-bold rounded-lg bg-blue-600 text-white transition shadow-sm"
+            : "py-2 text-[11px] font-bold rounded-lg text-slate-400 hover:text-white transition";
         }
       });
 
-      const title = document.getElementById('varFormTitle');
-      const hint = document.getElementById('varFormHint');
-      const input = document.getElementById('inputVarText');
-      document.getElementById('varEditIndex').value = "-1";
-      if (input) input.value = '';
+      const title = document.getElementById("variableFormTitle");
+      const hint = document.getElementById("variableFormHint");
+      const input = document.getElementById("variableTextInput");
+      const editIdx = document.getElementById("variableEditIndex");
 
-      if (tabKey === 'personale') {
-        title.innerText = "Nuovo Autista/Operatore";
-        hint.innerText = "Variabile 1";
-        input.placeholder = "Nome e Cognome...";
-        input.type = "text";
-      } else if (tabKey === 'mezzi') {
-        title.innerText = "Nuovo Mezzo di Trasporto";
-        hint.innerText = "Variabile 2";
-        input.placeholder = "Nome mezzo flotta...";
-        input.type = "text";
-      } else {
-        title.innerText = "Nuova Fascia Oraria";
-        hint.innerText = "Variabile 3 (Ordinamento automatico)";
-        input.placeholder = "HH:MM";
-        input.type = "time";
+      if (editIdx) editIdx.value = "-1";
+      if (input) input.value = "";
+
+      if (title && hint && input) {
+        if (tabKey === 'personale') {
+          title.innerText = "Nuovo Autista/Operatore";
+          hint.innerText = "Variabile 1";
+          input.placeholder = "Nome e Cognome...";
+          input.type = "text";
+        } else if (tabKey === 'mezzi') {
+          title.innerText = "Nuovo Mezzo di Trasporto";
+          hint.innerText = "Variabile 2";
+          input.placeholder = "Nome veicolo flotta...";
+          input.type = "text";
+        } else {
+          title.innerText = "Nuova Fascia Oraria";
+          hint.innerText = "Variabile 3 (HH:MM)";
+          input.placeholder = "08:00";
+          input.type = "time";
+        }
       }
 
-      renderVariableList();
+      renderVariableManagement();
     }
 
-    function renderVariableList() {
-      const container = document.getElementById('varItemsList');
-      const label = document.getElementById('varListLabel');
+    function renderVariableManagement() {
+      const container = document.getElementById("variableItemsList");
+      const label = document.getElementById("variableListLabel");
       if (!container) return;
 
-      const list = AppState.currentVarTab === 'personale'
-        ? AppState.variables.personale
-        : AppState.currentVarTab === 'mezzi'
-          ? AppState.variables.mezzi
-          : AppState.variables.fasce_orarie;
+      const list = state.activeVariableTab === 'personale'
+        ? state.variables.personale
+        : state.activeVariableTab === 'mezzi'
+          ? state.variables.mezzi
+          : state.variables.fasce_orarie;
 
-      if (AppState.currentVarTab === 'fasce') {
-        list.sort((a, b) => a.localeCompare(b));
+      if (state.activeVariableTab === 'fasce') {
+        list.sort((a,b) => a.localeCompare(b));
       }
 
-      if (label) label.innerText = `Elenco ${AppState.currentVarTab.toUpperCase()} (${list.length})`;
+      if (label) {
+        const names = { personale: 'Autisti', mezzi: 'Mezzi Flotta', fasce: 'Fasce Orarie' };
+        label.innerText = `Elenco ${names[state.activeVariableTab]} (${list.length})`;
+      }
 
       if (list.length === 0) {
-        container.innerHTML = `<div class="p-3 text-center text-xs text-slate-500 bg-slate-900/60 rounded-xl border border-slate-800">Nessun elemento configurato</div>`;
+        container.innerHTML = `<div class="p-3 text-center text-xs text-slate-500 bg-slate-900 rounded-xl border border-slate-800">Nessun elemento</div>`;
         return;
       }
 
       container.innerHTML = list.map((item, idx) => `
-        <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
-          <span class="text-xs font-semibold text-slate-200 ${AppState.currentVarTab === 'fasce' ? 'font-mono text-blue-300' : ''}">${escapeHtml(item)}</span>
+        <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+          <span class="text-xs font-semibold text-slate-100 ${state.activeVariableTab === 'fasce' ? 'font-mono text-blue-300' : ''}">${escapeHtml(item)}</span>
           <div class="flex items-center gap-1">
-            <button onclick="editVar(${idx})" class="p-1 rounded-lg text-slate-400 hover:text-white transition" title="Modifica">
+            <button onclick="editVariableItem(${idx})" class="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition" title="Modifica">
               <i data-lucide="edit-2" class="w-3.5 h-3.5"></i>
             </button>
-            <button onclick="deleteVar(${idx})" class="p-1 rounded-lg text-rose-400 hover:text-rose-300 transition" title="Elimina">
+            <button onclick="deleteVariableItem(${idx})" class="p-1 rounded-lg text-rose-400 hover:text-rose-300 hover:bg-rose-950/30 transition" title="Elimina">
               <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
             </button>
           </div>
         </div>
-      `).join('');
-      refreshIcons();
+      `).join("");
+
+      triggerLucideIcons();
     }
 
-    function handleVariableFormSubmit(e) {
+    async function handleVariableSave(e) {
       if (e && e.preventDefault) e.preventDefault();
-      const input = document.getElementById('inputVarText');
-      const editIdxElem = document.getElementById('varEditIndex');
+      const input = document.getElementById("variableTextInput");
+      const editIdx = document.getElementById("variableEditIndex");
+      if (!input || !editIdx) return;
+
       const val = input.value.trim();
-      const idx = parseInt(editIdxElem.value, 10);
       if (!val) return;
 
-      let target = AppState.currentVarTab === 'personale'
-        ? AppState.variables.personale
-        : AppState.currentVarTab === 'mezzi'
-          ? AppState.variables.mezzi
-          : AppState.variables.fasce_orarie;
+      const idx = parseInt(editIdx.value, 10);
+      let target = state.activeVariableTab === 'personale'
+        ? state.variables.personale
+        : state.activeVariableTab === 'mezzi'
+          ? state.variables.mezzi
+          : state.variables.fasce_orarie;
 
       if (idx >= 0) {
         target[idx] = val;
@@ -949,74 +1198,101 @@
         target.push(val);
       }
 
-      if (AppState.currentVarTab === 'fasce') {
-        AppState.variables.fasce_orarie.sort((a, b) => a.localeCompare(b));
+      if (state.activeVariableTab === 'fasce') {
+        target.sort((a,b) => a.localeCompare(b));
       }
 
-      input.value = '';
-      editIdxElem.value = "-1";
+      input.value = "";
+      editIdx.value = "-1";
 
-      renderVariableList();
-      populateDropdowns();
-      pushVariablesToSheets();
+      await pushVariablesToGoogleSheets();
     }
 
-    function editVar(idx) {
-      const target = AppState.currentVarTab === 'personale'
-        ? AppState.variables.personale
-        : AppState.currentVarTab === 'mezzi'
-          ? AppState.variables.mezzi
-          : AppState.variables.fasce_orarie;
+    function editVariableItem(idx) {
+      const list = state.activeVariableTab === 'personale'
+        ? state.variables.personale
+        : state.activeVariableTab === 'mezzi'
+          ? state.variables.mezzi
+          : state.variables.fasce_orarie;
 
-      document.getElementById('inputVarText').value = target[idx];
-      document.getElementById('varEditIndex').value = idx;
-      document.getElementById('inputVarText').focus();
+      const item = list[idx];
+      const input = document.getElementById("variableTextInput");
+      const editIdx = document.getElementById("variableEditIndex");
+      if (input && editIdx) {
+        input.value = item;
+        editIdx.value = idx;
+        input.focus();
+      }
     }
 
-    function deleteVar(idx) {
-      if (!confirm("Sei sicuro di voler eliminare questo elemento?")) return;
-      let target = AppState.currentVarTab === 'personale'
-        ? AppState.variables.personale
-        : AppState.currentVarTab === 'mezzi'
-          ? AppState.variables.mezzi
-          : AppState.variables.fasce_orarie;
+    async function deleteVariableItem(idx) {
+      if (!confirm("Eliminare definitivamente questo elemento?")) return;
+
+      let target = state.activeVariableTab === 'personale'
+        ? state.variables.personale
+        : state.activeVariableTab === 'mezzi'
+          ? state.variables.mezzi
+          : state.variables.fasce_orarie;
 
       target.splice(idx, 1);
-      renderVariableList();
-      populateDropdowns();
-      pushVariablesToSheets();
+      await pushVariablesToGoogleSheets();
     }
 
-    function init() {
-      try {
-        const cachedVars = localStorage.getItem('TM_VARS_CACHE');
-        if (cachedVars) AppState.variables = JSON.parse(cachedVars);
-        const cachedBooks = localStorage.getItem('TM_BOOKINGS_CACHE');
-        if (cachedBooks) AppState.bookings = JSON.parse(cachedBooks);
-      } catch(e) {}
-
-      setBookingDateShortcut('domani');
-      setReportDateShortcut('domani');
-
+    // ---------------- INIZIALIZZAZIONE ----------------
+    function renderAllViews() {
       populateDropdowns();
-      renderRecentList();
-      renderReportView();
+      renderQuickRecent();
+      renderReportList();
+      renderVariableManagement();
+    }
 
+    function initApp() {
+      // Imposta Domani come predefinito per Prenotazione e Report
+      selectDateShortcut('domani');
+      setReportDateShortcut('domani');
+      setBookingType('ANDATA');
+
+      loadLocalDataFallback();
+      renderAllViews();
+
+      // Sincronizza con Google Sheets
       syncFromGoogleSheets();
 
+      // Polling automatico ogni 10 secondi per sincronizzazione live costante
       setInterval(() => {
-        if (AppState.sheetsUrl) {
+        if (!state.isSyncing && state.sheetsUrl) {
           syncFromGoogleSheets();
         }
       }, 10000);
 
-      refreshIcons();
+      triggerLucideIcons();
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
+      document.addEventListener('DOMContentLoaded', initApp);
     } else {
-      init();
+      initApp();
     }
+
+    // Esportazione funzioni su scope window per eventi HTML
+    window.navigateToPage = navigateToPage;
+    window.selectDateShortcut = selectDateShortcut;
+    window.onCustomDateChange = onCustomDateChange;
+    window.setBookingType = setBookingType;
+    window.handleBookingSubmit = handleBookingSubmit;
+    window.setReportDateShortcut = setReportDateShortcut;
+    window.onReportCustomDateChange = onReportCustomDateChange;
+    window.shiftReportDate = shiftReportDate;
+    window.exportReportToCsv = exportReportToCsv;
+    window.handleManageAuth = handleManageAuth;
+    window.lockManageArea = lockManageArea;
+    window.saveSheetsUrlFromInput = saveSheetsUrlFromInput;
+    window.testSheetsConnectionFromInput = testSheetsConnectionFromInput;
+    window.switchVariableTab = switchVariableTab;
+    window.handleVariableSave = handleVariableSave;
+    window.editVariableItem = editVariableItem;
+    window.deleteVariableItem = deleteVariableItem;
+    window.manualSyncTrigger = manualSyncTrigger;
   </script>
-</body></html>
+</body>
+</html>
