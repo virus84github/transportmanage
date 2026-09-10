@@ -5,7 +5,7 @@
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
 <title>Transport Manage</title>
 <!-- Tailwind CSS CDN -->
-<script type='text/javascript' nonce='FSzxgSkrLCFROhDErVb5xg==' src='https://contribution.usercontent.google.com/qS_zKeZX7C8GrgfBmhTbh7HiveJWQYTq7rQeRIFEn2n7ippjP2baVzNN-De23fWpGvg3M0hX-AIT-kxh9qXmBMZbJhCZjLpD9UVPYHk07h0BkAbqztDXikeW4fvLhYTDryrog2aJZutGmo6BLwXAWmwOEQ5FgfW4qoD9N-HiOYzJ8jZOuf5RAZ5wI3sJqTGctwBwBwr707vrI7tCJhmOSN3dPAVg8MJxWCcLOKu7OmtqGSoV3MvzE2f21xOrt3MDCWr6HuF_T0HV3AmqfBx_DhZn2zNi_r_Iwtg6SNNi9XxbUjf7K6m6CAncyhdlJsmX8rwcxw9HbBelZbZEOyni0j2ZDF2pGBJg7ctRFiBBXERYmsooUjlcSMHMM0UztQROwCqp6GEKMrO0mh9eMUJWQoTw9hklPn932xO-YErRWvhFRSTxlRp2fWcaFRFH3FZWSkp6UYKW1P5OJp5JB1i1m-kCmDaK-ojdMVZiVoeFRDAyhc9t4WDJLiSdA8Sd-zoToV0Ki6ptjcVEk1aFWT0D-KVOVW5nu3zRsKrv4xP6dXqGNlEoSPsp7wRQWb6R4WS9Z0r5jLr0qgZ2vb74WjsPqsQg57ENBe30_cw1GEvuqHyle5hLPniLAEhiddrwMwoS7k3R4ZJw2EDyIHAgkCa3YovwqoWRfiTgCVWMQcZcz8cW_FTwG4zoOwpeVz5Yhs2aULlgIqn8NBLDPuIZAGNGryA88y6HgT9GsPEkaUmgiEDz30_TqEyEowxSU8lDgwqDynROL2zUWqLXuJrhrycqx3QVuRzcY_AVaacBdrN1'></script><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script type='text/javascript' nonce='12QwEzw9oc0eNKfL1MCbeQ==' src='https://contribution.usercontent.google.com/_28J3umxUV2WRzQF0as39qgSzovMramdoh_z3B-_M3--SHEg1BVi3tS9SYAlDEdkVSUa9-bG8m0Ly4wyQuDoqewOnL2dQ-fwFx9l2-jPLf4-Kdlg0OHA2KfRr8ynDfJqzJgkI8TujuxIXS-ECzNeYLn_wtqoKuUy-pRsh8qwiJuUDYbQgWt58yC_LAVgIFHswy_jESCkPLbSAcxFlFa5Nb42ril2DfklTZ-jGR5iieFrpMcUq3WrbFwo9tPMcgY3pp9XDPUPMtZKuwyTmuF_PD6oZBz-jucOW_jRd5U1p9jrcOmt32SJlAx4NqdGu08HrQbEjiDPkZS2I9HwLq28xgq0awNOLdLjl6v14dgkoDNHQ0clTEXFZHLcr_M0Cd1zT1g_-IqYv3hcZjzOp8FVxsiepdS6BDMdmEp0v9B6NG9BpUs5w2-5UqGY06VqF6wiznvGjssrIPFRjr1a9JTkx6tSMu9inWx12aE5niaJ6qe9WOLs8671E-1O8S7mOCopAq4WReM2pT3RZNWi8tYYAlLJzOxAGNeF-OPOyT6v5COvKx92X-rn9P8INyZr_PasE3AkF6IV6J4fKRSFST8aau4tl3s5lb5M9zWe8V9ohB88dbm4OFhnb82_1ILTbFNPQS_Kz--81ZDihfxMyB3m82D6Z2IivgfEyP2d3mNRKii4baCDdbPuLe67xkPQhvWjKzFW5KOPb_-ImrWE_RhJwqnUpAh0_UjD9sblPGZF5HC5jlsKuLATmItfI-TcKD_KeMwcrUEeD-kPV9098NwOCVojdo1sGiNF03TuYS5G'></script><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <!-- Lucide Icons -->
 <script src="https://unpkg.com/lucide@latest"></script>
 <style>
@@ -212,12 +212,13 @@
 </div>
 <!-- Tabella / Elenco Corse Raggruppate per Colore -->
 <div class="rounded-2xl bg-[#0c1322] border border-slate-800/80 shadow-lg overflow-hidden">
-<!-- Intestazione Tabella fissa a 4 colonne -->
-<div class="grid grid-cols-12 px-3 py-2.5 bg-slate-900/90 border-b border-slate-800 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+<!-- Intestazione Tabella fissa a colonne (con spazio azione eliminazione) -->
+<div class="grid grid-cols-12 px-3 py-2.5 bg-slate-900/90 border-b border-slate-800 text-[10px] font-bold text-slate-400 uppercase tracking-wider items-center">
 <div class="col-span-4">Autista</div>
 <div class="col-span-3 text-center">Orario</div>
 <div class="col-span-2 text-center">Tipo</div>
-<div class="col-span-3 text-right">Mezzo</div>
+<div class="col-span-2 text-right">Mezzo</div>
+<div class="col-span-1 text-right"></div>
 </div>
 <!-- Righe Dati -->
 <div class="divide-y divide-slate-800/60" id="reportListRows">
@@ -373,6 +374,31 @@
 </div>
 </section>
 </main>
+<!-- ==================== MODALE CONFERMA ELIMINAZIONE CORSA ==================== -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm hidden" id="modalDeleteConfirm">
+<div class="w-full max-w-sm rounded-2xl bg-[#0c1322] border border-slate-800 p-5 shadow-2xl space-y-4 animate-in fade-in zoom-in duration-150">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-rose-500/20 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0">
+<i class="w-5 h-5" data-lucide="trash-2"></i>
+</div>
+<div>
+<h3 class="text-sm font-bold text-white">Elimina Corsa</h3>
+<p class="text-[11px] text-slate-400">Conferma l'eliminazione definitiva</p>
+</div>
+</div>
+<p class="text-xs text-slate-300 leading-relaxed" id="modalDeleteConfirmText">
+      Sei sicuro di voler eliminare questa corsa?
+    </p>
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs border border-slate-700/80 transition active:scale-95" onclick="closeDeleteModal()" type="button">
+        Annulla
+      </button>
+<button class="py-2.5 px-3 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs shadow-md shadow-rose-950/50 flex items-center justify-center gap-1.5 transition active:scale-95" id="btnConfirmDeleteAction" onclick="confirmDeleteBooking()" type="button">
+<i class="w-3.5 h-3.5" data-lucide="trash-2"></i> Elimina Corsa
+      </button>
+</div>
+</div>
+</div>
 <!-- ==================== BOTTOM NAVIGATION (3 TAB) ==================== -->
 <nav class="fixed bottom-0 inset-x-0 z-30 bg-[#0c1322]/95 backdrop-blur border-t border-slate-800/80 px-4 py-2">
 <div class="max-w-md mx-auto grid grid-cols-3 gap-2">
@@ -474,7 +500,8 @@
       isManageAuthenticated: false,
       activeVariableTab: 'personale',
       sheetsUrl: resolveInitialSheetsUrl(),
-      isSyncing: false
+      isSyncing: false,
+      bookingPendingDeleteId: null
     };
 
     // ---------------- UTILITÀ DATE ROBUSTE ----------------
@@ -1110,14 +1137,87 @@
             </div>
 
             <!-- 4. Mezzo -->
-            <div class="col-span-3 text-right font-medium text-[11px] truncate ${style.tag}">
+            <div class="col-span-2 text-right font-medium text-[11px] truncate ${style.tag}">
               ${escapeHtml(b.mezzo)}
+            </div>
+
+            <!-- 5. Pulsante Elimina Corsa -->
+            <div class="col-span-1 text-right flex justify-end">
+              <button onclick="requestDeleteBooking('${escapeHtml(b.id)}')" class="p-1 rounded-lg text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 transition" title="Elimina questa corsa">
+                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+              </button>
             </div>
           </div>
         `;
       }).join("");
 
       triggerLucideIcons();
+    }
+
+    // ---------------- MODALE E AZIONE ELIMINAZIONE CORSA ----------------
+    function requestDeleteBooking(bookingId) {
+      const b = state.bookings.find(item => String(item.id) === String(bookingId));
+      if (!b) return;
+
+      state.bookingPendingDeleteId = bookingId;
+      const modal = document.getElementById("modalDeleteConfirm");
+      const confirmText = document.getElementById("modalDeleteConfirmText");
+
+      if (confirmText) {
+        confirmText.innerHTML = `Sei sicuro di voler eliminare questa corsa per <strong class="text-white">${escapeHtml(b.personale)}</strong> delle ore <strong class="text-white">${escapeHtml(b.orario)}</strong>?`;
+      }
+
+      if (modal) {
+        modal.classList.remove("hidden");
+      }
+      triggerLucideIcons();
+    }
+
+    function closeDeleteModal() {
+      state.bookingPendingDeleteId = null;
+      const modal = document.getElementById("modalDeleteConfirm");
+      if (modal) {
+        modal.classList.add("hidden");
+      }
+    }
+
+    async function confirmDeleteBooking() {
+      const bookingId = state.bookingPendingDeleteId;
+      if (!bookingId) return;
+
+      // Chiudi il modal
+      closeDeleteModal();
+
+      // Rimuovi localmente dallo stato
+      state.bookings = state.bookings.filter(b => String(b.id) !== String(bookingId));
+      localStorage.setItem("TM_LOCAL_BOOKINGS", JSON.stringify(state.bookings));
+
+      // Aggiorna subito le viste
+      renderReportList();
+      renderQuickRecent();
+
+      // Notifica Google Apps Script / Foglio Google
+      if (state.sheetsUrl) {
+        try {
+          updateSyncStatus('syncing', 'Eliminazione corsa da Sheets...');
+          const payload = {
+            action: 'delete_booking',
+            id: bookingId
+          };
+
+          await fetch(state.sheetsUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payload),
+            redirect: 'follow'
+          });
+
+          updateSyncStatus('connected', `Sheets Connesso • Live (${state.bookings.length} corse)`);
+        } catch (err) {
+          console.error("Errore cancellazione booking su Google Sheets:", err);
+          updateSyncStatus('error', 'Eliminazione remota non riuscita');
+        }
+      }
     }
 
     function exportReportToCsv() {
@@ -1414,5 +1514,8 @@
     window.editVariableItem = editVariableItem;
     window.deleteVariableItem = deleteVariableItem;
     window.manualSyncTrigger = manualSyncTrigger;
+    window.requestDeleteBooking = requestDeleteBooking;
+    window.closeDeleteModal = closeDeleteModal;
+    window.confirmDeleteBooking = confirmDeleteBooking;
   </script>
 </body></html>
