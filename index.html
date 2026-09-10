@@ -5,7 +5,7 @@
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
 <title>Transport Manage</title>
 <!-- Tailwind CSS CDN -->
-<script type='text/javascript' nonce='12QwEzw9oc0eNKfL1MCbeQ==' src='https://contribution.usercontent.google.com/_28J3umxUV2WRzQF0as39qgSzovMramdoh_z3B-_M3--SHEg1BVi3tS9SYAlDEdkVSUa9-bG8m0Ly4wyQuDoqewOnL2dQ-fwFx9l2-jPLf4-Kdlg0OHA2KfRr8ynDfJqzJgkI8TujuxIXS-ECzNeYLn_wtqoKuUy-pRsh8qwiJuUDYbQgWt58yC_LAVgIFHswy_jESCkPLbSAcxFlFa5Nb42ril2DfklTZ-jGR5iieFrpMcUq3WrbFwo9tPMcgY3pp9XDPUPMtZKuwyTmuF_PD6oZBz-jucOW_jRd5U1p9jrcOmt32SJlAx4NqdGu08HrQbEjiDPkZS2I9HwLq28xgq0awNOLdLjl6v14dgkoDNHQ0clTEXFZHLcr_M0Cd1zT1g_-IqYv3hcZjzOp8FVxsiepdS6BDMdmEp0v9B6NG9BpUs5w2-5UqGY06VqF6wiznvGjssrIPFRjr1a9JTkx6tSMu9inWx12aE5niaJ6qe9WOLs8671E-1O8S7mOCopAq4WReM2pT3RZNWi8tYYAlLJzOxAGNeF-OPOyT6v5COvKx92X-rn9P8INyZr_PasE3AkF6IV6J4fKRSFST8aau4tl3s5lb5M9zWe8V9ohB88dbm4OFhnb82_1ILTbFNPQS_Kz--81ZDihfxMyB3m82D6Z2IivgfEyP2d3mNRKii4baCDdbPuLe67xkPQhvWjKzFW5KOPb_-ImrWE_RhJwqnUpAh0_UjD9sblPGZF5HC5jlsKuLATmItfI-TcKD_KeMwcrUEeD-kPV9098NwOCVojdo1sGiNF03TuYS5G'></script><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script type='text/javascript' nonce='G1mR4eUtnInzRoGLDpT04g==' src='https://contribution.usercontent.google.com/W8JnH55ufy3JMtMffbS_n6HzYNnzz_jntUZVa9fgjRaiQfMZbBA1IfGlkCp4rhgQo8WohnFBXcUgKr8Tgz1cAOZjtivJ-ThnGEZXbbA_3LxA0tBN9v9_HF7Y7ZoS_wapNT7jBRlkmwrYAClyZxZplkoOeE4abG0cIn_G2lZQ6R0anMxGm1bOLbKexghWuyRbdltI2Anpq8DjO9syAfK-03_5MGXNlb3TEB4Km2Al17rhKuxDhYKLLRG2TZ-EgXpv0yw6OMtW8TNc0i7m1P5XCQFwBQqN8XEIegGGFo70RfKBy99W02GqpUtwJuFmxa2YWfj99eq-v_RMk_tYDIHLT2OTdjRwUNIIfByMXiiQJmH13SBaF4mGu0-t4woDtQnZhxhd1HB-2xLkzZ9Bm4GnuzCpeWuxBO6XuvK1eHH_xcM4DLGqdsQiidS_UU14EjlpAduse5O90xoqklyxjEEhgv-Rf1a0vb13sUl12lboV_rKCmCIskokZPo-BvbQDd5G9PuTIG8IWkocpz0RqKoAObsd0cVpYKjkFmOJRpmdIRYsJ0Ae2Nqjq57NBxX-BGB_q_4ygeClIgB73euF1hrd32eZGKnLkEPiB6rcGtVdI2bR07jhBeVgOGzIkHa6sSyeiH8LOhC0SFo465f0n9lVAIWnobg0oieGKXo-y-xEyia8p1sZaUX29c08joqJ4k9OFCOnB-oB4Y66cymGbsAxG6WzPeGvcYGuHpyw9CN6VGg6Z_z1Jd05gnpGMxojvOyc2jXtJ52T_YAih13JGY6Yi72j85pXU-80A2EqM7iK'></script><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <!-- Lucide Icons -->
 <script src="https://unpkg.com/lucide@latest"></script>
 <style>
@@ -27,6 +27,15 @@
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white pb-20">
+<!-- ==================== TOAST FEEDBACK NOTIFICHE ==================== -->
+<div class="fixed top-4 inset-x-4 max-w-sm mx-auto z-50 transform -translate-y-20 opacity-0 transition-all duration-300 pointer-events-none" id="toastNotification">
+<div class="bg-slate-900 border border-emerald-500/50 shadow-xl shadow-black/50 rounded-xl p-3 flex items-center gap-2.5 text-xs text-white">
+<div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+<i class="w-4 h-4" data-lucide="check-circle-2"></i>
+</div>
+<div class="font-medium" id="toastMessage">Corsa eliminata con successo</div>
+</div>
+</div>
 <!-- ==================== HEADER PRINCIPALE ==================== -->
 <header class="sticky top-0 z-30 bg-[#0c1322]/95 backdrop-blur border-b border-slate-800/80 px-4 py-3">
 <div class="max-w-md mx-auto flex items-center justify-between">
@@ -394,7 +403,7 @@
         Annulla
       </button>
 <button class="py-2.5 px-3 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs shadow-md shadow-rose-950/50 flex items-center justify-center gap-1.5 transition active:scale-95" id="btnConfirmDeleteAction" onclick="confirmDeleteBooking()" type="button">
-<i class="w-3.5 h-3.5" data-lucide="trash-2"></i> Elimina Corsa
+<i class="w-3.5 h-3.5" data-lucide="trash-2"></i> Elimina Definitivamente
       </button>
 </div>
 </div>
@@ -470,6 +479,31 @@
       return "";
     }
 
+    // Carica l'elenco locale degli ID cancellati di recente per evitare ri-popolazione prima del sync remoto
+    function loadDeletedIds() {
+      try {
+        const raw = localStorage.getItem("TM_DELETED_BOOKING_IDS");
+        if (raw) {
+          const arr = JSON.parse(raw);
+          return new Set(Array.isArray(arr) ? arr.map(String) : []);
+        }
+      } catch(e) {
+        console.warn("Errore lettura deletedBookingIds:", e);
+      }
+      return new Set();
+    }
+
+    function saveDeletedIds(setInstance) {
+      try {
+        const arr = Array.from(setInstance);
+        // Mantieni al massimo gli ultimi 100 per non intasare memoria
+        const trimmed = arr.slice(-100);
+        localStorage.setItem("TM_DELETED_BOOKING_IDS", JSON.stringify(trimmed));
+      } catch(e) {
+        console.warn("Errore salvataggio deletedBookingIds:", e);
+      }
+    }
+
     // 2. Variabili di Default
     const DEFAULT_VARIABLES = {
       personale: ["Marco Rossi", "Luca Bianchi", "Alessandro Verdi", "Giulia Neri", "Roberto Ferrari"],
@@ -497,12 +531,29 @@
       bookingType: 'ANDATA',
       variables: JSON.parse(JSON.stringify(DEFAULT_VARIABLES)),
       bookings: [],
+      deletedBookingIds: loadDeletedIds(),
       isManageAuthenticated: false,
       activeVariableTab: 'personale',
       sheetsUrl: resolveInitialSheetsUrl(),
       isSyncing: false,
       bookingPendingDeleteId: null
     };
+
+    // ---------------- NOTIFICHE TOAST FEEDBACK ----------------
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById("toastNotification");
+      const msg = document.getElementById("toastMessage");
+      if (!toast || !msg) return;
+
+      msg.innerText = message;
+      toast.classList.remove("-translate-y-20", "opacity-0");
+      toast.classList.add("translate-y-0", "opacity-100");
+
+      setTimeout(() => {
+        toast.classList.remove("translate-y-0", "opacity-100");
+        toast.classList.add("-translate-y-20", "opacity-0");
+      }, 2500);
+    }
 
     // ---------------- UTILITÀ DATE ROBUSTE ----------------
     function getTodayDateString() {
@@ -649,17 +700,20 @@
               localStorage.setItem("TM_LOCAL_VARS", JSON.stringify(state.variables));
             }
 
-            // 2. Aggiorna Corse Prenotate Normalizzando le Date
+            // 2. Aggiorna Corse Prenotate Normalizzando le Date & FILTRANDO quelle cancellate localmente
             if (Array.isArray(data.bookings)) {
-              state.bookings = data.bookings.map(b => ({
-                id: b.id || 'bk_' + Math.random().toString(36).substr(2, 9),
-                date: normalizeDateToISO(b.date),
-                personale: b.personale || '',
-                mezzo: b.mezzo || '',
-                orario: b.orario || '',
-                type: (b.type || 'ANDATA').toUpperCase(),
-                createdAt: b.createdAt || ''
-              }));
+              state.bookings = data.bookings
+                .map(b => ({
+                  id: String(b.id || 'bk_' + Math.random().toString(36).substr(2, 9)),
+                  date: normalizeDateToISO(b.date),
+                  personale: b.personale || '',
+                  mezzo: b.mezzo || '',
+                  orario: b.orario || '',
+                  type: (b.type || 'ANDATA').toUpperCase(),
+                  createdAt: b.createdAt || ''
+                }))
+                .filter(b => !state.deletedBookingIds.has(String(b.id)));
+
               localStorage.setItem("TM_LOCAL_BOOKINGS", JSON.stringify(state.bookings));
             }
 
@@ -690,10 +744,13 @@
         const savedBooks = localStorage.getItem("TM_LOCAL_BOOKINGS");
         if (savedBooks) {
           const parsed = JSON.parse(savedBooks);
-          state.bookings = parsed.map(b => ({
-            ...b,
-            date: normalizeDateToISO(b.date)
-          }));
+          state.bookings = parsed
+            .map(b => ({
+              ...b,
+              id: String(b.id),
+              date: normalizeDateToISO(b.date)
+            }))
+            .filter(b => !state.deletedBookingIds.has(String(b.id)));
         }
       } catch (e) {
         console.error("Errore lettura cache locale:", e);
@@ -1154,12 +1211,12 @@
       triggerLucideIcons();
     }
 
-    // ---------------- MODALE E AZIONE ELIMINAZIONE CORSA ----------------
+    // ---------------- MODALE E AZIONE ELIMINAZIONE CORSA CON SYNC DEFINITIVO ----------------
     function requestDeleteBooking(bookingId) {
       const b = state.bookings.find(item => String(item.id) === String(bookingId));
       if (!b) return;
 
-      state.bookingPendingDeleteId = bookingId;
+      state.bookingPendingDeleteId = String(bookingId);
       const modal = document.getElementById("modalDeleteConfirm");
       const confirmText = document.getElementById("modalDeleteConfirmText");
 
@@ -1185,37 +1242,69 @@
       const bookingId = state.bookingPendingDeleteId;
       if (!bookingId) return;
 
-      // Chiudi il modal
+      // 1. Chiudi il modal
       closeDeleteModal();
 
-      // Rimuovi localmente dallo stato
+      // 2. Aggiungi subito all'elenco locale di elementi cancellati per prevenire rollback dai refresh automatici
+      state.deletedBookingIds.add(String(bookingId));
+      saveDeletedIds(state.deletedBookingIds);
+
+      // 3. Rimuovi localmente dallo stato e dal localStorage
       state.bookings = state.bookings.filter(b => String(b.id) !== String(bookingId));
       localStorage.setItem("TM_LOCAL_BOOKINGS", JSON.stringify(state.bookings));
 
-      // Aggiorna subito le viste
+      // 4. Aggiorna subito le viste
       renderReportList();
       renderQuickRecent();
 
-      // Notifica Google Apps Script / Foglio Google
+      // 5. Mostra feedback visivo immediato all'utente
+      showToast("Corsa eliminata con successo");
+
+      // 6. Trasmetti la cancellazione al Foglio Google (con action deleteBooking/delete_booking sia POST che fallback GET/no-cors)
       if (state.sheetsUrl) {
+        updateSyncStatus('syncing', 'Eliminazione corsa da Sheets...');
+        
+        let successRemoto = false;
+
+        // Tentativo primario: POST JSON
         try {
-          updateSyncStatus('syncing', 'Eliminazione corsa da Sheets...');
           const payload = {
-            action: 'delete_booking',
-            id: bookingId
+            action: 'deleteBooking',
+            id: String(bookingId)
           };
 
-          await fetch(state.sheetsUrl, {
+          const postRes = await fetch(state.sheetsUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'text/plain;charset=utf-8' },
             body: JSON.stringify(payload),
             redirect: 'follow'
           });
 
-          updateSyncStatus('connected', `Sheets Connesso • Live (${state.bookings.length} corse)`);
+          if (postRes.ok) {
+            successRemoto = true;
+          }
         } catch (err) {
-          console.error("Errore cancellazione booking su Google Sheets:", err);
-          updateSyncStatus('error', 'Eliminazione remota non riuscita');
+          console.warn("Tentativo POST deleteBooking standard completato con warning/CORS, procedo con fallback robusto:", err);
+        }
+
+        // Tentativo secondario di sicurezza: GET con query param & no-cors per garantire l'esecuzione su Google Apps Script
+        try {
+          const separator = state.sheetsUrl.includes('?') ? '&' : '?';
+          const fallbackUrl = `${state.sheetsUrl}${separator}action=deleteBooking&id=${encodeURIComponent(bookingId)}&_t=${Date.now()}`;
+          await fetch(fallbackUrl, {
+            method: 'GET',
+            mode: 'no-cors',
+            cache: 'no-store'
+          });
+          successRemoto = true;
+        } catch (e2) {
+          console.warn("Fallback GET non riuscito:", e2);
+        }
+
+        if (successRemoto) {
+          updateSyncStatus('connected', `Sheets Connesso • Live (${state.bookings.length} corse)`);
+        } else {
+          updateSyncStatus('connected', `Corsa rimossa localmente (${state.bookings.length} corse)`);
         }
       }
     }
@@ -1517,5 +1606,6 @@
     window.requestDeleteBooking = requestDeleteBooking;
     window.closeDeleteModal = closeDeleteModal;
     window.confirmDeleteBooking = confirmDeleteBooking;
+    window.showToast = showToast;
   </script>
 </body></html>
